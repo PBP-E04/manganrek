@@ -26,11 +26,11 @@ Admin atau kontributor dapat menambahkan restoran baru beserta menu, pengguna da
 
 Daftar favorit memungkinkan pengguna untuk menyimpan dan mengelola daftar restoran favorit mereka untuk akses yang lebih mudah. Pengguna dapat menambahkan restoran ke daftar favorit mereka, melihat daftar restoran favorit mereka, memodifikasi daftar favorit dengan menambahkan restoran baru, dan menghapus restoran dari daftar favorit mereka.
 
-### _Rating_ dan Ulasan
+### _Rating_ & Ulasan
 
 _Rating_ dan Ulasan memungkinkan pengguna untuk berbagi pengalaman mereka dengan memberikan penilaian dan ulasan terhadap restoran yang telah mereka kunjungi. Pengguna dapat membuat ulasan dan memberikan _rating_ pada restoran berdasarkan pengalaman mereka, membaca ulasan yang ditinggalkan oleh orang lain dan melihat _rating_ restoran, mengubah ulasan dan _rating_ mereka, serta menghapus ulasan mereka sendiri.
 
-### Promo dan Diskon
+### Promo & Diskon
 
 Admin atau kontributor dapat menambahkan promo atau diskon baru ke restoran, pengguna dapat menelusuri promo dan diskon yang aktif, admin dan kontributor dapat memodifikasi promo yang ada dan menghapus promo yang kedaluwarsa atau dibatalkan.
 
