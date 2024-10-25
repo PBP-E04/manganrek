@@ -1,0 +1,11 @@
+.logo-text {
+    font-family: 'Raleway', sans-serif; /* Ensure this matches your site's font */
+    color: #ffffff; /* White color for contrast against the green background */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    letter-spacing: 0.05em; /* Slightly increased letter spacing for readability */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.logo-text:hover {
+    color: #d7e9f4; /* Light blue color on hover for a dynamic effect */
+}

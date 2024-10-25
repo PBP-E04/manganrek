@@ -1,1234 +1,1234 @@
 [
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "1b63b7c8-cefe-4c8d-874b-e94be935d273",
-      "fields": {
-        "nama": "Sate Klopo Kak Mad",
-        "alamat": "Jl. Pucang Anom Tim. No.17A, Kertajaya, Kec. Gubeng, Surabaya, Jawa Timur 60282",
-        "tingkat_kepedasan": 5,
-        "latitude": -7.2825086,
-        "longitude": 112.7533806
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "35704673-a5f3-47bb-a5b7-01b34a4fc44b",
-      "fields": {
-        "nama": "Tahu Teck Teck Pak H. Ali",
-        "alamat": "Jl. Dinoyo No.147, Keputran, Kec. Tegalsari, Surabaya, Jawa Timur 60265",
-        "tingkat_kepedasan": 2,
-        "latitude": -7.2877785,
-        "longitude": 112.7420717
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "694a8c0f-1d79-45f5-9cdc-f633105a7573",
-      "fields": {
-        "nama": "Warung Sego Meduro Suramadu Bu Ana",
-        "alamat": "Jl. Kalibutuh No.6, Tembok Dukuh, Kec. Bubutan, Surabaya, Jawa Timur 60171",
-        "tingkat_kepedasan": 9,
-        "latitude": -7.2540426,
-        "longitude": 112.7202841
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "b95e2146-a006-4771-830a-6d4ec4cf96de",
-      "fields": {
-        "nama": "Rujak Cingur Delta (Kayoon)",
-        "alamat": "Kayoon St Jl. Embong Kemiri No.46D, Embong Kaliasin, Genteng, Surabaya, East Java 60271",
-        "tingkat_kepedasan": 2,
-        "latitude": -7.2695103,
-        "longitude": 112.7440432
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "f3be4dd6-5bbf-4416-a89f-cef524351af9",
-      "fields": {
-        "nama": "Rawon Kalkulator",
-        "alamat": "Sentra PKL Tamam Bungkul, Jl. Raya Darmo, Darmo, Kec. Wonokromo, Surabaya, Jawa Timur 60241",
-        "tingkat_kepedasan": 1,
-        "latitude": -7.2721428,
-        "longitude": 112.6081824
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "84c45d8b-57f8-4479-bfb0-256e95c60999",
-      "fields": {
-        "nama": "Warung Nasi Cumi-Cumi (Ibu Atun)",
-        "alamat": "Jl. Waspada No.30, Bongkaran, Kec. Pabean Cantikan, Surabaya, Jawa Timur 60161",
-        "tingkat_kepedasan": 8,
-        "latitude": -7.2406044,
-        "longitude": 112.7410272
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "b249c84b-a7cb-4f66-b510-01aa97272625",
-      "fields": {
-        "nama": "Apeng Kwetiau Medan - Kedung Doro",
-        "alamat": "Jl. Kedung Doro No.267, Wonorejo, Kec. Tegalsari, Surabaya, Jawa Timur 60251",
-        "tingkat_kepedasan": 10,
-        "latitude": -7.2683538,
-        "longitude": 112.726813
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "3dbac21e-fb22-4bef-8d82-23ec5ef04986",
-      "fields": {
-        "nama": "Kedai Ciamso",
-        "alamat": "Taman Apsari St No.25 a, Embong Kaliasin, Genteng, Surabaya, East Java 60271",
-        "tingkat_kepedasan": 8,
-        "latitude": -7.2651622,
-        "longitude": 112.7400262
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "9d120e71-99e1-4d3f-a351-4954740d678e",
-      "fields": {
-        "nama": "Restoran Payakumbuah, Gubeng Surabaya",
-        "alamat": "Jl. Jawa No.33, Gubeng, Kec. Gubeng, Surabaya, Jawa Timur 60281",
-        "tingkat_kepedasan": 3,
-        "latitude": -7.273271,
-        "longitude": 112.7465965
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "3c45cec2-d53a-4e85-bf71-140730924690",
-      "fields": {
-        "nama": "Soto Ayam Lamongan CAK HAR",
-        "alamat": "Jl. Dr. Ir. H. Soekarno No.220, Semolowaru, Kec. Sukolilo, Surabaya, Jawa Timur 60117",
-        "tingkat_kepedasan": 4,
-        "latitude": -7.294043,
-        "longitude": 112.7785331
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "75ea2bcc-9892-4f5d-8517-d22b4a67f643",
-      "fields": {
-        "nama": "Bebek Goreng Palupi Rungkut",
-        "alamat": "Jl. Rungkut Asri Tengah No.10, Rungkut Kidul, Kec. Rungkut, Surabaya, Jawa Timur 60293",
-        "tingkat_kepedasan": 3,
-        "latitude": -7.328576,
-        "longitude": 112.7726634
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "69c32fb2-effc-4a6c-ba04-9d2e378f8801",
-      "fields": {
-        "nama": "Bakso Haji AK",
-        "alamat": "Jl. Raya Medokan Sawah No.1, Gn. Anyar, Kec. Gn. Anyar, Surabaya, Jawa Timur 60294",
-        "tingkat_kepedasan": 2,
-        "latitude": -7.332058,
-        "longitude": 112.7997801
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "c4035b3f-c478-4b45-91c5-b8ee3868c1a6",
-      "fields": {
-        "nama": "Waroeng Joglo Merah Putih",
-        "alamat": "Jl. Dr. Ir. H. Soekarno No.678, Gn. Anyar, Kec. Gn. Anyar, Surabaya, Jawa Timur 60294",
-        "tingkat_kepedasan": 5,
-        "latitude": -7.3421956,
-        "longitude": 112.783411
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "909b32d5-f32e-437a-8c93-f924d446b0a2",
-      "fields": {
-        "nama": "Bakso Dan Mie Ayam bejo",
-        "alamat": "QQP7+QH7, Jl. Bulak Banteng Lrg. 4, Bulak Banteng, Kec. Kenjeran, Surabaya, Jawa Timur 60127",
-        "tingkat_kepedasan": 5,
-        "latitude": -7.2130894,
-        "longitude": 112.7609056
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "00069065-fc0a-4012-8ff7-9765b50bd6ca",
-      "fields": {
-        "nama": "CIRENG TUBAN ALA MBAK MIRA",
-        "alamat": "Jl. Mrutu Kalianyar No.189, Wonokusumo, Kec. Semampir, Surabaya, Jawa Timur 60154",
-        "tingkat_kepedasan": 10,
-        "latitude": -7.2120103,
-        "longitude": 112.7581644
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "2c0798d5-0dfc-40ab-9d76-8b7dc92f6028",
-      "fields": {
-        "nama": "Ronggolawe Meatball",
-        "alamat": "Jl. Bulak Banteng Baru Lorong 4 No.32, RT.001/RW.02, Bulak Banteng, Kec. Kenjeran, Surabaya, Jawa Timur 60127",
-        "tingkat_kepedasan": 2,
-        "latitude": -7.2128496,
-        "longitude": 112.7595618
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "3df78977-ef87-47a6-af86-cf7a67767005",
-      "fields": {
-        "nama": "Seblak Tulang dan Dimsum Mamaqu",
-        "alamat": "Jl. Wonosari Lor Baru Wonosari Lor Baru Gg. I No.1, Wonokusumo, Kec. Semampir, Surabaya, Jawa Timur 60154",
-        "tingkat_kepedasan": 9,
-        "latitude": -7.2194528,
-        "longitude": 112.7520777
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "b4a860be-e89f-42e3-9622-697833fb4c56",
-      "fields": {
-        "nama": "Martabak Terang Bulan Dua Putra",
-        "alamat": "Kapas Madya IV I No.82, RT.008/RW.16, Gading, Kec. Tambaksari, Surabaya, Jawa Timur 60134",
-        "tingkat_kepedasan": 4,
-        "latitude": -7.2394361,
-        "longitude": 112.762675
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "63b7a46f-ec27-4e68-8429-3cb14fb5dbf1",
-      "fields": {
-        "nama": "Ayam Geprek Mr Suprek Kenjeran",
-        "alamat": "Jl. Kenjeran No.271, Gading, Kec. Tambaksari, Surabaya, Jawa Timur 60131",
-        "tingkat_kepedasan": 8,
-        "latitude": -7.2449398,
-        "longitude": 112.7656499
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "dd5b62d4-9de6-468f-a6b7-b658eb76b865",
-      "fields": {
-        "nama": "Nasi Inul HJ. Siti Rochmah",
-        "alamat": "Jalan, Kapas Baru VIII No.36, Gading, Kec. Tambaksari, Surabaya, Jawa Timur 60134",
-        "tingkat_kepedasan": 7,
-        "latitude": -7.2400451,
-        "longitude": 112.7613816
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "e7248646-62c7-44d8-92b4-f4e41550baaa",
-      "fields": {
-        "nama": "Tahu Telor Pak Jayen - Graha Famili",
-        "alamat": "Jl. Mayjend. Jonosewojo No.100P, Pradahkalikendal, Kec. Dukuhpakis, Surabaya, Jawa Timur 60213",
-        "tingkat_kepedasan": 1,
-        "latitude": -7.2937247,
-        "longitude": 112.6739251
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "cd1ae32b-42b4-403d-bf40-bdcba6e8ae08",
-      "fields": {
-        "nama": "Sate Kelopo Ondomohen Bu Asih",
-        "alamat": "Jl. Walikota Mustajab No. 36, Ketabang, Kec. Genteng, Surabaya, Jawa Timur 60272",
-        "tingkat_kepedasan": 6,
-        "latitude": -6.3700992,
-        "longitude": 106.8302336
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "f8f86d21-395a-4142-a7d7-6be0474563f9",
-      "fields": {
-        "nama": "Ayam Bakar Primarasa - Kusuma Bangsa",
-        "alamat": "Jl. Kusuma Bangsa No.3A, Ketabang, Kec. Genteng, Surabaya, Jawa Timur 60272",
-        "tingkat_kepedasan": 6,
-        "latitude": -7.2600729,
-        "longitude": 112.7484489
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "1e24ead7-2976-47c2-8c15-7a14edf5c5f7",
-      "fields": {
-        "nama": "Arumanis Restaurant",
-        "alamat": "Bumi Surabaya City Resort, Jl. Jend. Basuki Rakhmat No.106-128, Embong Kaliasin, Kec. Genteng, Surabaya, Jawa Timur 60271",
-        "tingkat_kepedasan": 8,
-        "latitude": -7.2710805,
-        "longitude": 112.7386001
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "b4c0a254-0b03-4902-abea-71412e58ae04",
-      "fields": {
-        "nama": "Restoran Bebek Tepi Sawah",
-        "alamat": "Jl. Darmokali No.50, Darmo, Kec. Wonokromo, Surabaya, Jawa Timur 60241",
-        "tingkat_kepedasan": 7,
-        "latitude": -7.2931019,
-        "longitude": 112.7384633
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "952901b3-7cd0-4fcd-82b2-8e19c519d06c",
-      "fields": {
-        "nama": "Warung Bu Kris - Manyar Kertoarjo",
-        "alamat": "Jl. Manyar Kertoarjo IV No.23, Mojo, Kec. Gubeng, Surabaya, Jawa Timur 60285",
-        "tingkat_kepedasan": 9,
-        "latitude": -7.2776873,
-        "longitude": 112.7627883
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "27945af9-51ee-4d17-9717-14b9aa297e7e",
-      "fields": {
-        "nama": "Ketjombrang Indonesian Eatery - Citraland",
-        "alamat": "Jl. Puri Widya Kencana No.26 Blok K1, Lidah Kulon, Kec. Sambikerep, Surabaya, Jawa Timur 60213",
-        "tingkat_kepedasan": 10,
-        "latitude": -7.2934995,
-        "longitude": 112.6516736
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "23d8e32c-7534-42ed-a288-127c5c882c33",
-      "fields": {
-        "nama": "Soto Ayam Lamongan Cak Har",
-        "alamat": "Jl. Dr. Ir. H. Soekarno No.220, Semolowaru, Kec. Sukolilo, Surabaya, Jawa Timur 60117",
-        "tingkat_kepedasan": 8,
-        "latitude": -7.294043,
-        "longitude": 112.7785331
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "0e8c8692-e531-4c26-bcff-58fde9671c5f",
-      "fields": {
-        "nama": "Botanika",
-        "alamat": "Jl. Raya Kertajaya Indah No.F-303, Manyar Sabrangan, Mulyorejo, Surabaya, Jawa Timur 60116",
-        "tingkat_kepedasan": 1,
-        "latitude": -7.2801403,
-        "longitude": 112.7723452
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "2635fcf5-0db1-42e0-9d7b-adb53fcde752",
-      "fields": {
-        "nama": "Layar Seafood - Manyar Kertoarjo",
-        "alamat": "Jl. Manyar Kertoarjo No.23 - 25, Mojo, Kec. Gubeng, Surabaya, Jawa Timur 60285",
-        "tingkat_kepedasan": 2,
-        "latitude": -7.2795947,
-        "longitude": 112.7640291
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "c3e6817e-39cd-4cc9-8814-e8a33ae6376a",
-      "fields": {
-        "nama": "Bakso Pak Djo - Manyar Tirtoasri",
-        "alamat": "Jl. Manyar Tirtoasri XII No.2, Menur Pumpungan, Kec. Sukolilo, Surabaya, Jawa Timur 60118",
-        "tingkat_kepedasan": 7,
-        "latitude": -7.2878574,
-        "longitude": 112.7658542
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "f9245acb-0f51-45ee-a396-31f75bd0e9e4",
-      "fields": {
-        "nama": "Poenya Nyonya Anina - Tenggilis",
-        "alamat": "Jl. Raya Tenggilis No.F1-2, Tenggilis Mejoyo, Kec. Tenggilis Mejoyo, Surabaya, Jawa Timur 60292",
-        "tingkat_kepedasan": 4,
-        "latitude": -7.3206891,
-        "longitude": 112.7590141
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "56044ec5-6d33-446e-a08a-2b899f37f660",
-      "fields": {
-        "nama": "Pepper Lunch - Galaxy Mall",
-        "alamat": "Galaxy Mall 3, Jl. Dharmahusada Indah Timur No.35-37, Mulyorejo, Kec. Mulyorejo, Surabaya, Jawa Timur 60116",
-        "tingkat_kepedasan": 8,
-        "latitude": -7.2756914,
-        "longitude": 112.7780505
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "b01b51a6-322e-4154-ad04-ca10b5c49f04",
-      "fields": {
-        "nama": "Boncafe Steak & Ice Cream - Manyar Kertoarjo",
-        "alamat": "Jl. Manyar Kertoarjo V No.1, RW.5, Mojo, Kec. Gubeng, Surabaya, Jawa Timur 60285",
-        "tingkat_kepedasan": 3,
-        "latitude": -7.2772862,
-        "longitude": 112.7634211
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "23ab7e4f-377e-4dce-a118-b317d2cf9d42",
-      "fields": {
-        "nama": "Warung Leko - Manyar",
-        "alamat": "Jl. Manyar Kertoarjo V No.9, Mojo, Kec. Gubeng, Surabaya, Jawa Timur 60285",
-        "tingkat_kepedasan": 9,
-        "latitude": -7.2775341,
-        "longitude": 112.7634969
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "ac4f587c-d32b-48a3-b9a4-622329c4f9ae",
-      "fields": {
-        "nama": "Depot Bu Rudy - Dharmahusada",
-        "alamat": "Jl. Dharmahusada No.144, Mojo, Kec. Gubeng, Surabaya, Jawa Timur 60285",
-        "tingkat_kepedasan": 6,
-        "latitude": -7.2673371,
-        "longitude": 112.7675575
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "8e6af33a-209a-4f4c-aab8-c3b240ec2ffe",
-      "fields": {
-        "nama": "Pavilion Restaurant - JW Marriot",
-        "alamat": "JW Marriott Surabaya, JL. Embong Malang No. 85-89, Kedungdoro, Kec. Tegalsari, Surabaya, Jawa Timur 60261",
-        "tingkat_kepedasan": 9,
-        "latitude": -7.2593922,
-        "longitude": 112.7319735
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "623f40ed-a664-49ea-a0c6-620ae4847147",
-      "fields": {
-        "nama": "Moi Garden Hakka Chinese Restaurant - Manyar",
-        "alamat": "Jl. Manyar Kertoarjo V No.54, Mojo, Kec. Gubeng, Surabaya, Jawa Timur 60285",
-        "tingkat_kepedasan": 2,
-        "latitude": -7.2785209,
-        "longitude": 112.762972
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "de606ca1-3767-470a-a283-889e6ccbd7ff",
-      "fields": {
-        "nama": "Fajar Chinese Restaurant - Manyar",
-        "alamat": "Jl. Manyar Kertoarjo V No.45 - 47, Mojo, Kec. Gubeng, Surabaya, Jawa Timur 60116",
-        "tingkat_kepedasan": 1,
-        "latitude": -7.2785887,
-        "longitude": 112.7634051
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "b800ba73-a4f9-4d6b-97db-e2723d235a26",
-      "fields": {
-        "nama": "X.O Palace - Dukuh Pakis",
-        "alamat": "Jl. Raya Kupang Indah No.15, Dukuh Kupang, Kec. Dukuhpakis, Surabaya, Jawa Timur 60225",
-        "tingkat_kepedasan": 7,
-        "latitude": -7.2816547,
-        "longitude": 112.7043043
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "f0e95747-2aa1-4f37-a4ca-b6e7eae2a2ca",
-      "fields": {
-        "nama": "Lontong Balap Pak Gendut (Pusat)",
-        "alamat": "Jl. Embong Malang No.38, Genteng, Kec. Genteng, Surabaya, Jawa Timur 60275",
-        "tingkat_kepedasan": 6,
-        "latitude": -7.2598141,
-        "longitude": 112.7342967
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "3996dba6-5279-4afc-a94c-b41f1fe22e36",
-      "fields": {
-        "nama": "Achmad Jais Cingur Rujak",
-        "alamat": " Jl. Achmad Jais No.40, Peneleh, Kec. Genteng, Surabaya, Jawa Timur 60274",
-        "tingkat_kepedasan": 9,
-        "latitude": -7.2554156,
-        "longitude": 112.7375883
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "3c2fbd46-79c1-4cc8-8f3f-08b8f0511000",
-      "fields": {
-        "nama": "Nasi Pecel Rawon Pucang Moro Seneng",
-        "alamat": " Jl. Pucang Anom No.17, Pucang Sewu, Kec. Gubeng, Surabaya, Jawa Timur 60283",
-        "tingkat_kepedasan": 3,
-        "latitude": -7.2844272,
-        "longitude": 112.7517224
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "c4373afa-806c-4cfb-b7d3-469e8d90f628",
-      "fields": {
-        "nama": "Sego Sambel Mak Yeye",
-        "alamat": "Jl. Jagir Wonokromo Wetan No.10, Jagir, Kec. Wonokromo, Surabaya, Jawa Timur 60244",
-        "tingkat_kepedasan": 1,
-        "latitude": -7.3013177,
-        "longitude": 112.7352971
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "ecbf33c4-5257-49a6-b0a0-741db0e44413",
-      "fields": {
-        "nama": "Bubur Ayam Spensix",
-        "alamat": "Jl. Jawa No.27, Gubeng, Kec. Gubeng, Surabaya, Jawa Timur 60281",
-        "tingkat_kepedasan": 10,
-        "latitude": -7.2733141,
-        "longitude": 112.7462592
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "cae73958-2c83-4e56-aeeb-7e9816ca2f57",
-      "fields": {
-        "nama": "Tahu Telor Pak Jayen Cabang Dharmahusada",
-        "alamat": "Jl. Dharmahusada No.112, Mojo, Kec. Gubeng, Surabaya, Jawa Timur 60115",
-        "tingkat_kepedasan": 2,
-        "latitude": -7.2666791,
-        "longitude": 112.7654501
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "40043848-7ae9-4e7a-93cf-d696f75f9756",
-      "fields": {
-        "nama": "Nasi Babat Pegirian",
-        "alamat": "Ps. Pegirian, Jl. Nyamplungan No.236, Ampel, Kec. Semampir, Surabaya, Jawa Timur 60152",
-        "tingkat_kepedasan": 3,
-        "latitude": -7.2267807,
-        "longitude": 112.7430371
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "f39c1e41-a96b-4f93-9e4f-a0104417a902",
-      "fields": {
-        "nama": "Lontong Kupang Pak H. Woko",
-        "alamat": "Jl. Kalasan No.30, Pacar Keling, Kec. Tambaksari, Surabaya, Jawa Timur 60131",
-        "tingkat_kepedasan": 9,
-        "latitude": -7.2581068,
-        "longitude": 112.7551654
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "c46cfa65-1b54-4704-a56c-5042b02a7d16",
-      "fields": {
-        "nama": "Pentol Goyang Lidah Cempaka",
-        "alamat": "Jl. Rungkut Madya No.243, Medokan Ayu, Kec. Rungkut, Surabaya, Jawa Timur 60295",
-        "tingkat_kepedasan": 3,
-        "latitude": -7.3328015,
-        "longitude": 112.7891959
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "67fd5a67-09c4-4489-87df-f76e3b0ac6c6",
-      "fields": {
-        "nama": "Nasi Goreng Dinamit",
-        "alamat": "Jl. Kedinding Lor No.1, Tanah Kali Kedinding, Kec. Kenjeran, Surabaya, Jawa Timur 60129",
-        "tingkat_kepedasan": 10,
-        "latitude": -7.2217977,
-        "longitude": 112.7792851
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "fdf97f92-582e-477f-a623-59c2e8cb0ae9",
-      "fields": {
-        "nama": "Nasi Goreng MBULET",
-        "alamat": "Jl. Raya Taman Asri, Ngipa, Wadungasri, Kec. Waru, Kabupaten Sidoarjo, Jawa Timur 61256",
-        "tingkat_kepedasan": 2,
-        "latitude": -7.3436297,
-        "longitude": 112.770872
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "233f9620-178c-4dcc-a582-7012f92c8008",
-      "fields": {
-        "nama": "Bakso Babon Sapi",
-        "alamat": "Blok J No.12 Perumahan, Jl. Gn. sari Indah, Kedurus, Kec. Wiyung, Surabaya, Jawa Timur 60233",
-        "tingkat_kepedasan": 10,
-        "latitude": -7.3151947,
-        "longitude": 112.7028067
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "bc5a6075-f37b-4878-bd61-a3d120a0b96a",
-      "fields": {
-        "nama": "Tahu Campur Pak Sugeng Pindahan Diponegoro",
-        "alamat": "Jl. Pandegiling No.280, Wonorejo, Kec. Tegalsari, Surabaya, Jawa Timur 60264",
-        "tingkat_kepedasan": 10,
-        "latitude": -7.2752567,
-        "longitude": 112.7304001
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "06458923-cd76-4711-8e14-0a2c9a72a70a",
-      "fields": {
-        "nama": "Parisienne Pastry",
-        "alamat": "Jl. Raya Manyar No.53A, Menur Pumpungan, Kec. Sukolilo, Surabaya, Jawa Timur 60118",
-        "tingkat_kepedasan": 9,
-        "latitude": -7.2947305,
-        "longitude": 112.7600227
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "ebac6d48-4da3-4324-9997-ca3151315cb7",
-      "fields": {
-        "nama": "Bakso Pak War Ojo Lali",
-        "alamat": "Jl. Dukuh Menanggal XII No.17, Dukuh Menanggal, Kec. Gayungan, Surabaya, Jawa Timur 60234",
-        "tingkat_kepedasan": 6,
-        "latitude": -7.344298,
-        "longitude": 112.7192232
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "ac8915c3-7ee4-4f3a-8abe-844cbac56807",
-      "fields": {
-        "nama": "Teppan House - Pakuwon Mall",
-        "alamat": "Pakuwon Mall Lt. 2M - 17 A, Babatan, Kec. Wiyung, Surabaya, Jawa Timur 60216",
-        "tingkat_kepedasan": 4,
-        "latitude": -7.2894501,
-        "longitude": 112.6728144
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "c2ff3269-5aeb-406f-b0c0-b2f84d506f15",
-      "fields": {
-        "nama": "Roti bakar el jaya",
-        "alamat": "Jl. Bendul Merisi No.3, Sidosermo, Kec. Wonocolo, Surabaya, Jawa Timur 60239",
-        "tingkat_kepedasan": 2,
-        "latitude": -7.3059482,
-        "longitude": 112.7462662
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "bf5ed283-5328-457b-8d05-1a4de2baa2b7",
-      "fields": {
-        "nama": "Nasi Goreng Kutisari Selatan",
-        "alamat": "Jl. Kutisari Selatan II No.19, Kutisari, Kec. Tenggilis Mejoyo, Surabaya, Jawa Timur 60291",
-        "tingkat_kepedasan": 1,
-        "latitude": -7.3359434,
-        "longitude": 112.739581
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "1fb7c285-0f3c-4cb0-be27-f88cc9cec0e4",
-      "fields": {
-        "nama": "Ayam Bebek Priangan",
-        "alamat": " Jl. Raya Manyar No.5C, Manyar Sabrangan, Kec. Mulyorejo, Surabaya, Jawa Timur 60284",
-        "tingkat_kepedasan": 1,
-        "latitude": -7.2886074,
-        "longitude": 112.7607721
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "bc65bd61-f9e4-43aa-934d-361a71ec8853",
-      "fields": {
-        "nama": "Seblak Katineung Kang Eja",
-        "alamat": "Jl. Teluk Aru Tengah No.37, Perak Utara, Kec. Pabean Cantikan, Surabaya, Jawa Timur 60165",
-        "tingkat_kepedasan": 1,
-        "latitude": -7.2166314,
-        "longitude": 112.7294437
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "6d50b704-e717-471f-b07c-068107cd11b8",
-      "fields": {
-        "nama": "Mie Mapan",
-        "alamat": "Jl. Rungkut Mapan Tengah I Blok FB No.11, Rungkut Tengah, Kec. Gn. Anyar, Surabaya, Jawa Timur 60293",
-        "tingkat_kepedasan": 8,
-        "latitude": -7.3344611,
-        "longitude": 112.773131
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "4f89803e-0253-45c1-a9b2-7116dfd9cabb",
-      "fields": {
-        "nama": "Mie Mapan - Barata Jaya",
-        "alamat": "Jl. Barata Jaya XIX No.51, Baratajaya, Kec. Gubeng, Surabaya, Jawa Timur 60284",
-        "tingkat_kepedasan": 9,
-        "latitude": -7.3021478,
-        "longitude": 112.7569849
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "9d4428e5-76cf-4438-92c7-fc9814739ff0",
-      "fields": {
-        "nama": "Mie Mapan - Merr",
-        "alamat": "Jl. Dr. Ir. H. Soekarno No.79, Mulyorejo, Kec. Mulyorejo, Surabaya, Jawa Timur 60115",
-        "tingkat_kepedasan": 2,
-        "latitude": -7.2611976,
-        "longitude": 112.7804794
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "20eff881-f584-4e57-ac0e-4b6b33064616",
-      "fields": {
-        "nama": "Mie Mapan - Imam Bonjol",
-        "alamat": "Jl. Imam Bonjol No.129, DR. Soetomo, Kec. Tegalsari, Surabaya, Jawa Timur 60264",
-        "tingkat_kepedasan": 2,
-        "latitude": -7.2855479,
-        "longitude": 112.7353563
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "f6e6180e-a817-4f1d-b092-acf5846533f5",
-      "fields": {
-        "nama": "Mie Mapan -  Pakuwon Trade Center",
-        "alamat": "Studio Food Court, Jl. Puncak indah Jl. Raya Lontar No.2 LT 1, Babatan, Kec. Sambikerep, Surabaya, Jawa Timur 60213",
-        "tingkat_kepedasan": 4,
-        "latitude": -7.2902564,
-        "longitude": 112.6722555
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "684b4e5e-f754-4207-819b-3280dd8023aa",
-      "fields": {
-        "nama": "Mie Mapan -  Pakuwon CIty Mall",
-        "alamat": "Jl. Raya Laguna KJW Putih Tambak No.2, Kejawaan Putih Tamba, Kec. Mulyorejo, Surabaya, Jawa Timur 60112",
-        "tingkat_kepedasan": 5,
-        "latitude": -7.2770154,
-        "longitude": 112.8035409
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "54a63680-7a38-47a9-86f8-6fe47429a92e",
-      "fields": {
-        "nama": "Mie Mapan - BG Junction",
-        "alamat": "Jl. Bubutan No.1-7, Bubutan, Kec. Bubutan, Surabaya, Jawa Timur 60174",
-        "tingkat_kepedasan": 3,
-        "latitude": -7.2551545,
-        "longitude": 112.7311327
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "5233253f-01ea-4433-9146-1dd8c4d8882e",
-      "fields": {
-        "nama": "Mie Mapan - Kusuma Bangsa",
-        "alamat": "Jl. Kusuma Bangsa No.50, Ketabang, Kec. Genteng, Surabaya, Jawa Timur 60272",
-        "tingkat_kepedasan": 5,
-        "latitude": -7.2580983,
-        "longitude": 112.7485189
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "ffc4a204-3366-46c7-8c4e-ef0e083bd1c8",
-      "fields": {
-        "nama": "Mie Mapan - Tropodo",
-        "alamat": "Ruko Sentra Tropodo A27, Jl. Raya Tropodo, Tropodo Wetan, Tropodo, Kec. Waru, Kabupaten Sidoarjo, Jawa Timur 61256",
-        "tingkat_kepedasan": 1,
-        "latitude": -7.3599195,
-        "longitude": 112.7622379
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "0f6f5cc7-c6b5-44fe-a172-c635c1fb2edf",
-      "fields": {
-        "nama": "Mie Mapan - Plaza Surabaya",
-        "alamat": "Plaza Surabaya, Plaza Surabaya Lt.1, Rest. C No. 1, Jalan Pemuda, Embong Kaliasin, Kec. Genteng, Surabaya, Jawa Timur 60271",
-        "tingkat_kepedasan": 2,
-        "latitude": -7.2650713,
-        "longitude": 112.7461565
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "a3bbc371-572e-49a4-9378-ced9386a5c2a",
-      "fields": {
-        "nama": "Mie Mapan - Citraland",
-        "alamat": "Gildak Gwalk Citraland Surabaya, Ruko Taman Gapura Blok L 06-07, Lidah Kulon, Lakarsantri, Surabaya, East Java 60213",
-        "tingkat_kepedasan": 4,
-        "latitude": -7.2918324,
-        "longitude": 112.6518523
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "2c403b9d-b3ab-4307-bf40-35c7e18a22f7",
-      "fields": {
-        "nama": "Mie Mapan - Gayungsari",
-        "alamat": "Jl. Gayungsari Barat No.111, Gayungan, Kec. Gayungan, Surabaya, Jawa Timur 60234",
-        "tingkat_kepedasan": 2,
-        "latitude": -7.3364966,
-        "longitude": 112.7169438
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "f32177a8-f25d-4bc2-803f-fe8a2a967e57",
-      "fields": {
-        "nama": "Mie Mapan - Wiyung",
-        "alamat": "Area RAM, Jl. Raya Menganti No.479 Lantai 2, Babatan, Kec. Wiyung, Surabaya, Jawa Timur 60227",
-        "tingkat_kepedasan": 1,
-        "latitude": -7.3164352,
-        "longitude": 112.6804721
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "631a5b03-95cb-41c9-8bb5-0503540f0185",
-      "fields": {
-        "nama": "Mie Mapan - Royal Plaza",
-        "alamat": "Royal Plaza LG No. AB3-11, Jl. Ahmad Yani No.16-18, Wonokromo, Surabaya, East Java 60243",
-        "tingkat_kepedasan": 8,
-        "latitude": -7.3089279,
-        "longitude": 112.7323155
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "00eb6c64-7b30-4be0-84c8-c11cee2d97d5",
-      "fields": {
-        "nama": "Bebek Sinjay - A. Yani",
-        "alamat": "Ruko Grand Ahmad Yani Blok 151H, Jl. Ahmad Yani, Jemur Wonosari, Kec. Wonocolo, Surabaya, Jawa Timur 60237",
-        "tingkat_kepedasan": 7,
-        "latitude": -7.3280534,
-        "longitude": 112.7294591
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "e552bc15-f961-4cf8-94e4-88c83fdc2bd5",
-      "fields": {
-        "nama": "Bebek Sinjay - Rungkut",
-        "alamat": "Jl. Rungkut Madya No.133, Rungkut Kidul, Kec. Rungkut, Surabaya, Jawa Timur 60293",
-        "tingkat_kepedasan": 3,
-        "latitude": -7.3314354,
-        "longitude": 112.7796503
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "ada5672f-c597-4caf-b557-6d2fcf5352f3",
-      "fields": {
-        "nama": "Bebek Sinjay -  Dharmahusada",
-        "alamat": "Jl. Dharmahusada No.160B, Mojo, Kec. Gubeng, Surabaya, Jawa Timur 60285",
-        "tingkat_kepedasan": 8,
-        "latitude": -7.268003,
-        "longitude": 112.768602
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "b68152df-4476-4a15-8a9e-08d754acba37",
-      "fields": {
-        "nama": "Mie Gacoan - Wiyung",
-        "alamat": "Jl. Raya Menganti No.51, Babatan, Kec. Wiyung, Surabaya, Jawa Timur 60227",
-        "tingkat_kepedasan": 7,
-        "latitude": -7.3112043,
-        "longitude": 112.6806738
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "dcf5214d-8650-41e2-bd82-d1c1b4dc4869",
-      "fields": {
-        "nama": "Mie Gacoan - Ir Soekarno",
-        "alamat": "Jl. Dr. Ir. H. Soekarno No.125, Mulyorejo, Kec. Mulyorejo, Surabaya, Jawa Timur 60115",
-        "tingkat_kepedasan": 2,
-        "latitude": -7.2650077,
-        "longitude": 112.780174
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "6b40bf1b-aea5-432c-868b-4aad4c09deec",
-      "fields": {
-        "nama": "Mie Gacoan - Kenjeran",
-        "alamat": "Jl. Kenjeran No.361, Gading, Kec. Tambaksari, Surabaya, Jawa Timur 60134",
-        "tingkat_kepedasan": 8,
-        "latitude": -7.2463991,
-        "longitude": 112.7727877
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "08aca643-7e39-4aea-9720-5c34b0aefcca",
-      "fields": {
-        "nama": "Bakmie GM - Tunjungan Plaza",
-        "alamat": "Tunjungan Plaza 6 Lt.5, Kedungdoro, Kec. Tegalsari, Surabaya, Jawa Timur 60261",
-        "tingkat_kepedasan": 6,
-        "latitude": -7.2622272,
-        "longitude": 112.7379958
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "a70b8796-c211-4f1a-9208-e1439a9eedb8",
-      "fields": {
-        "nama": "Bakmie GM - Galaxy Mall 3",
-        "alamat": "Galaxy Mall 3, Jl. Dr. Ir. H. Soekarno No.3, Mulyorejo, Kec. Mulyorejo, Surabaya, Jawa Timur 60115",
-        "tingkat_kepedasan": 5,
-        "latitude": -7.2756914,
-        "longitude": 112.7780505
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "2eb26a2d-2f5a-4233-b6cd-0b8867578647",
-      "fields": {
-        "nama": "Soto Ambengan Pak Sadi",
-        "alamat": "Jl. Ambengan No.3A, Ketabang, Kec. Genteng, Surabaya, Jawa Timur 60272",
-        "tingkat_kepedasan": 9,
-        "latitude": -7.2556577,
-        "longitude": 112.7424404
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "9693acab-2d13-4c98-ac90-653ca8263d44",
-      "fields": {
-        "nama": "Soto Lamongan Arahman",
-        "alamat": "Jl. Arief Rahman Hakim No.44, Klampis Ngasem, Kec. Sukolilo, Surabaya, Jawa Timur",
-        "tingkat_kepedasan": 2,
-        "latitude": -7.290073,
-        "longitude": 112.7749602
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "6b7fa23a-fce0-4706-9b96-f614c8ad38f9",
-      "fields": {
-        "nama": "Soto Ayam Cak Pardi",
-        "alamat": "Jl. Embong Malang No.20, Genteng, Kec. Genteng, Surabaya, Jawa Timur 60261",
-        "tingkat_kepedasan": 6,
-        "latitude": -7.2618192,
-        "longitude": 112.73539
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "d2540818-dfdd-453c-878b-4a4db23c1e1d",
-      "fields": {
-        "nama": "Soto Ayam Lamongan Cak Tono",
-        "alamat": "Jl. Kertajaya No.139, RT.000/RW.00, Airlangga, Kec. Gubeng, Surabaya, Jawa Timur 60286",
-        "tingkat_kepedasan": 3,
-        "latitude": -7.2785299,
-        "longitude": 112.7563741
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "5afc5f3b-d0bc-4c5f-a2a4-fc9951b284d2",
-      "fields": {
-        "nama": "Soto Ayam Pak Umar Kertajaya",
-        "alamat": "Jl. Dharmawangsa No.81A, Airlangga, Kec. Gubeng, Surabaya, Jawa Timur 60286",
-        "tingkat_kepedasan": 8,
-        "latitude": -7.2772945,
-        "longitude": 112.7535653
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "5b29d4d1-c7b8-4c59-942f-c720033525b3",
-      "fields": {
-        "nama": "Pecel Bu Kus",
-        "alamat": "Jl. Barata Jaya XX No.110, Baratajaya, Kec. Gubeng, Surabaya, Jawa Timur 60284",
-        "tingkat_kepedasan": 4,
-        "latitude": -7.3048473,
-        "longitude": 112.7567018
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "5e3fba83-1bc2-43ac-aa45-29e4c50f1ea5",
-      "fields": {
-        "nama": "Nasi Goreng SEMPAL",
-        "alamat": "Jl. Karang Menjangan No.77, Mojo, Kec. Gubeng, Surabaya, Jawa Timur 60286",
-        "tingkat_kepedasan": 2,
-        "latitude": -7.2706188,
-        "longitude": 112.7583645
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "3b4f38d8-4af8-4f8a-a645-50a0d6ba154c",
-      "fields": {
-        "nama": "Nasi Goreng Mak Pasar Sore",
-        "alamat": "Jl. Pandegiling No.320C, Wonorejo, Kec. Tegalsari, Surabaya, Jawa Timur 60264",
-        "tingkat_kepedasan": 4,
-        "latitude": -7.2746587,
-        "longitude": 112.7275991
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "d9f6dea7-0287-4371-a3cd-c2d6293c073c",
-      "fields": {
-        "nama": "Carnis",
-        "alamat": "Jl. Raya Gubeng No.96, Gubeng, Kec. Gubeng, Surabaya, Jawa Timur 60281",
-        "tingkat_kepedasan": 1,
-        "latitude": -7.2754038,
-        "longitude": 112.7434793
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "96db5624-c75f-4687-b6b6-66ef61797aae",
-      "fields": {
-        "nama": "Sate ayam Lisidu",
-        "alamat": "Jl. Jambu II No.E 35, Tambaksumur, Kec. Waru, Kabupaten Sidoarjo, Jawa Timur 61256",
-        "tingkat_kepedasan": 5,
-        "latitude": -7.3447687,
-        "longitude": 112.7709651
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "ef1c7db7-e24a-4ce7-9267-0c3f11332cc7",
-      "fields": {
-        "nama": "Depot Bu Rudy Kupang indah",
-        "alamat": "Jl. Raya Kupang Indah No.19, Dukuh Kupang, Kec. Dukuhpakis, Surabaya, Jawa Timur 60225",
-        "tingkat_kepedasan": 2,
-        "latitude": -7.2811494,
-        "longitude": 112.7044193
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "c19977da-9d50-4988-955e-236df2462fda",
-      "fields": {
-        "nama": "Rawon setan",
-        "alamat": "Jl. Embong Malang No.78/I, , Genteng, Kec. Genteng, Surabaya, Jawa Timur 60261",
-        "tingkat_kepedasan": 6,
-        "latitude": -7.2588465,
-        "longitude": 112.732132
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "9121d5c6-4737-486d-b4ce-77bb6ea15869",
-      "fields": {
-        "nama": "Ayam Bakar Pak D",
-        "alamat": "Jl. Kp. Malang Tengah I No.60, Tegalsari, Kec. Tegalsari, Surabaya, Jawa Timur 60263",
-        "tingkat_kepedasan": 10,
-        "latitude": -7.2738506,
-        "longitude": 112.7321452
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "ea67cb36-0c5e-4cfb-9c70-59a0589bfbc0",
-      "fields": {
-        "nama": "Warung Madinah",
-        "alamat": "Jl. KH Mas Mansyur No.1, Nyamplungan, Kec. Pabean Cantikan, Surabaya, Jawa Timur 60162",
-        "tingkat_kepedasan": 9,
-        "latitude": -7.2342031,
-        "longitude": 112.7399372
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "b6321eb1-0371-4931-b261-f6e6fe2224ca",
-      "fields": {
-        "nama": "Warung Lesehan Rumadi",
-        "alamat": "Jl. Raya Lidah Wetan No.26, Lidah Kulon, Kec. Lakarsantri, Surabaya, Jawa Timur 60213",
-        "tingkat_kepedasan": 7,
-        "latitude": -7.3059168,
-        "longitude": 112.6592832
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "b4b8966a-d2d2-42ad-bbaf-787ffb51f643",
-      "fields": {
-        "nama": "Nasi goreng Jancuk",
-        "alamat": "Jl. Plaza Boulevard No.33-35, Embong Kaliasin, Kec. Genteng, Surabaya, Jawa Timur 60271",
-        "tingkat_kepedasan": 3,
-        "latitude": -7.2631113,
-        "longitude": 112.74528
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "b82f9e81-b227-4fe6-a69f-db4de0fd2444",
-      "fields": {
-        "nama": "sate karak",
-        "alamat": "Jl. Ampel Lonceng No.60, Ampel, Kec. Semampir, Surabaya, Jawa Timur 60151",
-        "tingkat_kepedasan": 7,
-        "latitude": -7.2302776,
-        "longitude": 112.7384771
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "6d1fce31-6bc2-477b-9f24-5a5acd5d91f1",
-      "fields": {
-        "nama": "sari laut kapasan",
-        "alamat": "Jl. Raya Menganti No.6, Wiyung, Kec. Wiyung, Surabaya, Jawa Timur 60228",
-        "tingkat_kepedasan": 2,
-        "latitude": -7.3124119,
-        "longitude": 112.6874118
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "07cd28cb-3267-4ccf-8f58-278d54ea43c3",
-      "fields": {
-        "nama": "depot gado gado arjuna pak satumin",
-        "alamat": "Jl. Arjuno No.127, Sawahan, Kec. Sawahan, Surabaya, Jawa Timur 60251",
-        "tingkat_kepedasan": 9,
-        "latitude": -7.2659926,
-        "longitude": 112.7252188
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "9c95a2ce-ac9c-4787-b61a-8d0675614e10",
-      "fields": {
-        "nama": "rumah makan handayani",
-        "alamat": "Jl. Raya Prapen No.35, Prapen, Kec. Tenggilis Mejoyo, Surabaya, Jawa Timur 60299",
-        "tingkat_kepedasan": 7,
-        "latitude": -7.3140472,
-        "longitude": 112.75343
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "9ac6f8c2-5792-44b1-8806-a47515c31e31",
-      "fields": {
-        "nama": "pondok tempo doeloe",
-        "alamat": "Jl. Tegalsari No.50, RT.003/RW.01, Kedungdoro, Kec. Tegalsari, Surabaya, Jawa Timur 60261",
-        "tingkat_kepedasan": 10,
-        "latitude": -7.2649928,
-        "longitude": 112.7346379
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "984cf735-342d-4813-a1bc-b8a10e7d9e29",
-      "fields": {
-        "nama": "zona alam",
-        "alamat": "Jl. Raya Sambikerep Jl. Kuwukan Gg. Langgar, Lontar, Kec. Sambikerep, Surabaya, Jawa Timur 60185",
-        "tingkat_kepedasan": 4,
-        "latitude": -7.2724029,
-        "longitude": 112.6596139
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "79281e55-f51d-4a5a-a6d2-521f77dbce3d",
-      "fields": {
-        "nama": "Semanggi suroboyo",
-        "alamat": "Jl. Alas Malang No.3, Sememi, Kec. Benowo, Surabaya, Jawa Timur 60218",
-        "tingkat_kepedasan": 1,
-        "latitude": -7.2610283,
-        "longitude": 112.6433286
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "69fe19d0-d605-4cfa-8996-c79d1233fd09",
-      "fields": {
-        "nama": "Aiola Eatery",
-        "alamat": "Jl. Slamet No.16, Ketabang, Kec. Genteng, Surabaya, Jawa Timur 60272",
-        "tingkat_kepedasan": 10,
-        "latitude": -7.2583417,
-        "longitude": 112.7477069
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "bcb5dbd4-3c8c-4f86-bcd4-80b6661d5d3f",
-      "fields": {
-        "nama": "SAS Cafe n Resto",
-        "alamat": "Jl. Bhaskara Sawah No.30, Kalisari, Kec. Mulyorejo, Surabaya, Jawa Timur 60112",
-        "tingkat_kepedasan": 4,
-        "latitude": -7.2702579,
-        "longitude": 112.7960653
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "21e8c5c9-3619-45ac-a1fa-a2630c2bed27",
-      "fields": {
-        "nama": "Rumah makan Happy suzy",
-        "alamat": "Jl. Diponegoro No.111, Darmo, Kec. Wonokromo, Surabaya, Jawa Timur 60264",
-        "tingkat_kepedasan": 8,
-        "latitude": -7.286948,
-        "longitude": 112.7317364
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "22f1c80d-ac3b-4375-83ef-97c5207a4d77",
-      "fields": {
-        "nama": "rawon pak pangat",
-        "alamat": " Jl. Ketintang Baru Sel. I No.15, Ketintang, Kec. Gayungan, Surabaya, Jawa Timur 60235",
-        "tingkat_kepedasan": 4,
-        "latitude": -7.3249361,
-        "longitude": 112.7235774
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "a701a924-5799-4627-9df6-cbdd478417dc",
-      "fields": {
-        "nama": "rumah makan sop konro perak",
-        "alamat": "Jl. Perak Timur No.564 Blok A-6, Perak Utara, Kec. Pabean Cantikan, Surabaya, Jawa Timur 60165",
-        "tingkat_kepedasan": 7,
-        "latitude": -7.1998558,
-        "longitude": 112.7308634
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "c561d671-07c6-4b6c-9692-6585b1fa2fb7",
-      "fields": {
-        "nama": "Bebek goreng prunama",
-        "alamat": "Jl. Dinoyo, Keputran, Kec. Tegalsari, Surabaya, Jawa Timur 60265",
-        "tingkat_kepedasan": 3,
-        "latitude": -7.283375,
-        "longitude": 112.7436294
-      }
-    },
-    {
-      "model": "restoran_makanan.rumahmakan",
-      "pk": "024d704a-0737-4cb7-885d-12d70570b0de",
-      "fields": {
-        "nama": "Warung kongde mbak way",
-        "alamat": "Jl. Bubutan II, Alun-alun Contong, Kec. Bubutan, Surabaya, Jawa Timur 60174",
-        "tingkat_kepedasan": 7,
-        "latitude": -7.2497935,
-        "longitude": 112.7348127
-      }
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "1b63b7c8-cefe-4c8d-874b-e94be935d273",
+    "fields": {
+      "nama": "Sate Klopo Kak Mad",
+      "alamat": "Jl. Pucang Anom Tim. No.17A, Kertajaya, Kec. Gubeng, Surabaya, Jawa Timur 60282",
+      "tingkat_kepedasan": 5,
+      "latitude": -7.2825086,
+      "longitude": 112.7533806
     }
-  ]
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "35704673-a5f3-47bb-a5b7-01b34a4fc44b",
+    "fields": {
+      "nama": "Tahu Teck Teck Pak H. Ali",
+      "alamat": "Jl. Dinoyo No.147, Keputran, Kec. Tegalsari, Surabaya, Jawa Timur 60265",
+      "tingkat_kepedasan": 2,
+      "latitude": -7.2877785,
+      "longitude": 112.7420717
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "694a8c0f-1d79-45f5-9cdc-f633105a7573",
+    "fields": {
+      "nama": "Warung Sego Meduro Suramadu Bu Ana",
+      "alamat": "Jl. Kalibutuh No.6, Tembok Dukuh, Kec. Bubutan, Surabaya, Jawa Timur 60171",
+      "tingkat_kepedasan": 9,
+      "latitude": -7.2540426,
+      "longitude": 112.7202841
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "b95e2146-a006-4771-830a-6d4ec4cf96de",
+    "fields": {
+      "nama": "Rujak Cingur Delta (Kayoon)",
+      "alamat": "Kayoon St Jl. Embong Kemiri No.46D, Embong Kaliasin, Genteng, Surabaya, East Java 60271",
+      "tingkat_kepedasan": 2,
+      "latitude": -7.2695103,
+      "longitude": 112.7440432
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "f3be4dd6-5bbf-4416-a89f-cef524351af9",
+    "fields": {
+      "nama": "Rawon Kalkulator",
+      "alamat": "Sentra PKL Tamam Bungkul, Jl. Raya Darmo, Darmo, Kec. Wonokromo, Surabaya, Jawa Timur 60241",
+      "tingkat_kepedasan": 1,
+      "latitude": -7.2721428,
+      "longitude": 112.6081824
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "84c45d8b-57f8-4479-bfb0-256e95c60999",
+    "fields": {
+      "nama": "Warung Nasi Cumi-Cumi (Ibu Atun)",
+      "alamat": "Jl. Waspada No.30, Bongkaran, Kec. Pabean Cantikan, Surabaya, Jawa Timur 60161",
+      "tingkat_kepedasan": 8,
+      "latitude": -7.2406044,
+      "longitude": 112.7410272
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "b249c84b-a7cb-4f66-b510-01aa97272625",
+    "fields": {
+      "nama": "Apeng Kwetiau Medan - Kedung Doro",
+      "alamat": "Jl. Kedung Doro No.267, Wonorejo, Kec. Tegalsari, Surabaya, Jawa Timur 60251",
+      "tingkat_kepedasan": 10,
+      "latitude": -7.2683538,
+      "longitude": 112.726813
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "3dbac21e-fb22-4bef-8d82-23ec5ef04986",
+    "fields": {
+      "nama": "Kedai Ciamso",
+      "alamat": "Taman Apsari St No.25 a, Embong Kaliasin, Genteng, Surabaya, East Java 60271",
+      "tingkat_kepedasan": 8,
+      "latitude": -7.2651622,
+      "longitude": 112.7400262
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "9d120e71-99e1-4d3f-a351-4954740d678e",
+    "fields": {
+      "nama": "Restoran Payakumbuah, Gubeng Surabaya",
+      "alamat": "Jl. Jawa No.33, Gubeng, Kec. Gubeng, Surabaya, Jawa Timur 60281",
+      "tingkat_kepedasan": 3,
+      "latitude": -7.273271,
+      "longitude": 112.7465965
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "3c45cec2-d53a-4e85-bf71-140730924690",
+    "fields": {
+      "nama": "Soto Ayam Lamongan Cak Har",
+      "alamat": "Jl. Dr. Ir. H. Soekarno No.220, Semolowaru, Kec. Sukolilo, Surabaya, Jawa Timur 60117",
+      "tingkat_kepedasan": 4,
+      "latitude": -7.294043,
+      "longitude": 112.7785331
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "75ea2bcc-9892-4f5d-8517-d22b4a67f643",
+    "fields": {
+      "nama": "Bebek Goreng Palupi Rungkut",
+      "alamat": "Jl. Rungkut Asri Tengah No.10, Rungkut Kidul, Kec. Rungkut, Surabaya, Jawa Timur 60293",
+      "tingkat_kepedasan": 3,
+      "latitude": -7.328576,
+      "longitude": 112.7726634
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "69c32fb2-effc-4a6c-ba04-9d2e378f8801",
+    "fields": {
+      "nama": "Bakso Haji Ak",
+      "alamat": "Jl. Raya Medokan Sawah No.1, Gn. Anyar, Kec. Gn. Anyar, Surabaya, Jawa Timur 60294",
+      "tingkat_kepedasan": 2,
+      "latitude": -7.332058,
+      "longitude": 112.7997801
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "c4035b3f-c478-4b45-91c5-b8ee3868c1a6",
+    "fields": {
+      "nama": "Waroeng Joglo Merah Putih",
+      "alamat": "Jl. Dr. Ir. H. Soekarno No.678, Gn. Anyar, Kec. Gn. Anyar, Surabaya, Jawa Timur 60294",
+      "tingkat_kepedasan": 5,
+      "latitude": -7.3421956,
+      "longitude": 112.783411
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "909b32d5-f32e-437a-8c93-f924d446b0a2",
+    "fields": {
+      "nama": "Bakso Dan Mie Ayam Bejo",
+      "alamat": "QQP7+QH7, Jl. Bulak Banteng Lrg. 4, Bulak Banteng, Kec. Kenjeran, Surabaya, Jawa Timur 60127",
+      "tingkat_kepedasan": 5,
+      "latitude": -7.2130894,
+      "longitude": 112.7609056
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "00069065-fc0a-4012-8ff7-9765b50bd6ca",
+    "fields": {
+      "nama": "Cireng Tuban Ala Mbak Mira",
+      "alamat": "Jl. Mrutu Kalianyar No.189, Wonokusumo, Kec. Semampir, Surabaya, Jawa Timur 60154",
+      "tingkat_kepedasan": 10,
+      "latitude": -7.2120103,
+      "longitude": 112.7581644
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "2c0798d5-0dfc-40ab-9d76-8b7dc92f6028",
+    "fields": {
+      "nama": "Ronggolawe Meatball",
+      "alamat": "Jl. Bulak Banteng Baru Lorong 4 No.32, RT.001/RW.02, Bulak Banteng, Kec. Kenjeran, Surabaya, Jawa Timur 60127",
+      "tingkat_kepedasan": 2,
+      "latitude": -7.2128496,
+      "longitude": 112.7595618
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "3df78977-ef87-47a6-af86-cf7a67767005",
+    "fields": {
+      "nama": "Seblak Tulang Dan Dimsum Mamaqu",
+      "alamat": "Jl. Wonosari Lor Baru Wonosari Lor Baru Gg. I No.1, Wonokusumo, Kec. Semampir, Surabaya, Jawa Timur 60154",
+      "tingkat_kepedasan": 9,
+      "latitude": -7.2194528,
+      "longitude": 112.7520777
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "b4a860be-e89f-42e3-9622-697833fb4c56",
+    "fields": {
+      "nama": "Martabak Terang Bulan Dua Putra",
+      "alamat": "Kapas Madya IV I No.82, RT.008/RW.16, Gading, Kec. Tambaksari, Surabaya, Jawa Timur 60134",
+      "tingkat_kepedasan": 4,
+      "latitude": -7.2394361,
+      "longitude": 112.762675
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "63b7a46f-ec27-4e68-8429-3cb14fb5dbf1",
+    "fields": {
+      "nama": "Ayam Geprek Mr Suprek Kenjeran",
+      "alamat": "Jl. Kenjeran No.271, Gading, Kec. Tambaksari, Surabaya, Jawa Timur 60131",
+      "tingkat_kepedasan": 8,
+      "latitude": -7.2449398,
+      "longitude": 112.7656499
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "dd5b62d4-9de6-468f-a6b7-b658eb76b865",
+    "fields": {
+      "nama": "Nasi Inul Hj. Siti Rochmah",
+      "alamat": "Jalan, Kapas Baru VIII No.36, Gading, Kec. Tambaksari, Surabaya, Jawa Timur 60134",
+      "tingkat_kepedasan": 7,
+      "latitude": -7.2400451,
+      "longitude": 112.7613816
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "e7248646-62c7-44d8-92b4-f4e41550baaa",
+    "fields": {
+      "nama": "Tahu Telor Pak Jayen - Graha Famili",
+      "alamat": "Jl. Mayjend. Jonosewojo No.100P, Pradahkalikendal, Kec. Dukuhpakis, Surabaya, Jawa Timur 60213",
+      "tingkat_kepedasan": 1,
+      "latitude": -7.2937247,
+      "longitude": 112.6739251
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "cd1ae32b-42b4-403d-bf40-bdcba6e8ae08",
+    "fields": {
+      "nama": "Sate Kelopo Ondomohen Bu Asih",
+      "alamat": "Jl. Walikota Mustajab No. 36, Ketabang, Kec. Genteng, Surabaya, Jawa Timur 60272",
+      "tingkat_kepedasan": 6,
+      "latitude": -6.3700992,
+      "longitude": 106.8302336
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "f8f86d21-395a-4142-a7d7-6be0474563f9",
+    "fields": {
+      "nama": "Ayam Bakar Primarasa - Kusuma Bangsa",
+      "alamat": "Jl. Kusuma Bangsa No.3A, Ketabang, Kec. Genteng, Surabaya, Jawa Timur 60272",
+      "tingkat_kepedasan": 6,
+      "latitude": -7.2600729,
+      "longitude": 112.7484489
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "1e24ead7-2976-47c2-8c15-7a14edf5c5f7",
+    "fields": {
+      "nama": "Arumanis Restaurant",
+      "alamat": "Bumi Surabaya City Resort, Jl. Jend. Basuki Rakhmat No.106-128, Embong Kaliasin, Kec. Genteng, Surabaya, Jawa Timur 60271",
+      "tingkat_kepedasan": 8,
+      "latitude": -7.2710805,
+      "longitude": 112.7386001
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "b4c0a254-0b03-4902-abea-71412e58ae04",
+    "fields": {
+      "nama": "Restoran Bebek Tepi Sawah",
+      "alamat": "Jl. Darmokali No.50, Darmo, Kec. Wonokromo, Surabaya, Jawa Timur 60241",
+      "tingkat_kepedasan": 7,
+      "latitude": -7.2931019,
+      "longitude": 112.7384633
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "952901b3-7cd0-4fcd-82b2-8e19c519d06c",
+    "fields": {
+      "nama": "Warung Bu Kris - Manyar Kertoarjo",
+      "alamat": "Jl. Manyar Kertoarjo IV No.23, Mojo, Kec. Gubeng, Surabaya, Jawa Timur 60285",
+      "tingkat_kepedasan": 9,
+      "latitude": -7.2776873,
+      "longitude": 112.7627883
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "27945af9-51ee-4d17-9717-14b9aa297e7e",
+    "fields": {
+      "nama": "Ketjombrang Indonesian Eatery - Citraland",
+      "alamat": "Jl. Puri Widya Kencana No.26 Blok K1, Lidah Kulon, Kec. Sambikerep, Surabaya, Jawa Timur 60213",
+      "tingkat_kepedasan": 10,
+      "latitude": -7.2934995,
+      "longitude": 112.6516736
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "23d8e32c-7534-42ed-a288-127c5c882c33",
+    "fields": {
+      "nama": "Soto Ayam Lamongan Cak Har",
+      "alamat": "Jl. Dr. Ir. H. Soekarno No.220, Semolowaru, Kec. Sukolilo, Surabaya, Jawa Timur 60117",
+      "tingkat_kepedasan": 8,
+      "latitude": -7.294043,
+      "longitude": 112.7785331
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "0e8c8692-e531-4c26-bcff-58fde9671c5f",
+    "fields": {
+      "nama": "Botanika",
+      "alamat": "Jl. Raya Kertajaya Indah No.F-303, Manyar Sabrangan, Mulyorejo, Surabaya, Jawa Timur 60116",
+      "tingkat_kepedasan": 1,
+      "latitude": -7.2801403,
+      "longitude": 112.7723452
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "2635fcf5-0db1-42e0-9d7b-adb53fcde752",
+    "fields": {
+      "nama": "Layar Seafood - Manyar Kertoarjo",
+      "alamat": "Jl. Manyar Kertoarjo No.23 - 25, Mojo, Kec. Gubeng, Surabaya, Jawa Timur 60285",
+      "tingkat_kepedasan": 2,
+      "latitude": -7.2795947,
+      "longitude": 112.7640291
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "c3e6817e-39cd-4cc9-8814-e8a33ae6376a",
+    "fields": {
+      "nama": "Bakso Pak Djo - Manyar Tirtoasri",
+      "alamat": "Jl. Manyar Tirtoasri XII No.2, Menur Pumpungan, Kec. Sukolilo, Surabaya, Jawa Timur 60118",
+      "tingkat_kepedasan": 7,
+      "latitude": -7.2878574,
+      "longitude": 112.7658542
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "f9245acb-0f51-45ee-a396-31f75bd0e9e4",
+    "fields": {
+      "nama": "Poenya Nyonya Anina - Tenggilis",
+      "alamat": "Jl. Raya Tenggilis No.F1-2, Tenggilis Mejoyo, Kec. Tenggilis Mejoyo, Surabaya, Jawa Timur 60292",
+      "tingkat_kepedasan": 4,
+      "latitude": -7.3206891,
+      "longitude": 112.7590141
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "56044ec5-6d33-446e-a08a-2b899f37f660",
+    "fields": {
+      "nama": "Pepper Lunch - Galaxy Mall",
+      "alamat": "Galaxy Mall 3, Jl. Dharmahusada Indah Timur No.35-37, Mulyorejo, Kec. Mulyorejo, Surabaya, Jawa Timur 60116",
+      "tingkat_kepedasan": 8,
+      "latitude": -7.2756914,
+      "longitude": 112.7780505
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "b01b51a6-322e-4154-ad04-ca10b5c49f04",
+    "fields": {
+      "nama": "Boncafe Steak & Ice Cream - Manyar Kertoarjo",
+      "alamat": "Jl. Manyar Kertoarjo V No.1, RW.5, Mojo, Kec. Gubeng, Surabaya, Jawa Timur 60285",
+      "tingkat_kepedasan": 3,
+      "latitude": -7.2772862,
+      "longitude": 112.7634211
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "23ab7e4f-377e-4dce-a118-b317d2cf9d42",
+    "fields": {
+      "nama": "Warung Leko - Manyar",
+      "alamat": "Jl. Manyar Kertoarjo V No.9, Mojo, Kec. Gubeng, Surabaya, Jawa Timur 60285",
+      "tingkat_kepedasan": 9,
+      "latitude": -7.2775341,
+      "longitude": 112.7634969
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "ac4f587c-d32b-48a3-b9a4-622329c4f9ae",
+    "fields": {
+      "nama": "Depot Bu Rudy - Dharmahusada",
+      "alamat": "Jl. Dharmahusada No.144, Mojo, Kec. Gubeng, Surabaya, Jawa Timur 60285",
+      "tingkat_kepedasan": 6,
+      "latitude": -7.2673371,
+      "longitude": 112.7675575
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "8e6af33a-209a-4f4c-aab8-c3b240ec2ffe",
+    "fields": {
+      "nama": "Pavilion Restaurant - Jw Marriot",
+      "alamat": "JW Marriott Surabaya, JL. Embong Malang No. 85-89, Kedungdoro, Kec. Tegalsari, Surabaya, Jawa Timur 60261",
+      "tingkat_kepedasan": 9,
+      "latitude": -7.2593922,
+      "longitude": 112.7319735
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "623f40ed-a664-49ea-a0c6-620ae4847147",
+    "fields": {
+      "nama": "Moi Garden Hakka Chinese Restaurant - Manyar",
+      "alamat": "Jl. Manyar Kertoarjo V No.54, Mojo, Kec. Gubeng, Surabaya, Jawa Timur 60285",
+      "tingkat_kepedasan": 2,
+      "latitude": -7.2785209,
+      "longitude": 112.762972
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "de606ca1-3767-470a-a283-889e6ccbd7ff",
+    "fields": {
+      "nama": "Fajar Chinese Restaurant - Manyar",
+      "alamat": "Jl. Manyar Kertoarjo V No.45 - 47, Mojo, Kec. Gubeng, Surabaya, Jawa Timur 60116",
+      "tingkat_kepedasan": 1,
+      "latitude": -7.2785887,
+      "longitude": 112.7634051
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "b800ba73-a4f9-4d6b-97db-e2723d235a26",
+    "fields": {
+      "nama": "X.O Palace - Dukuh Pakis",
+      "alamat": "Jl. Raya Kupang Indah No.15, Dukuh Kupang, Kec. Dukuhpakis, Surabaya, Jawa Timur 60225",
+      "tingkat_kepedasan": 7,
+      "latitude": -7.2816547,
+      "longitude": 112.7043043
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "f0e95747-2aa1-4f37-a4ca-b6e7eae2a2ca",
+    "fields": {
+      "nama": "Lontong Balap Pak Gendut (Pusat)",
+      "alamat": "Jl. Embong Malang No.38, Genteng, Kec. Genteng, Surabaya, Jawa Timur 60275",
+      "tingkat_kepedasan": 6,
+      "latitude": -7.2598141,
+      "longitude": 112.7342967
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "3996dba6-5279-4afc-a94c-b41f1fe22e36",
+    "fields": {
+      "nama": "Achmad Jais Cingur Rujak",
+      "alamat": " Jl. Achmad Jais No.40, Peneleh, Kec. Genteng, Surabaya, Jawa Timur 60274",
+      "tingkat_kepedasan": 9,
+      "latitude": -7.2554156,
+      "longitude": 112.7375883
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "3c2fbd46-79c1-4cc8-8f3f-08b8f0511000",
+    "fields": {
+      "nama": "Nasi Pecel Rawon Pucang Moro Seneng",
+      "alamat": " Jl. Pucang Anom No.17, Pucang Sewu, Kec. Gubeng, Surabaya, Jawa Timur 60283",
+      "tingkat_kepedasan": 3,
+      "latitude": -7.2844272,
+      "longitude": 112.7517224
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "c4373afa-806c-4cfb-b7d3-469e8d90f628",
+    "fields": {
+      "nama": "Sego Sambel Mak Yeye",
+      "alamat": "Jl. Jagir Wonokromo Wetan No.10, Jagir, Kec. Wonokromo, Surabaya, Jawa Timur 60244",
+      "tingkat_kepedasan": 1,
+      "latitude": -7.3013177,
+      "longitude": 112.7352971
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "ecbf33c4-5257-49a6-b0a0-741db0e44413",
+    "fields": {
+      "nama": "Bubur Ayam Spensix",
+      "alamat": "Jl. Jawa No.27, Gubeng, Kec. Gubeng, Surabaya, Jawa Timur 60281",
+      "tingkat_kepedasan": 10,
+      "latitude": -7.2733141,
+      "longitude": 112.7462592
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "cae73958-2c83-4e56-aeeb-7e9816ca2f57",
+    "fields": {
+      "nama": "Tahu Telor Pak Jayen Cabang Dharmahusada",
+      "alamat": "Jl. Dharmahusada No.112, Mojo, Kec. Gubeng, Surabaya, Jawa Timur 60115",
+      "tingkat_kepedasan": 2,
+      "latitude": -7.2666791,
+      "longitude": 112.7654501
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "40043848-7ae9-4e7a-93cf-d696f75f9756",
+    "fields": {
+      "nama": "Nasi Babat Pegirian",
+      "alamat": "Ps. Pegirian, Jl. Nyamplungan No.236, Ampel, Kec. Semampir, Surabaya, Jawa Timur 60152",
+      "tingkat_kepedasan": 3,
+      "latitude": -7.2267807,
+      "longitude": 112.7430371
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "f39c1e41-a96b-4f93-9e4f-a0104417a902",
+    "fields": {
+      "nama": "Lontong Kupang Pak H. Woko",
+      "alamat": "Jl. Kalasan No.30, Pacar Keling, Kec. Tambaksari, Surabaya, Jawa Timur 60131",
+      "tingkat_kepedasan": 9,
+      "latitude": -7.2581068,
+      "longitude": 112.7551654
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "c46cfa65-1b54-4704-a56c-5042b02a7d16",
+    "fields": {
+      "nama": "Pentol Goyang Lidah Cempaka",
+      "alamat": "Jl. Rungkut Madya No.243, Medokan Ayu, Kec. Rungkut, Surabaya, Jawa Timur 60295",
+      "tingkat_kepedasan": 3,
+      "latitude": -7.3328015,
+      "longitude": 112.7891959
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "67fd5a67-09c4-4489-87df-f76e3b0ac6c6",
+    "fields": {
+      "nama": "Nasi Goreng Dinamit",
+      "alamat": "Jl. Kedinding Lor No.1, Tanah Kali Kedinding, Kec. Kenjeran, Surabaya, Jawa Timur 60129",
+      "tingkat_kepedasan": 10,
+      "latitude": -7.2217977,
+      "longitude": 112.7792851
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "fdf97f92-582e-477f-a623-59c2e8cb0ae9",
+    "fields": {
+      "nama": "Nasi Goreng Mbulet",
+      "alamat": "Jl. Raya Taman Asri, Ngipa, Wadungasri, Kec. Waru, Kabupaten Sidoarjo, Jawa Timur 61256",
+      "tingkat_kepedasan": 2,
+      "latitude": -7.3436297,
+      "longitude": 112.770872
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "233f9620-178c-4dcc-a582-7012f92c8008",
+    "fields": {
+      "nama": "Bakso Babon Sapi",
+      "alamat": "Blok J No.12 Perumahan, Jl. Gn. sari Indah, Kedurus, Kec. Wiyung, Surabaya, Jawa Timur 60233",
+      "tingkat_kepedasan": 10,
+      "latitude": -7.3151947,
+      "longitude": 112.7028067
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "bc5a6075-f37b-4878-bd61-a3d120a0b96a",
+    "fields": {
+      "nama": "Tahu Campur Pak Sugeng Pindahan Diponegoro",
+      "alamat": "Jl. Pandegiling No.280, Wonorejo, Kec. Tegalsari, Surabaya, Jawa Timur 60264",
+      "tingkat_kepedasan": 10,
+      "latitude": -7.2752567,
+      "longitude": 112.7304001
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "06458923-cd76-4711-8e14-0a2c9a72a70a",
+    "fields": {
+      "nama": "Parisienne Pastry",
+      "alamat": "Jl. Raya Manyar No.53A, Menur Pumpungan, Kec. Sukolilo, Surabaya, Jawa Timur 60118",
+      "tingkat_kepedasan": 9,
+      "latitude": -7.2947305,
+      "longitude": 112.7600227
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "ebac6d48-4da3-4324-9997-ca3151315cb7",
+    "fields": {
+      "nama": "Bakso Pak War Ojo Lali",
+      "alamat": "Jl. Dukuh Menanggal XII No.17, Dukuh Menanggal, Kec. Gayungan, Surabaya, Jawa Timur 60234",
+      "tingkat_kepedasan": 6,
+      "latitude": -7.344298,
+      "longitude": 112.7192232
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "ac8915c3-7ee4-4f3a-8abe-844cbac56807",
+    "fields": {
+      "nama": "Teppan House - Pakuwon Mall",
+      "alamat": "Pakuwon Mall Lt. 2M - 17 A, Babatan, Kec. Wiyung, Surabaya, Jawa Timur 60216",
+      "tingkat_kepedasan": 4,
+      "latitude": -7.2894501,
+      "longitude": 112.6728144
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "c2ff3269-5aeb-406f-b0c0-b2f84d506f15",
+    "fields": {
+      "nama": "Roti Bakar El Jaya",
+      "alamat": "Jl. Bendul Merisi No.3, Sidosermo, Kec. Wonocolo, Surabaya, Jawa Timur 60239",
+      "tingkat_kepedasan": 2,
+      "latitude": -7.3059482,
+      "longitude": 112.7462662
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "bf5ed283-5328-457b-8d05-1a4de2baa2b7",
+    "fields": {
+      "nama": "Nasi Goreng Kutisari Selatan",
+      "alamat": "Jl. Kutisari Selatan II No.19, Kutisari, Kec. Tenggilis Mejoyo, Surabaya, Jawa Timur 60291",
+      "tingkat_kepedasan": 1,
+      "latitude": -7.3359434,
+      "longitude": 112.739581
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "1fb7c285-0f3c-4cb0-be27-f88cc9cec0e4",
+    "fields": {
+      "nama": "Ayam Bebek Priangan",
+      "alamat": " Jl. Raya Manyar No.5C, Manyar Sabrangan, Kec. Mulyorejo, Surabaya, Jawa Timur 60284",
+      "tingkat_kepedasan": 1,
+      "latitude": -7.2886074,
+      "longitude": 112.7607721
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "bc65bd61-f9e4-43aa-934d-361a71ec8853",
+    "fields": {
+      "nama": "Seblak Katineung Kang Eja",
+      "alamat": "Jl. Teluk Aru Tengah No.37, Perak Utara, Kec. Pabean Cantikan, Surabaya, Jawa Timur 60165",
+      "tingkat_kepedasan": 1,
+      "latitude": -7.2166314,
+      "longitude": 112.7294437
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "6d50b704-e717-471f-b07c-068107cd11b8",
+    "fields": {
+      "nama": "Mie Mapan",
+      "alamat": "Jl. Rungkut Mapan Tengah I Blok FB No.11, Rungkut Tengah, Kec. Gn. Anyar, Surabaya, Jawa Timur 60293",
+      "tingkat_kepedasan": 8,
+      "latitude": -7.3344611,
+      "longitude": 112.773131
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "4f89803e-0253-45c1-a9b2-7116dfd9cabb",
+    "fields": {
+      "nama": "Mie Mapan - Barata Jaya",
+      "alamat": "Jl. Barata Jaya XIX No.51, Baratajaya, Kec. Gubeng, Surabaya, Jawa Timur 60284",
+      "tingkat_kepedasan": 9,
+      "latitude": -7.3021478,
+      "longitude": 112.7569849
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "9d4428e5-76cf-4438-92c7-fc9814739ff0",
+    "fields": {
+      "nama": "Mie Mapan - Merr",
+      "alamat": "Jl. Dr. Ir. H. Soekarno No.79, Mulyorejo, Kec. Mulyorejo, Surabaya, Jawa Timur 60115",
+      "tingkat_kepedasan": 2,
+      "latitude": -7.2611976,
+      "longitude": 112.7804794
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "20eff881-f584-4e57-ac0e-4b6b33064616",
+    "fields": {
+      "nama": "Mie Mapan - Imam Bonjol",
+      "alamat": "Jl. Imam Bonjol No.129, DR. Soetomo, Kec. Tegalsari, Surabaya, Jawa Timur 60264",
+      "tingkat_kepedasan": 2,
+      "latitude": -7.2855479,
+      "longitude": 112.7353563
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "f6e6180e-a817-4f1d-b092-acf5846533f5",
+    "fields": {
+      "nama": "Mie Mapan -  Pakuwon Trade Center",
+      "alamat": "Studio Food Court, Jl. Puncak indah Jl. Raya Lontar No.2 LT 1, Babatan, Kec. Sambikerep, Surabaya, Jawa Timur 60213",
+      "tingkat_kepedasan": 4,
+      "latitude": -7.2902564,
+      "longitude": 112.6722555
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "684b4e5e-f754-4207-819b-3280dd8023aa",
+    "fields": {
+      "nama": "Mie Mapan -  Pakuwon City Mall",
+      "alamat": "Jl. Raya Laguna KJW Putih Tambak No.2, Kejawaan Putih Tamba, Kec. Mulyorejo, Surabaya, Jawa Timur 60112",
+      "tingkat_kepedasan": 5,
+      "latitude": -7.2770154,
+      "longitude": 112.8035409
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "54a63680-7a38-47a9-86f8-6fe47429a92e",
+    "fields": {
+      "nama": "Mie Mapan - Bg Junction",
+      "alamat": "Jl. Bubutan No.1-7, Bubutan, Kec. Bubutan, Surabaya, Jawa Timur 60174",
+      "tingkat_kepedasan": 3,
+      "latitude": -7.2551545,
+      "longitude": 112.7311327
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "5233253f-01ea-4433-9146-1dd8c4d8882e",
+    "fields": {
+      "nama": "Mie Mapan - Kusuma Bangsa",
+      "alamat": "Jl. Kusuma Bangsa No.50, Ketabang, Kec. Genteng, Surabaya, Jawa Timur 60272",
+      "tingkat_kepedasan": 5,
+      "latitude": -7.2580983,
+      "longitude": 112.7485189
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "ffc4a204-3366-46c7-8c4e-ef0e083bd1c8",
+    "fields": {
+      "nama": "Mie Mapan - Tropodo",
+      "alamat": "Ruko Sentra Tropodo A27, Jl. Raya Tropodo, Tropodo Wetan, Tropodo, Kec. Waru, Kabupaten Sidoarjo, Jawa Timur 61256",
+      "tingkat_kepedasan": 1,
+      "latitude": -7.3599195,
+      "longitude": 112.7622379
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "0f6f5cc7-c6b5-44fe-a172-c635c1fb2edf",
+    "fields": {
+      "nama": "Mie Mapan - Plaza Surabaya",
+      "alamat": "Plaza Surabaya, Plaza Surabaya Lt.1, Rest. C No. 1, Jalan Pemuda, Embong Kaliasin, Kec. Genteng, Surabaya, Jawa Timur 60271",
+      "tingkat_kepedasan": 2,
+      "latitude": -7.2650713,
+      "longitude": 112.7461565
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "a3bbc371-572e-49a4-9378-ced9386a5c2a",
+    "fields": {
+      "nama": "Mie Mapan - Citraland",
+      "alamat": "Gildak Gwalk Citraland Surabaya, Ruko Taman Gapura Blok L 06-07, Lidah Kulon, Lakarsantri, Surabaya, East Java 60213",
+      "tingkat_kepedasan": 4,
+      "latitude": -7.2918324,
+      "longitude": 112.6518523
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "2c403b9d-b3ab-4307-bf40-35c7e18a22f7",
+    "fields": {
+      "nama": "Mie Mapan - Gayungsari",
+      "alamat": "Jl. Gayungsari Barat No.111, Gayungan, Kec. Gayungan, Surabaya, Jawa Timur 60234",
+      "tingkat_kepedasan": 2,
+      "latitude": -7.3364966,
+      "longitude": 112.7169438
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "f32177a8-f25d-4bc2-803f-fe8a2a967e57",
+    "fields": {
+      "nama": "Mie Mapan - Wiyung",
+      "alamat": "Area RAM, Jl. Raya Menganti No.479 Lantai 2, Babatan, Kec. Wiyung, Surabaya, Jawa Timur 60227",
+      "tingkat_kepedasan": 1,
+      "latitude": -7.3164352,
+      "longitude": 112.6804721
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "631a5b03-95cb-41c9-8bb5-0503540f0185",
+    "fields": {
+      "nama": "Mie Mapan - Royal Plaza",
+      "alamat": "Royal Plaza LG No. AB3-11, Jl. Ahmad Yani No.16-18, Wonokromo, Surabaya, East Java 60243",
+      "tingkat_kepedasan": 8,
+      "latitude": -7.3089279,
+      "longitude": 112.7323155
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "00eb6c64-7b30-4be0-84c8-c11cee2d97d5",
+    "fields": {
+      "nama": "Bebek Sinjay - A. Yani",
+      "alamat": "Ruko Grand Ahmad Yani Blok 151H, Jl. Ahmad Yani, Jemur Wonosari, Kec. Wonocolo, Surabaya, Jawa Timur 60237",
+      "tingkat_kepedasan": 7,
+      "latitude": -7.3280534,
+      "longitude": 112.7294591
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "e552bc15-f961-4cf8-94e4-88c83fdc2bd5",
+    "fields": {
+      "nama": "Bebek Sinjay - Rungkut",
+      "alamat": "Jl. Rungkut Madya No.133, Rungkut Kidul, Kec. Rungkut, Surabaya, Jawa Timur 60293",
+      "tingkat_kepedasan": 3,
+      "latitude": -7.3314354,
+      "longitude": 112.7796503
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "ada5672f-c597-4caf-b557-6d2fcf5352f3",
+    "fields": {
+      "nama": "Bebek Sinjay -  Dharmahusada",
+      "alamat": "Jl. Dharmahusada No.160B, Mojo, Kec. Gubeng, Surabaya, Jawa Timur 60285",
+      "tingkat_kepedasan": 8,
+      "latitude": -7.268003,
+      "longitude": 112.768602
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "b68152df-4476-4a15-8a9e-08d754acba37",
+    "fields": {
+      "nama": "Mie Gacoan - Wiyung",
+      "alamat": "Jl. Raya Menganti No.51, Babatan, Kec. Wiyung, Surabaya, Jawa Timur 60227",
+      "tingkat_kepedasan": 7,
+      "latitude": -7.3112043,
+      "longitude": 112.6806738
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "dcf5214d-8650-41e2-bd82-d1c1b4dc4869",
+    "fields": {
+      "nama": "Mie Gacoan - Ir Soekarno",
+      "alamat": "Jl. Dr. Ir. H. Soekarno No.125, Mulyorejo, Kec. Mulyorejo, Surabaya, Jawa Timur 60115",
+      "tingkat_kepedasan": 2,
+      "latitude": -7.2650077,
+      "longitude": 112.780174
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "6b40bf1b-aea5-432c-868b-4aad4c09deec",
+    "fields": {
+      "nama": "Mie Gacoan - Kenjeran",
+      "alamat": "Jl. Kenjeran No.361, Gading, Kec. Tambaksari, Surabaya, Jawa Timur 60134",
+      "tingkat_kepedasan": 8,
+      "latitude": -7.2463991,
+      "longitude": 112.7727877
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "08aca643-7e39-4aea-9720-5c34b0aefcca",
+    "fields": {
+      "nama": "Bakmie Gm - Tunjungan Plaza",
+      "alamat": "Tunjungan Plaza 6 Lt.5, Kedungdoro, Kec. Tegalsari, Surabaya, Jawa Timur 60261",
+      "tingkat_kepedasan": 6,
+      "latitude": -7.2622272,
+      "longitude": 112.7379958
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "a70b8796-c211-4f1a-9208-e1439a9eedb8",
+    "fields": {
+      "nama": "Bakmie Gm - Galaxy Mall 3",
+      "alamat": "Galaxy Mall 3, Jl. Dr. Ir. H. Soekarno No.3, Mulyorejo, Kec. Mulyorejo, Surabaya, Jawa Timur 60115",
+      "tingkat_kepedasan": 5,
+      "latitude": -7.2756914,
+      "longitude": 112.7780505
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "2eb26a2d-2f5a-4233-b6cd-0b8867578647",
+    "fields": {
+      "nama": "Soto Ambengan Pak Sadi",
+      "alamat": "Jl. Ambengan No.3A, Ketabang, Kec. Genteng, Surabaya, Jawa Timur 60272",
+      "tingkat_kepedasan": 9,
+      "latitude": -7.2556577,
+      "longitude": 112.7424404
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "9693acab-2d13-4c98-ac90-653ca8263d44",
+    "fields": {
+      "nama": "Soto Lamongan Arahman",
+      "alamat": "Jl. Arief Rahman Hakim No.44, Klampis Ngasem, Kec. Sukolilo, Surabaya, Jawa Timur",
+      "tingkat_kepedasan": 2,
+      "latitude": -7.290073,
+      "longitude": 112.7749602
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "6b7fa23a-fce0-4706-9b96-f614c8ad38f9",
+    "fields": {
+      "nama": "Soto Ayam Cak Pardi",
+      "alamat": "Jl. Embong Malang No.20, Genteng, Kec. Genteng, Surabaya, Jawa Timur 60261",
+      "tingkat_kepedasan": 6,
+      "latitude": -7.2618192,
+      "longitude": 112.73539
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "d2540818-dfdd-453c-878b-4a4db23c1e1d",
+    "fields": {
+      "nama": "Soto Ayam Lamongan Cak Tono",
+      "alamat": "Jl. Kertajaya No.139, RT.000/RW.00, Airlangga, Kec. Gubeng, Surabaya, Jawa Timur 60286",
+      "tingkat_kepedasan": 3,
+      "latitude": -7.2785299,
+      "longitude": 112.7563741
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "5afc5f3b-d0bc-4c5f-a2a4-fc9951b284d2",
+    "fields": {
+      "nama": "Soto Ayam Pak Umar Kertajaya",
+      "alamat": "Jl. Dharmawangsa No.81A, Airlangga, Kec. Gubeng, Surabaya, Jawa Timur 60286",
+      "tingkat_kepedasan": 8,
+      "latitude": -7.2772945,
+      "longitude": 112.7535653
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "5b29d4d1-c7b8-4c59-942f-c720033525b3",
+    "fields": {
+      "nama": "Pecel Bu Kus",
+      "alamat": "Jl. Barata Jaya XX No.110, Baratajaya, Kec. Gubeng, Surabaya, Jawa Timur 60284",
+      "tingkat_kepedasan": 4,
+      "latitude": -7.3048473,
+      "longitude": 112.7567018
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "5e3fba83-1bc2-43ac-aa45-29e4c50f1ea5",
+    "fields": {
+      "nama": "Nasi Goreng Sempal",
+      "alamat": "Jl. Karang Menjangan No.77, Mojo, Kec. Gubeng, Surabaya, Jawa Timur 60286",
+      "tingkat_kepedasan": 2,
+      "latitude": -7.2706188,
+      "longitude": 112.7583645
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "3b4f38d8-4af8-4f8a-a645-50a0d6ba154c",
+    "fields": {
+      "nama": "Nasi Goreng Mak Pasar Sore",
+      "alamat": "Jl. Pandegiling No.320C, Wonorejo, Kec. Tegalsari, Surabaya, Jawa Timur 60264",
+      "tingkat_kepedasan": 4,
+      "latitude": -7.2746587,
+      "longitude": 112.7275991
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "d9f6dea7-0287-4371-a3cd-c2d6293c073c",
+    "fields": {
+      "nama": "Carnis",
+      "alamat": "Jl. Raya Gubeng No.96, Gubeng, Kec. Gubeng, Surabaya, Jawa Timur 60281",
+      "tingkat_kepedasan": 1,
+      "latitude": -7.2754038,
+      "longitude": 112.7434793
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "96db5624-c75f-4687-b6b6-66ef61797aae",
+    "fields": {
+      "nama": "Sate Ayam Lisidu",
+      "alamat": "Jl. Jambu II No.E 35, Tambaksumur, Kec. Waru, Kabupaten Sidoarjo, Jawa Timur 61256",
+      "tingkat_kepedasan": 5,
+      "latitude": -7.3447687,
+      "longitude": 112.7709651
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "ef1c7db7-e24a-4ce7-9267-0c3f11332cc7",
+    "fields": {
+      "nama": "Depot Bu Rudy Kupang Indah",
+      "alamat": "Jl. Raya Kupang Indah No.19, Dukuh Kupang, Kec. Dukuhpakis, Surabaya, Jawa Timur 60225",
+      "tingkat_kepedasan": 2,
+      "latitude": -7.2811494,
+      "longitude": 112.7044193
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "c19977da-9d50-4988-955e-236df2462fda",
+    "fields": {
+      "nama": "Rawon Setan",
+      "alamat": "Jl. Embong Malang No.78/I, , Genteng, Kec. Genteng, Surabaya, Jawa Timur 60261",
+      "tingkat_kepedasan": 6,
+      "latitude": -7.2588465,
+      "longitude": 112.732132
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "9121d5c6-4737-486d-b4ce-77bb6ea15869",
+    "fields": {
+      "nama": "Ayam Bakar Pak D",
+      "alamat": "Jl. Kp. Malang Tengah I No.60, Tegalsari, Kec. Tegalsari, Surabaya, Jawa Timur 60263",
+      "tingkat_kepedasan": 10,
+      "latitude": -7.2738506,
+      "longitude": 112.7321452
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "ea67cb36-0c5e-4cfb-9c70-59a0589bfbc0",
+    "fields": {
+      "nama": "Warung Madinah",
+      "alamat": "Jl. KH Mas Mansyur No.1, Nyamplungan, Kec. Pabean Cantikan, Surabaya, Jawa Timur 60162",
+      "tingkat_kepedasan": 9,
+      "latitude": -7.2342031,
+      "longitude": 112.7399372
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "b6321eb1-0371-4931-b261-f6e6fe2224ca",
+    "fields": {
+      "nama": "Warung Lesehan Rumadi",
+      "alamat": "Jl. Raya Lidah Wetan No.26, Lidah Kulon, Kec. Lakarsantri, Surabaya, Jawa Timur 60213",
+      "tingkat_kepedasan": 7,
+      "latitude": -7.3059168,
+      "longitude": 112.6592832
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "b4b8966a-d2d2-42ad-bbaf-787ffb51f643",
+    "fields": {
+      "nama": "Nasi Goreng Jancuk",
+      "alamat": "Jl. Plaza Boulevard No.33-35, Embong Kaliasin, Kec. Genteng, Surabaya, Jawa Timur 60271",
+      "tingkat_kepedasan": 3,
+      "latitude": -7.2631113,
+      "longitude": 112.74528
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "b82f9e81-b227-4fe6-a69f-db4de0fd2444",
+    "fields": {
+      "nama": "Sate Karak",
+      "alamat": "Jl. Ampel Lonceng No.60, Ampel, Kec. Semampir, Surabaya, Jawa Timur 60151",
+      "tingkat_kepedasan": 7,
+      "latitude": -7.2302776,
+      "longitude": 112.7384771
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "6d1fce31-6bc2-477b-9f24-5a5acd5d91f1",
+    "fields": {
+      "nama": "Sari Laut Kapasan",
+      "alamat": "Jl. Raya Menganti No.6, Wiyung, Kec. Wiyung, Surabaya, Jawa Timur 60228",
+      "tingkat_kepedasan": 2,
+      "latitude": -7.3124119,
+      "longitude": 112.6874118
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "07cd28cb-3267-4ccf-8f58-278d54ea43c3",
+    "fields": {
+      "nama": "Depot Gado Gado Arjuna Pak Satumin",
+      "alamat": "Jl. Arjuno No.127, Sawahan, Kec. Sawahan, Surabaya, Jawa Timur 60251",
+      "tingkat_kepedasan": 9,
+      "latitude": -7.2659926,
+      "longitude": 112.7252188
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "9c95a2ce-ac9c-4787-b61a-8d0675614e10",
+    "fields": {
+      "nama": "Rumah Makan Handayani",
+      "alamat": "Jl. Raya Prapen No.35, Prapen, Kec. Tenggilis Mejoyo, Surabaya, Jawa Timur 60299",
+      "tingkat_kepedasan": 7,
+      "latitude": -7.3140472,
+      "longitude": 112.75343
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "9ac6f8c2-5792-44b1-8806-a47515c31e31",
+    "fields": {
+      "nama": "Pondok Tempo Doeloe",
+      "alamat": "Jl. Tegalsari No.50, RT.003/RW.01, Kedungdoro, Kec. Tegalsari, Surabaya, Jawa Timur 60261",
+      "tingkat_kepedasan": 10,
+      "latitude": -7.2649928,
+      "longitude": 112.7346379
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "984cf735-342d-4813-a1bc-b8a10e7d9e29",
+    "fields": {
+      "nama": "Zona Alam",
+      "alamat": "Jl. Raya Sambikerep Jl. Kuwukan Gg. Langgar, Lontar, Kec. Sambikerep, Surabaya, Jawa Timur 60185",
+      "tingkat_kepedasan": 4,
+      "latitude": -7.2724029,
+      "longitude": 112.6596139
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "79281e55-f51d-4a5a-a6d2-521f77dbce3d",
+    "fields": {
+      "nama": "Semanggi Suroboyo",
+      "alamat": "Jl. Alas Malang No.3, Sememi, Kec. Benowo, Surabaya, Jawa Timur 60218",
+      "tingkat_kepedasan": 1,
+      "latitude": -7.2610283,
+      "longitude": 112.6433286
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "69fe19d0-d605-4cfa-8996-c79d1233fd09",
+    "fields": {
+      "nama": "Aiola Eatery",
+      "alamat": "Jl. Slamet No.16, Ketabang, Kec. Genteng, Surabaya, Jawa Timur 60272",
+      "tingkat_kepedasan": 10,
+      "latitude": -7.2583417,
+      "longitude": 112.7477069
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "bcb5dbd4-3c8c-4f86-bcd4-80b6661d5d3f",
+    "fields": {
+      "nama": "Sas Cafe N Resto",
+      "alamat": "Jl. Bhaskara Sawah No.30, Kalisari, Kec. Mulyorejo, Surabaya, Jawa Timur 60112",
+      "tingkat_kepedasan": 4,
+      "latitude": -7.2702579,
+      "longitude": 112.7960653
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "21e8c5c9-3619-45ac-a1fa-a2630c2bed27",
+    "fields": {
+      "nama": "Rumah Makan Happy Suzy",
+      "alamat": "Jl. Diponegoro No.111, Darmo, Kec. Wonokromo, Surabaya, Jawa Timur 60264",
+      "tingkat_kepedasan": 8,
+      "latitude": -7.286948,
+      "longitude": 112.7317364
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "22f1c80d-ac3b-4375-83ef-97c5207a4d77",
+    "fields": {
+      "nama": "Rawon Pak Pangat",
+      "alamat": " Jl. Ketintang Baru Sel. I No.15, Ketintang, Kec. Gayungan, Surabaya, Jawa Timur 60235",
+      "tingkat_kepedasan": 4,
+      "latitude": -7.3249361,
+      "longitude": 112.7235774
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "a701a924-5799-4627-9df6-cbdd478417dc",
+    "fields": {
+      "nama": "Rumah Makan Sop Konro Perak",
+      "alamat": "Jl. Perak Timur No.564 Blok A-6, Perak Utara, Kec. Pabean Cantikan, Surabaya, Jawa Timur 60165",
+      "tingkat_kepedasan": 7,
+      "latitude": -7.1998558,
+      "longitude": 112.7308634
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "c561d671-07c6-4b6c-9692-6585b1fa2fb7",
+    "fields": {
+      "nama": "Bebek Goreng Prunama",
+      "alamat": "Jl. Dinoyo, Keputran, Kec. Tegalsari, Surabaya, Jawa Timur 60265",
+      "tingkat_kepedasan": 3,
+      "latitude": -7.283375,
+      "longitude": 112.7436294
+    }
+  },
+  {
+    "model": "restoran_makanan.rumahmakan",
+    "pk": "024d704a-0737-4cb7-885d-12d70570b0de",
+    "fields": {
+      "nama": "Warung Kongde Mbak Way",
+      "alamat": "Jl. Bubutan II, Alun-alun Contong, Kec. Bubutan, Surabaya, Jawa Timur 60174",
+      "tingkat_kepedasan": 7,
+      "latitude": -7.2497935,
+      "longitude": 112.7348127
+    }
+  }
+]
