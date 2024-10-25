@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}  <!-- Load static files -->
+
+{% block content %}
+<!-- Add top margin to avoid navbar overlay -->
+<div class="mt-10 max-w-xl mx-auto form-style">
+  <h1 class="text-3xl font-bold text-center mb-6">Review for {{ rumah_makan.nama }}</h1>
+
+  <form method="POST" enctype="multipart/form-data" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    {% csrf_token %}
+    
+    <div class="flex flex-col mb-4">
+      <label class="leading-loose" for="title">Title:</label>
+      <input type="text" id="title" name="title" placeholder="Mau cerita apa, rek?" required class="form-style">
+    </div>
+    
+    <div class="flex flex-col mb-4">
+      <label class="leading-loose" for="rating">Rating:</label>
+      <select id="rating" name="rating" required class="form-style">
+        <option selected>Berapa bintang nih, rek?</option>
+        <option value=1>1 bintang</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+      </select>
+    </div>
+    
+    <div class="flex flex-col mb-4">
+      <label class="leading-loose" for="comment">Comment:</label>
+      <textarea id="comment" name="comment" required class="form-style" placeholder="piye mangane, rek?"></textarea>
+    </div>
+    
+    <div class="flex flex-col mb-4">
+      <label class="leading-loose" for="date_visited">Date Visited:</label>
+      <input type="date" id="date_visited" name="date_visited" required class="form-style">
+    </div>
+
+    <!-- Submit Button -->
+    <div class="flex justify-center mt-6">
+      <input type="submit" value="Add Review" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded cursor-pointer transition duration-300 animate-shine" />
+    </div>
+  </form>
+
+  <div class="mt-12"></div> <!-- Adjust margin value as needed -->
+
+  <!-- Link to the global.css file -->
+  <link rel="stylesheet" href="{% static 'css/rating_ulasan.css' %}">
+</div>
+
+{% endblock %}
