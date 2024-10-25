@@ -22,4 +22,5 @@ urlpatterns = [
     path('', include('main.urls')),
     path('auth/', include('authentication.urls')),
     path('restoran-makanan/', include('restoran_makanan.urls')),
+    path('promo-diskon/', include('promo_diskon.urls')),
 ]
