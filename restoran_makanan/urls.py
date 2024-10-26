@@ -5,6 +5,7 @@ from rating_ulasan.views import review_page
 app_name = 'restoran_makanan'
 
 urlpatterns = [
+    path('<str:rumah_makan_nama>/', review_page, name='review_page'),
     path('<str:rumah_makan_nama>/review-page/', review_page, name='review_page'),
     path('json-menu/', show_json_menu, name='show_json_menu'),
     path('json-rumahmakan/', show_json_rumah_makan, name='show_json_rumah_makan'),

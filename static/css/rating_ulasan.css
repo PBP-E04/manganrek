@@ -15,3 +15,49 @@
     border-color: #bcbcbc;       /* Border color on focus */
     box-shadow: 0 0 0 3px #bcbcbc; /* Glow effect on focus */
 }
+
+.search-bar-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    background-color: #f4f4f4;
+  }
+  
+  .search-bar {
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  /* Restaurant Card Styling */
+  .restaurant-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px auto;
+    width: 80%;
+  }
+  
+  .restaurant-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .reviews-dropdown button {
+    background-color: #ddd;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .see-more {
+    color: #007bff;
+    text-decoration: underline;
+    display: block;
+    margin-top: 10px;
+  }  

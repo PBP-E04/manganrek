@@ -7,55 +7,24 @@ from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, redirect
 from django.http import HttpResponseForbidden
-
+from itertools import chain
+from django.http import JsonResponse
+from django.core import serializers
+from django.http import HttpResponse
 #pre
-# @login_required
-# def review_page(request, rumah_makan_nama):
-#     # Simulate logging in as the regular user created earlier
-#     user = get_object_or_404(User, username='regularuser')
-#     login(request, user)  # Logs in the user for the session
-
-#     # Now proceed with the usual logic to handle reviews
-#     if request.method == 'POST':
-#         form = ReviewForm(request.POST)
-#         if form.is_valid():
-#             review = form.save(commit=False)
-#             review.user = user  # Attach the logged-in user to the review
-#             review.rumah_makan = get_object_or_404(RumahMakan, nama=rumah_makan_nama)
-#             review.save()
-#             return redirect('review_page', rumah_makan_nama=rumah_makan_nama)
-#     else:
-#         form = ReviewForm()
-
-#     # Load existing reviews for display
-#     reviews = Review.objects.filter(rumah_makan__nama=rumah_makan_nama)
-    
-#     return render(request, 'review_form.html', {
-#         'form': form,
-#         'reviews': reviews,
-#         'rumah_makan': get_object_or_404(RumahMakan, nama=rumah_makan_nama),
-#     })
-
-#yatta bisa 
+@login_required
 def review_page(request, rumah_makan_nama):
-    # Simulate logging in as the regular user created earlier
-    user = get_object_or_404(User, username='regularuser')
-    login(request, user)  # Logs in the user for the session
-    rumah_makan_nama = rumah_makan_nama.replace('-', ' ')
-
-    # Now proceed with the usual logic to handle reviews
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
             review = form.save(commit=False)
-            review.user = user  # Attach the logged-in user to the review
+            review.user = request.user 
             review.rumah_makan = get_object_or_404(RumahMakan, nama=rumah_makan_nama)
             review.save()
             return redirect('review_page', rumah_makan_nama=rumah_makan_nama)
     else:
         form = ReviewForm()
 
-    # Load existing reviews for display
     reviews = Review.objects.filter(rumah_makan__nama=rumah_makan_nama)
     
     return render(request, 'review_form.html', {
@@ -64,6 +33,31 @@ def review_page(request, rumah_makan_nama):
         'rumah_makan': get_object_or_404(RumahMakan, nama=rumah_makan_nama),
     })
 
+# @login_required
+# def show_review_page(request):
+#     # Fetch all restaurants to display on the main page
+#     restaurants = RumahMakan.objects.all()
+#     return render(request, 'restaurant_list.html', {'restaurants': restaurants})
+
+@login_required
+def show_review_page(request):
+    resto = RumahMakan.objects.all()
+    context = {
+        'restaurants': resto
+    }
+    return render(request, "review_page.html", context)
+
+def search_restaurants(request):
+    search_term = request.GET.get('q', '')
+    data = []
+
+    if search_term:
+        # Filter restaurants by name containing the search term
+        restaurants = RumahMakan.objects.filter(nama__icontains=search_term)
+        data = list(restaurants)  # Prepare the queryset for serialization
+
+    # Return serialized JSON data with application/json content type
+    return HttpResponse(serializers.serialize('json', data), content_type='application/json')
 
 #better use async 
 @login_required
@@ -108,3 +102,13 @@ def show_review(request, rumah_makan_nama):
         'rumah_makan': rumah_makan,
         'reviews': reviews
     })
+
+
+def show_json(request):
+    data = Review.objects.all()
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+def get_review_json(request, pk):
+    resto = RumahMakan.objects.get(pk=pk)
+    reviews = Review.objects.filter(r=resto)
+    return HttpResponse(serializers.serialize('json', reviews), content_type="application/json")
