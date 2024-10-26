@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
-{% load static %}  <!-- Load static files -->
+{% load static %}
 
 {% block content %}
-<!-- Add top margin to avoid navbar overlay -->
 <div class="mt-10 max-w-xl mx-auto form-style">
   <h1 class="text-3xl font-bold text-center mb-6">Review for {{ rumah_makan.nama }}</h1>
 
-  <form method="POST" enctype="multipart/form-data" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+  <form id="reviewForm" method="POST" enctype="multipart/form-data" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
     {% csrf_token %}
     
     <div class="flex flex-col mb-4">
@@ -15,15 +14,28 @@
     </div>
     
     <div class="flex flex-col mb-4">
-      <label class="leading-loose" for="rating">Rating:</label>
-      <select id="rating" name="rating" required class="form-style">
-        <option selected>Berapa bintang nih, rek?</option>
-        <option value=1>1 bintang</option>
-        <option value=2>2</option>
-        <option value=3>3</option>
-        <option value=4>4</option>
-        <option value=5>5</option>
-      </select>
+      <label class="leading-loose">Rating:</label>
+      <div class="flex items-center">
+        <div class="relative flex">
+          <input type="radio" id="star1" name="rating" value="1" class="hidden" />
+          <label for="star1" class="cursor-pointer text-3xl text-gray-400 hover:text-yellow-500 transition-colors duration-200 star" data-value="1">★</label>
+
+          <input type="radio" id="star2" name="rating" value="2" class="hidden" />
+          <label for="star2" class="cursor-pointer text-3xl text-gray-400 hover:text-yellow-500 transition-colors duration-200 star" data-value="2">★</label>
+
+          <input type="radio" id="star3" name="rating" value="3" class="hidden" />
+          <label for="star3" class="cursor-pointer text-3xl text-gray-400 hover:text-yellow-500 transition-colors duration-200 star" data-value="3">★</label>
+
+          <input type="radio" id="star4" name="rating" value="4" class="hidden" />
+          <label for="star4" class="cursor-pointer text-3xl text-gray-400 hover:text-yellow-500 transition-colors duration-200 star" data-value="4">★</label>
+
+          <input type="radio" id="star5" name="rating" value="5" class="hidden" />
+          <label for="star5" class="cursor-pointer text-3xl text-gray-400 hover:text-yellow-500 transition-colors duration-200 star" data-value="5">★</label>
+        </div>
+        
+        <!-- Fixed width for the rating message -->
+        <div id="ratingMessage" class="text-sm text-gray-600 ml-4 whitespace-nowrap"></div>
+      </div>
     </div>
     
     <div class="flex flex-col mb-4">
@@ -47,5 +59,42 @@
   <!-- Link to the global.css file -->
   <link rel="stylesheet" href="{% static 'css/rating_ulasan.css' %}">
 </div>
+
+<script>
+  const stars = document.querySelectorAll('.star');
+  const ratingMessage = document.getElementById('ratingMessage');
+
+  stars.forEach(star => {
+    star.addEventListener('mouseover', () => {
+      const ratingValue = star.getAttribute('data-value');
+      highlightStars(ratingValue);
+      ratingMessage.textContent = `This {{ rumah_makan.nama }} deserves ${ratingValue} stars`;
+    });
+
+    star.addEventListener('mouseout', () => {
+      const checkedStar = document.querySelector('input[name="rating"]:checked');
+      const currentRating = checkedStar ? checkedStar.value : 0;
+      highlightStars(currentRating);
+      if (currentRating == 0) {
+          ratingMessage.textContent = ''; // Clear message when no rating is selected
+      }
+    });
+
+    star.addEventListener('click', () => {
+      const ratingValue = star.getAttribute('data-value');
+      highlightStars(ratingValue);
+      ratingMessage.textContent = `This {{ rumah_makan.nama }} deserves ${ratingValue} stars`; // Keep message after click
+    });
+  });
+
+  function highlightStars(ratingValue) {
+    stars.forEach(star => {
+      star.classList.remove('text-yellow-500');
+      if (star.getAttribute('data-value') <= ratingValue) {
+        star.classList.add('text-yellow-500');
+      }
+    });
+  }
+</script>
 
 {% endblock %}
