@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+    <title>Edit Menu - {{ menu.nama_makanan }}</title>
+{% endblock meta %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <div class="max-w-md mx-auto">
+        <a href="{% url 'restoran_makanan:detail_rumah_makan' menu.id_rumah_makan.id %}" 
+           class="inline-flex items-center mb-6 text-[#2c5e1a] hover:text-[#1a4314]">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+            </svg>
+            Kembali
+        </a>
+
+        <div class="bg-white rounded-xl shadow-2xl overflow-hidden">
+            <div class="p-8">
+                <h1 class="text-2xl font-bold text-[#1a4314] mb-6">Edit Menu</h1>
+                
+                <form method="POST" class="space-y-6">
+                    {% csrf_token %}
+                    <div>
+                        <label for="nama_makanan" class="block text-sm font-medium text-[#2c5e1a] mb-1">Nama Makanan</label>
+                        <input type="text" 
+                               id="nama_makanan" 
+                               name="nama_makanan" 
+                               value="{{ menu.nama_makanan }}"
+                               required
+                               class="appearance-none rounded-lg relative block w-full px-4 py-3 border border-[#b1d8b7] placeholder-[#2c5e1a] text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#76b947] focus:border-[#76b947] focus:z-10 sm:text-sm">
+                    </div>
+
+                    <div>
+                        <label for="harga" class="block text-sm font-medium text-[#2c5e1a] mb-1">Harga (Rp)</label>
+                        <input type="number" 
+                               id="harga" 
+                               name="harga" 
+                               value="{{ menu.harga }}"
+                               required
+                               class="appearance-none rounded-lg relative block w-full px-4 py-3 border border-[#b1d8b7] placeholder-[#2c5e1a] text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#76b947] focus:border-[#76b947] focus:z-10 sm:text-sm">
+                    </div>
+
+                    <div class="flex justify-end space-x-4">
+                        <a href="{% url 'restoran_makanan:detail_rumah_makan' menu.id_rumah_makan.id %}"
+                           class="px-4 py-2 border border-[#b1d8b7] text-[#2c5e1a] rounded-lg hover:bg-gray-50">
+                            Batal
+                        </a>
+                        <button type="submit"
+                                class="px-4 py-2 bg-[#2f5233] text-white rounded-lg hover:bg-[#1a4314]">
+                            Simpan
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
