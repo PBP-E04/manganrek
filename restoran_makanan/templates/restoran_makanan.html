@@ -70,7 +70,6 @@
         </div>
     </div>
     
-    <!-- Filter Modal -->
     <div id="filterModal" class="hidden fixed inset-0 z-50 overflow-auto bg-[#2f5233] bg-opacity-50 flex items-center justify-center">
         <div class="bg-white rounded-xl shadow-2xl p-6 w-96">
             <div class="flex justify-between items-center mb-4">
@@ -113,7 +112,6 @@
         </div>
     </div>
 
-    <!-- Sort Modal -->
     <div id="sortModal" class="hidden fixed inset-0 z-50 overflow-auto bg-[#2f5233] bg-opacity-50 flex items-center justify-center">
         <div class="bg-white rounded-xl shadow-2xl p-6 w-80">
             <div class="flex justify-between items-center mb-4">
@@ -126,12 +124,12 @@
             </div>
             
             <div class="space-y-2">
-                <button class="w-full text-left px-4 py-2 text-[#2c5e1a] hover:bg-[#b2d2a4] rounded-lg transition-colors duration-300" onclick="sortBy('price-asc')">Harga Terendah</button>
-                <button class="w-full text-left px-4 py-2 text-[#2c5e1a] hover:bg-[#b2d2a4] rounded-lg transition-colors duration-300" onclick="sortBy('price-desc')">Harga Tertinggi</button>
-                <button class="w-full text-left px-4 py-2 text-[#2c5e1a] hover:bg-[#b2d2a4] rounded-lg transition-colors duration-300" onclick="sortBy('spicy-asc')">Kepedasan Terendah</button>
-                <button class="w-full text-left px-4 py-2 text-[#2c5e1a] hover:bg-[#b2d2a4] rounded-lg transition-colors duration-300" onclick="sortBy('spicy-desc')">Kepedasan Tertinggi</button>
-                <button class="w-full text-left px-4 py-2 text-[#2c5e1a] hover:bg-[#b2d2a4] rounded-lg transition-colors duration-300 hidden" onclick="sortBy('price-asc', 'makanan')">Harga Terendah</button>
-                <button class="w-full text-left px-4 py-2 text-[#2c5e1a] hover:bg-[#b2d2a4] rounded-lg transition-colors duration-300 hidden" onclick="sortBy('price-desc', 'makanan')">Harga Tertinggi</button>
+                <button id="hargaMin" class="w-full text-left px-4 py-2 text-[#2c5e1a] hover:bg-[#b2d2a4] rounded-lg transition-colors duration-300" onclick="sortBy('price-asc')">Harga Terendah</button>
+                <button id="hargaMax" class="w-full text-left px-4 py-2 text-[#2c5e1a] hover:bg-[#b2d2a4] rounded-lg transition-colors duration-300" onclick="sortBy('price-desc')">Harga Tertinggi</button>
+                <button id="pedasMin" class="w-full text-left px-4 py-2 text-[#2c5e1a] hover:bg-[#b2d2a4] rounded-lg transition-colors duration-300" onclick="sortBy('spicy-asc')">Kepedasan Terendah</button>
+                <button id="pedasMax" class="w-full text-left px-4 py-2 text-[#2c5e1a] hover:bg-[#b2d2a4] rounded-lg transition-colors duration-300" onclick="sortBy('spicy-desc')">Kepedasan Tertinggi</button>
+                <button id="hargaMinMakanan" class="w-full text-left px-4 py-2 text-[#2c5e1a] hover:bg-[#b2d2a4] rounded-lg transition-colors duration-300 hidden" onclick="sortBy('price-asc', 'makanan')">Harga Terendah</button>
+                <button id="hargaMaxMakanan" class="w-full text-left px-4 py-2 text-[#2c5e1a] hover:bg-[#b2d2a4] rounded-lg transition-colors duration-300 hidden" onclick="sortBy('price-desc', 'makanan')">Harga Tertinggi</button>
             </div>
         </div>
     </div>
