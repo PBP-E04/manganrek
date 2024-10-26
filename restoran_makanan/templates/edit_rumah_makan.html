@@ -1,0 +1,74 @@
+{% extends 'auth_base.html' %}
+{% load static %}
+
+{% block meta %}
+    <title>Edit {{ rumah_makan.nama }}</title>
+{% endblock meta %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center w-screen bg-[#b2d2a4] py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-2xl">
+        <div>
+            <h2 class="mt-2 text-center text-3xl font-extrabold text-[#1a4314]">
+                Edit Rumah Makan
+            </h2>
+        </div>
+        
+        <form method="POST" class="mt-8 space-y-6">
+            {% csrf_token %}
+            <div class="rounded-md shadow-sm space-y-4">
+                <div>
+                    <label for="nama" class="block text-sm font-medium text-[#2c5e1a] mb-1">Nama</label>
+                    <input type="text" name="nama" value="{{ rumah_makan.nama }}" required
+                           class="appearance-none rounded-lg relative block w-full px-4 py-3 border border-[#b1d8b7] placeholder-[#2c5e1a] text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#76b947] focus:border-[#76b947] focus:z-10 sm:text-sm">
+                </div>
+
+                <div>
+                    <label for="alamat" class="block text-sm font-medium text-[#2c5e1a] mb-1">Alamat</label>
+                    <input type="text" name="alamat" value="{{ rumah_makan.alamat }}" required
+                           class="appearance-none rounded-lg relative block w-full px-4 py-3 border border-[#b1d8b7] placeholder-[#2c5e1a] text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#76b947] focus:border-[#76b947] focus:z-10 sm:text-sm">
+                </div>
+
+                <div>
+                    <label for="tingkat_kepedasan" class="block text-sm font-medium text-[#2c5e1a] mb-1">Tingkat Kepedasan</label>
+                    <input type="number" name="tingkat_kepedasan" value="{{ rumah_makan.tingkat_kepedasan }}" min="1" max="10" required
+                           class="appearance-none rounded-lg relative block w-full px-4 py-3 border border-[#b1d8b7] placeholder-[#2c5e1a] text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#76b947] focus:border-[#76b947] focus:z-10 sm:text-sm">
+                </div>
+
+                <div>
+                    <label for="latitude" class="block text-sm font-medium text-[#2c5e1a] mb-1">Latitude</label>
+                    <input type="number" name="latitude" value="{{ rumah_makan.latitude }}" step="any" required
+                           class="appearance-none rounded-lg relative block w-full px-4 py-3 border border-[#b1d8b7] placeholder-[#2c5e1a] text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#76b947] focus:border-[#76b947] focus:z-10 sm:text-sm">
+                </div>
+
+                <div>
+                    <label for="longitude" class="block text-sm font-medium text-[#2c5e1a] mb-1">Longitude</label>
+                    <input type="number" name="longitude" value="{{ rumah_makan.longitude }}" step="any" required
+                           class="appearance-none rounded-lg relative block w-full px-4 py-3 border border-[#b1d8b7] placeholder-[#2c5e1a] text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#76b947] focus:border-[#76b947] focus:z-10 sm:text-sm">
+                </div>
+            </div>
+
+            <div class="flex space-x-4">
+                <a href="{% url 'restoran_makanan:show_rumahmakan_makanan' %}"
+                   class="group relative w-1/2 flex justify-center py-3 px-4 border border-[#b1d8b7] text-sm font-medium rounded-lg text-[#2c5e1a] bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#76b947] transform transition-all duration-300 hover:scale-[1.02] shadow-lg">
+                    Batal
+                </a>
+                <button type="submit"
+                        class="group relative w-1/2 flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-[#2f5233] hover:bg-[#1a4314] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#76b947] transform transition-all duration-300 hover:scale-[1.02] shadow-lg">
+                    Simpan
+                </button>
+            </div>
+        </form>
+
+        {% if messages %}
+        <div class="mt-4">
+            {% for message in messages %}
+            <div class="bg-[#b1d8b7] border border-[#2f5233] text-[#1a4314] px-4 py-3 rounded-lg relative" role="alert">
+                <span class="block sm:inline">{{ message }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

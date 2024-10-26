@@ -1,0 +1,575 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+    <title>Rumah Makan</title>
+    <style>
+        .active-tab {
+            background-color: #2f5233;
+            color: white;
+        }
+        .leaflet-container {
+            z-index: 1 !important;
+        }
+        .header {
+            z-index: 50 !important;
+        }
+        #crudModal,
+        #filterModal,
+        #sortModal {
+            z-index: 9999 !important;
+        }
+        .modal-content {
+            z-index: 10000 !important;
+        }
+    </style>
+{% endblock meta %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <div class="flex justify-center mb-8 px-4 sm:px-0">
+        <div class="inline-flex rounded-full border-2 border-[#b1d8b7] p-1 w-full max-w-md shadow-md">
+            <button id="rumahMakanBtn" 
+                    class="flex-1 px-4 py-2 rounded-full text-base sm:text-lg font-semibold active-tab"
+                    onclick="toggleView('rumahMakan')">
+                Rumah Makan
+            </button>
+            <button id="makananBtn" 
+                    class="flex-1 px-4 py-2 rounded-full text-base sm:text-lg font-semibold"
+                    onclick="toggleView('makanan')">
+                Makanan
+            </button>
+        </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+        <div class="relative w-full md:w-1/3">
+            <input type="text" id="searchBar" 
+                   class="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-600"
+                   placeholder="Cari rumah makan...">
+            <span class="absolute right-3 top-2.5 text-gray-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+            </span>
+        </div>
+        
+        <div class="flex gap-3">
+            <button id="filterBtn" class="flex items-center px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/>
+                </svg>
+                Filter
+            </button>
+            <button id="sortBtn" class="flex items-center px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"/>
+                </svg>
+                Urutkan
+            </button>
+        </div>
+    </div>
+    
+    <!-- Filter Modal -->
+    <div id="filterModal" class="hidden fixed inset-0 z-50 overflow-auto bg-[#2f5233] bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white rounded-xl shadow-2xl p-6 w-96">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-2xl font-bold text-[#1a4314]">Filter</h3>
+                <button id="closeFilterModal" class="text-[#2c5e1a] hover:bg-[#b2d2a4] hover:text-[#1a4314] rounded-lg text-sm p-1.5">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-[#2c5e1a] mb-1">Rentang Harga</label>
+                    <div class="flex gap-2 items-center">
+                        <input type="number" id="minPrice" placeholder="Min" 
+                            class="appearance-none rounded-lg w-full px-4 py-3 border border-[#b1d8b7] placeholder-[#2c5e1a] text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#76b947] focus:border-[#76b947]">
+                        <span class="text-[#2c5e1a]">-</span>
+                        <input type="number" id="maxPrice" placeholder="Max" 
+                            class="appearance-none rounded-lg w-full px-4 py-3 border border-[#b1d8b7] placeholder-[#2c5e1a] text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#76b947] focus:border-[#76b947]">
+                    </div>
+                </div>
+                
+                <div id="filterPedas">
+                    <label class="block text-sm font-medium text-[#2c5e1a] mb-1">Tingkat Kepedasan</label>
+                    <div class="flex gap-2 items-center">
+                        <input type="number" id="minSpicy" min="1" max="10" placeholder="Min" 
+                            class="appearance-none rounded-lg w-full px-4 py-3 border border-[#b1d8b7] placeholder-[#2c5e1a] text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#76b947] focus:border-[#76b947]">
+                        <span class="text-[#2c5e1a]">-</span>
+                        <input type="number" id="maxSpicy" min="1" max="10" placeholder="Max" 
+                            class="appearance-none rounded-lg w-full px-4 py-3 border border-[#b1d8b7] placeholder-[#2c5e1a] text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#76b947] focus:border-[#76b947]">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-6 flex justify-end gap-3">
+                <button id="resetFilter" class="px-4 py-2 rounded-lg border border-[#b1d8b7] text-[#2c5e1a] hover:bg-[#b2d2a4] transition-colors duration-300">Reset</button>
+                <button id="applyFilter" class="px-4 py-2 rounded-lg bg-[#2f5233] text-white hover:bg-[#1a4314] transition-colors duration-300">Terapkan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sort Modal -->
+    <div id="sortModal" class="hidden fixed inset-0 z-50 overflow-auto bg-[#2f5233] bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white rounded-xl shadow-2xl p-6 w-80">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-2xl font-bold text-[#1a4314]">Urutkan</h3>
+                <button id="closeSortModal" class="text-[#2c5e1a] hover:bg-[#b2d2a4] hover:text-[#1a4314] rounded-lg text-sm p-1.5">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="space-y-2">
+                <button class="w-full text-left px-4 py-2 text-[#2c5e1a] hover:bg-[#b2d2a4] rounded-lg transition-colors duration-300" onclick="sortBy('price-asc')">Harga Terendah</button>
+                <button class="w-full text-left px-4 py-2 text-[#2c5e1a] hover:bg-[#b2d2a4] rounded-lg transition-colors duration-300" onclick="sortBy('price-desc')">Harga Tertinggi</button>
+                <button class="w-full text-left px-4 py-2 text-[#2c5e1a] hover:bg-[#b2d2a4] rounded-lg transition-colors duration-300" onclick="sortBy('spicy-asc')">Kepedasan Terendah</button>
+                <button class="w-full text-left px-4 py-2 text-[#2c5e1a] hover:bg-[#b2d2a4] rounded-lg transition-colors duration-300" onclick="sortBy('spicy-desc')">Kepedasan Tertinggi</button>
+                <button class="w-full text-left px-4 py-2 text-[#2c5e1a] hover:bg-[#b2d2a4] rounded-lg transition-colors duration-300 hidden" onclick="sortBy('price-asc', 'makanan')">Harga Terendah</button>
+                <button class="w-full text-left px-4 py-2 text-[#2c5e1a] hover:bg-[#b2d2a4] rounded-lg transition-colors duration-300 hidden" onclick="sortBy('price-desc', 'makanan')">Harga Tertinggi</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex justify-end mb-6">
+        <button id="tambahRumahMakanBtn" data-modal-target="crudModal" data-modal-toggle="crudModal" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors duration-300" onclick="showModal();">
+            Tambah Rumah Makan
+        </button>
+    </div>
+
+    <div id="rumahMakanList"></div>
+    <div id="makananList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden">
+        {% for menu in makanan %}
+        <div class="food-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div class="p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">{{ menu.nama_makanan }}</h3>
+                <p class="text-gray-600 mb-2">{{ menu.id_rumah_makan.nama }}</p>
+                <p class="text-gray-600 mt-2">
+                    Rp {{ menu.harga|stringformat:"d"|slice:":-3" }}.000
+                </p>
+                <button onclick="window.location.href='{% url 'restoran_makanan:detail_rumah_makan' menu.id_rumah_makan.id %}'" class="mt-4 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors duration-300">
+                    Lihat Detail
+                </button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div id="crudModal" tabindex="-1" aria-hidden="true" class="hidden fixed inset-0 z-50 w-full flex items-center justify-center bg-[#2f5233] bg-opacity-50 overflow-x-hidden overflow-y-auto transition-opacity duration-300 ease-out">
+        <div id="crudModalContent" class="relative bg-white rounded-xl shadow-2xl w-5/6 sm:w-3/4 md:w-1/2 lg:w-2/5 mx-4 sm:mx-0 transform scale-95 opacity-0 transition-transform transition-opacity duration-300 ease-out">
+            <div class="flex items-center justify-between p-6 rounded-t">
+                <h3 class="text-3xl font-extrabold text-[#1a4314] text-center w-full">
+                    Tambah Rumah Makan
+                </h3>
+                <button type="button" class="absolute right-4 top-4 text-[#2c5e1a] hover:bg-[#b2d2a4] hover:text-[#1a4314] rounded-lg text-sm p-1.5 inline-flex items-center" id="closeModalBtn">
+                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+    
+            <div class="px-6 py-4 space-y-6 z-10000">
+                <form id="rumahMakanForm" class="space-y-4">
+                    {% csrf_token %}
+                    <div>
+                        <label for="nama" class="block text-sm font-medium text-[#2c5e1a] mb-1">Nama</label>
+                        <input type="text" id="nama" name="nama" required
+                               class="appearance-none rounded-lg relative block w-full px-4 py-3 border border-[#b1d8b7] placeholder-[#2c5e1a] text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#76b947] focus:border-[#76b947] focus:z-10 sm:text-sm">
+                    </div>
+    
+                    <div>
+                        <label for="alamat" class="block text-sm font-medium text-[#2c5e1a] mb-1">Alamat</label>
+                        <input type="text" id="alamat" name="alamat" required
+                               class="appearance-none rounded-lg relative block w-full px-4 py-3 border border-[#b1d8b7] placeholder-[#2c5e1a] text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#76b947] focus:border-[#76b947] focus:z-10 sm:text-sm">
+                    </div>
+    
+                    <div>
+                        <label for="tingkat_kepedasan" class="block text-sm font-medium text-[#2c5e1a] mb-1">Tingkat Kepedasan (1-10)</label>
+                        <input type="number" id="tingkat_kepedasan" name="tingkat_kepedasan" min="1" max="10" required
+                               class="appearance-none rounded-lg relative block w-full px-4 py-3 border border-[#b1d8b7] placeholder-[#2c5e1a] text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#76b947] focus:border-[#76b947] focus:z-10 sm:text-sm">
+                    </div>
+    
+                    <div>
+                        <label for="latitude" class="block text-sm font-medium text-[#2c5e1a] mb-1">Latitude</label>
+                        <input type="number" id="latitude" name="latitude" step="any" required
+                               class="appearance-none rounded-lg relative block w-full px-4 py-3 border border-[#b1d8b7] placeholder-[#2c5e1a] text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#76b947] focus:border-[#76b947] focus:z-10 sm:text-sm">
+                    </div>
+    
+                    <div>
+                        <label for="longitude" class="block text-sm font-medium text-[#2c5e1a] mb-1">Longitude</label>
+                        <input type="number" id="longitude" name="longitude" step="any" required
+                               class="appearance-none rounded-lg relative block w-full px-4 py-3 border border-[#b1d8b7] placeholder-[#2c5e1a] text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#76b947] focus:border-[#76b947] focus:z-10 sm:text-sm">
+                    </div>
+                </form>
+            </div>
+    
+            <div class="flex space-x-4 p-6 justify-end">
+                <button type="button" id="cancelButton"
+                        class="group relative w-1/4 flex justify-center py-3 px-4 border border-[#b1d8b7] text-sm font-medium rounded-lg text-[#2c5e1a] bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#76b947] transform transition-all duration-300 hover:scale-[1.02] shadow-lg">
+                    Batal
+                </button>
+                <button type="submit" id="submitRumahMakan" form="rumahMakanForm"
+                        class="group relative w-1/4 flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-[#2f5233] hover:bg-[#1a4314] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#76b947] transform transition-all duration-300 hover:scale-[1.02] shadow-lg">
+                    Simpan
+                </button>
+            </div>
+    
+            {% if messages %}
+            <div class="px-6 pb-6">
+                {% for message in messages %}
+                <div class="bg-[#b1d8b7] border border-[#2f5233] text-[#1a4314] px-4 py-3 rounded-lg relative" role="alert">
+                    <span class="block sm:inline">{{ message }}</span>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<script>
+function toggleView(view) {
+    const rumahMakanList = document.getElementById('rumahMakanList');
+    const makananList = document.getElementById('makananList');
+    const rumahMakanBtn = document.getElementById('rumahMakanBtn');
+    const makananBtn = document.getElementById('makananBtn');
+    const tambahRumahMakanBtn = document.getElementById('tambahRumahMakanBtn');
+    const filterPedas = document.getElementById('filterPedas');
+    const hargaMin = document.getElementById('hargaMin');
+    const hargaMax = document.getElementById('hargaMax');
+    const pedasMin = document.getElementById('pedasMin');
+    const pedasMax = document.getElementById('pedasMax');
+    const hargaMinMakanan = document.getElementById('hargaMinMakanan');
+    const hargaMaxMakanan = document.getElementById('hargaMaxMakanan');
+    const searchBar = document.getElementById('searchBar');
+
+    if (view === 'rumahMakan') {
+        rumahMakanList.classList.remove('hidden');
+        tambahRumahMakanBtn.classList.remove('hidden');
+        filterPedas.classList.remove('hidden');
+        hargaMin.classList.remove('hidden');
+        hargaMax.classList.remove('hidden');
+        pedasMin.classList.remove('hidden');
+        pedasMax.classList.remove('hidden');
+        hargaMinMakanan.classList.add('hidden');
+        hargaMaxMakanan.classList.add('hidden');
+        makananList.classList.add('hidden');
+        rumahMakanBtn.classList.add('active-tab');
+        makananBtn.classList.remove('active-tab');
+        searchBar.placeholder = "Cari rumah makan...";
+        searchBar.value = "";
+        document.getElementById('resetFilter').click();
+    } else {
+        tambahRumahMakanBtn.classList.add('hidden');
+        rumahMakanList.classList.add('hidden');
+        filterPedas.classList.add('hidden');
+        hargaMin.classList.add('hidden');
+        hargaMax.classList.add('hidden');
+        pedasMin.classList.add('hidden');
+        pedasMax.classList.add('hidden');
+        hargaMinMakanan.classList.remove('hidden');
+        hargaMaxMakanan.classList.remove('hidden');
+        makananList.classList.remove('hidden');
+        rumahMakanBtn.classList.remove('active-tab');
+        makananBtn.classList.add('active-tab');
+        searchBar.placeholder = "Cari makanan...";
+        searchBar.value = "";
+        document.getElementById('resetFilter').click();
+    }
+}
+
+async function getRumahMakan() {
+    const [rumahMakanData, menuData] = await Promise.all([
+        fetch("{% url 'restoran_makanan:show_json_rumah_makan' %}").then(res => res.json()),
+        fetch("{% url 'restoran_makanan:show_json_menu' %}").then(res => res.json())
+    ]);
+
+    return rumahMakanData.map(restaurant => {
+        const restaurantMenus = menuData.filter(menu => 
+            menu.fields.id_rumah_makan === restaurant.pk
+        );
+        
+        let minPrice = Infinity;
+        let maxPrice = 0;
+        
+        if (restaurantMenus.length > 0) {
+            restaurantMenus.forEach(menu => {
+                minPrice = Math.min(minPrice, menu.fields.harga);
+                maxPrice = Math.max(maxPrice, menu.fields.harga);
+            });
+        } else {
+            minPrice = 0;
+            maxPrice = 0;
+        }
+
+        return {
+            ...restaurant,
+            priceRange: {
+                min: minPrice,
+                max: maxPrice
+            }
+        };
+    });
+}
+async function refreshRumahMakan() {
+    document.getElementById("rumahMakanList").innerHTML = "";
+    document.getElementById("rumahMakanList").className = "";
+    const rumahMakan = await getRumahMakan();
+    let htmlString = "";
+    let classNameString = "";
+
+    if (rumahMakan.length === 0) {
+        classNameString = "flex flex-col items-center justify-center min-h-[24rem] p-6";
+        htmlString = `
+            <div class="flex flex-col items-center justify-center min-h-[24rem] p-6">
+                <img src="{% static 'image/sedih-banget.png' %}" alt="Sad face" class="w-32 h-32 mb-4"/>
+                <p class="text-center text-gray-600 mt-4">Belum ada rumah makan pada ManganRek!</p>
+            </div>
+        `;
+    }
+    else {
+        classNameString = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        rumahMakan.forEach((item) => {
+            const priceRangeText = item.priceRange.max === 0 ? 
+                "Rp 0.000 - Rp 0.000" :
+                `Rp ${(item.priceRange.min/1000).toFixed(0)}.000 - Rp ${(item.priceRange.max/1000).toFixed(0)}.000`;
+            
+            htmlString += `
+            <div class="restaurant-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-semibold text-gray-800">${item.fields.nama}</h3>
+                        <div class="flex space-x-2">
+                            <a href="/restoran-makanan/edit-rm/${item.pk}" 
+                            class="text-blue-600 hover:text-blue-800">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                                </svg>
+                            </a>
+                            <a href="/restoran-makanan/delete-rm/${item.pk}" 
+                                onclick="return confirm('Apakah Anda yakin ingin menghapus rumah makan ini?');"
+                                class="text-red-600 hover:text-red-800">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-2">${item.fields.alamat}</p>
+                    <div class="flex items-center mb-2">
+                        <span class="text-gray-600 mr-2">Tingkat Kepedasan:</span>
+                        <div class="flex">
+                            <span class="text-red-500">${item.fields.tingkat_kepedasan}/10</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <span class="text-gray-600 mr-2">Rentang Harga:</span>
+                        <span class="text-green-600">${priceRangeText}</span>
+                    </div>
+                    <button onclick="window.location.href='/restoran-makanan/detail/${item.pk}'" 
+                            class="mt-4 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors duration-300">
+                        Lihat Detail Rumah Makan
+                    </button>
+                </div>
+            </div>
+            `;
+        });
+    }
+    document.getElementById("rumahMakanList").className = classNameString;
+    document.getElementById("rumahMakanList").innerHTML = htmlString;
+}
+refreshRumahMakan();
+
+const modal = document.getElementById('crudModal');
+const modalContent = document.getElementById('crudModalContent');
+
+function showModal() {
+    const modal = document.getElementById('crudModal');
+    const modalContent = document.getElementById('crudModalContent');
+
+    modal.classList.remove('hidden'); 
+    setTimeout(() => {
+        modalContent.classList.remove('opacity-0', 'scale-95');
+        modalContent.classList.add('opacity-100', 'scale-100');
+    }, 50); 
+}
+
+function hideModal() {
+    const modal = document.getElementById('crudModal');
+    const modalContent = document.getElementById('crudModalContent');
+
+    modalContent.classList.remove('opacity-100', 'scale-100');
+    modalContent.classList.add('opacity-0', 'scale-95');
+
+    setTimeout(() => {
+        modal.classList.add('hidden');
+    }, 150); 
+}
+
+document.getElementById("cancelButton").addEventListener("click", hideModal);
+document.getElementById("closeModalBtn").addEventListener("click", hideModal);
+
+function addRumahMakan() {
+    fetch("{% url 'restoran_makanan:add_rumah_makan' %}", {
+        method: "POST",
+        body: new FormData(document.querySelector('#rumahMakanForm')),
+    })
+    .then(response => refreshRumahMakan())
+
+    document.getElementById("rumahMakanForm").reset(); 
+    document.querySelector("[data-modal-toggle='crudModal']").click();
+
+    return false;
+}
+document.getElementById("submitRumahMakan").onclick = addRumahMakan
+
+const filterModal = document.getElementById('filterModal');
+const sortModal = document.getElementById('sortModal');
+
+document.getElementById('filterBtn').onclick = () => filterModal.classList.remove('hidden');
+document.getElementById('sortBtn').onclick = () => sortModal.classList.remove('hidden');
+document.getElementById('closeFilterModal').onclick = () => filterModal.classList.add('hidden');
+document.getElementById('closeSortModal').onclick = () => sortModal.classList.add('hidden');
+
+document.getElementById('searchBar').addEventListener('input', function(e) {
+    const searchTerm = e.target.value.toLowerCase();
+    const activeView = document.getElementById('makananList').classList.contains('hidden') ? 'rumahMakan' : 'makanan';
+    
+    if (activeView === 'rumahMakan') {
+        const restaurants = document.querySelectorAll('.restaurant-card');
+        restaurants.forEach(restaurant => {
+            const name = restaurant.querySelector('h3').textContent.toLowerCase();
+            const address = restaurant.querySelector('p').textContent.toLowerCase();
+            
+            if (name.includes(searchTerm) || address.includes(searchTerm)) {
+                restaurant.style.display = '';
+            } else {
+                restaurant.style.display = 'none';
+            }
+        });
+    } else {
+        const foodItems = document.querySelectorAll('.food-card');
+        foodItems.forEach(food => {
+            const name = food.querySelector('h3').textContent.toLowerCase();
+            const restaurant = food.querySelector('p').textContent.toLowerCase();
+            
+            if (name.includes(searchTerm) || restaurant.includes(searchTerm)) {
+                food.style.display = '';
+            } else {
+                food.style.display = 'none';
+            }
+        });
+    }
+});
+
+document.getElementById('applyFilter').addEventListener('click', function() {
+    const minPrice = document.getElementById('minPrice').value;
+    const maxPrice = document.getElementById('maxPrice').value;
+    const minSpicy = document.getElementById('minSpicy').value;
+    const maxSpicy = document.getElementById('maxSpicy').value;
+    const activeView = document.getElementById('makananList').classList.contains('hidden') ? 'rumahMakan' : 'makanan';
+    
+    if (activeView === 'rumahMakan') {
+        const restaurants = document.querySelectorAll('.restaurant-card');
+        restaurants.forEach(restaurant => {
+            const spicyLevel = parseInt(restaurant.querySelector('.text-red-500').textContent);
+            const priceText = restaurant.querySelector('.text-green-600').textContent;
+            const prices = priceText.match(/\d+\./g).map(Number);
+            
+            const meetsSpicyCriteria = (!minSpicy || spicyLevel >= minSpicy) && 
+                                        (!maxSpicy || spicyLevel <= maxSpicy);
+            
+            const meetsPriceCriteria = (!minPrice || prices[0] * 1000 >= minPrice) && 
+                                        (!maxPrice || prices[1] * 1000 <= maxPrice);
+            
+            restaurant.style.display = (meetsSpicyCriteria && meetsPriceCriteria) ? '' : 'none';
+        });
+    } else {
+        const foodItems = document.querySelectorAll('.food-card');
+        foodItems.forEach(food => {
+            const priceText = food.querySelector('p:last-of-type').textContent;
+            const price = parseInt(priceText.match(/\d+/)[0]) * 1000;
+            
+            const meetsPriceCriteria = (!minPrice || price >= minPrice) && 
+                                     (!maxPrice || price <= maxPrice);
+            
+            food.style.display = meetsPriceCriteria ? '' : 'none';
+        });
+    }
+    
+    filterModal.classList.add('hidden');
+});
+
+function sortBy(criteria, view = 'rumahMakan') {
+    if (view === 'rumahMakan') {
+        const restaurantList = document.getElementById('rumahMakanList');
+        const restaurants = Array.from(document.querySelectorAll('.restaurant-card'));
+        
+        restaurants.sort((a, b) => {
+            switch(criteria) {
+                case 'price-asc':
+                    return getPriceValue(a) - getPriceValue(b);
+                case 'price-desc':
+                    return getPriceValue(b, min=false) - getPriceValue(a, min=false);
+                case 'spicy-asc':
+                    return getSpicyLevel(a) - getSpicyLevel(b);
+                case 'spicy-desc':
+                    return getSpicyLevel(b) - getSpicyLevel(a);
+            }
+        });
+        
+        restaurants.forEach(restaurant => restaurantList.appendChild(restaurant));
+    } else {
+        const foodList = document.getElementById('makananList');
+        const foodItems = Array.from(document.querySelectorAll('.food-card'));
+        
+        foodItems.sort((a, b) => {
+            const priceA = getFoodPrice(a);
+            const priceB = getFoodPrice(b);
+            
+            return criteria === 'price-asc' ? priceA - priceB : priceB - priceA;
+        });
+        
+        foodItems.forEach(food => foodList.appendChild(food));
+    }
+    
+    sortModal.classList.add('hidden');
+}
+
+function getFoodPrice(foodCard) {
+    const priceText = foodCard.querySelector('p:last-of-type').textContent;
+    return parseInt(priceText.match(/\d+/)[0]) * 1000;
+}
+
+function getPriceValue(restaurant, min=true) {
+    const priceText = restaurant.querySelector('.text-green-600').textContent;
+    const prices = priceText.match(/\d+\./g).map(Number);
+    return min ? prices[0] : prices[1];
+}
+
+function getSpicyLevel(restaurant) {
+    return parseInt(restaurant.querySelector('.text-red-500').textContent);
+}
+
+document.getElementById('resetFilter').addEventListener('click', function() {
+    document.getElementById('minPrice').value = '';
+    document.getElementById('maxPrice').value = '';
+    document.getElementById('minSpicy').value = '';
+    document.getElementById('maxSpicy').value = '';
+    
+    const activeView = document.getElementById('makananList').classList.contains('hidden') ? 'rumahMakan' : 'makanan';
+    const items = document.querySelectorAll(activeView === 'rumahMakan' ? '.restaurant-card' : '.food-card');
+    
+    items.forEach(item => {
+        item.style.display = '';
+    });
+});
+</script>
+{% endblock %}
