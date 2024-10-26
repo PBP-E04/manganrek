@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, HttpResponseNotFound, JsonResponse, HttpResponseRedirect
 from django.core import serializers
-import json
+import json, copy
 from promo_diskon.models import DiscEntry
 from promo_diskon.forms import DiscEntryForm
 from django.contrib import messages
@@ -61,18 +61,35 @@ def add_disc_entry_ajax(request):
 
 
 def edit_disc_entry(request, id):
-    # Get product entry berdasarkan id
-    product = DiscEntry.objects.get(pk = id)
-
-    # Set product entry sebagai instance dari form
-    form = DiscEntryForm(request.POST or None, instance=product)
+    # Get discount entry based on id
+    discount = DiscEntry.objects.get(pk=id)
+    resto = discount.resto
+    resto_obj = RumahMakan.objects.get(nama=resto)
+    resto_name = resto_obj.nama
+    
+    # Set discount entry as instance of form
+    form = DiscEntryForm(request.POST or None, instance=discount)
 
     if form.is_valid() and request.method == "POST":
-        # Simpan form dan kembali ke halaman awal
-        form.save()
+        # Save the form and redirect to the main page
+        temp = form.save(commit=False)
+        resto_name = request.POST.get('resto')
+        try:
+            restaurant = RumahMakan.objects.get(nama=resto_name)
+            temp.resto = restaurant.nama  # Assign the found restaurant object (or UUID)
+        except RumahMakan.DoesNotExist:
+            return JsonResponse({"error": "Restaurant not found"}, status=400)
+        
+        temp.user=request.user
+        temp.save()
         return HttpResponseRedirect(reverse('promo_diskon:show_main'))
 
-    context = {'form': form}
+    form_data = {field.name: form[field.name].value() for field in form}
+    context = {
+        'form': form,
+        'form_data': form_data,  # Get restaurant name
+        'resto_name': resto_name
+    }
     return render(request, "edit_disc.html", context)
     
 
