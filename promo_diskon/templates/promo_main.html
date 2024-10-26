@@ -1,0 +1,252 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+    <title>ManganRek! - Discount Promo List</title>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.7/dist/purify.min.js"></script>
+{% endblock meta %}
+
+{% block content %}
+{% comment %} {% include 'promo_navbar.html' %} {% endcomment %}
+
+<body class="flex flex-col items-center min-h-screen bg-gradient-to-b from-[#76B947] to-[#92C967]">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-white text-center mb-8 drop-shadow-lg">Temukan Promo Diskon!</h1>
+
+        {% if not disc_entries %}
+            <div class="flex flex-col items-center justify-center min-h-[24rem] bg-white/80 rounded-xl p-8 backdrop-blur-sm">
+                <img src="{% static 'image/sad_face.png' %}" alt="No Data" class="w-32 h-32 mb-4 opacity-80">
+                <p class="text-gray-600 text-xl">Belum ada promo diskon untuk saat ini</p>
+            </div>
+        {% else %}
+            <div id="disc_entry_cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"></div>
+        {% endif %}
+
+        <div class="text-center mt-8">
+            <button data-modal-target="crudModal" data-modal-toggle="crudModal" 
+                class="bg-white text-[#76B947] hover:bg-[#92C967] hover:text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105"
+                onclick="showModal();">
+                Tambah Promo Baru
+            </button>
+        </div>
+    </div>
+
+    <!-- Add Entry Modal -->
+    <div id="crudModal" tabindex="-1" aria-hidden="true" class="hidden fixed inset-0 z-50 w-full flex items-center justify-center bg-black bg-opacity-50 overflow-x-hidden overflow-y-auto backdrop-blur-sm transition-opacity duration-300 ease-out">
+        <div id="crudModalContent" class="relative bg-white rounded-2xl shadow-2xl w-5/6 sm:w-3/4 md:w-1/2 lg:w-1/3 mx-4 sm:mx-0 transform scale-95 opacity-0 transition-transform transition-opacity duration-300 ease-out">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-6 border-b">
+                <h3 class="text-2xl font-bold text-[#76B947]">Tambah Promo Baru</h3>
+                <button type="button" class="text-gray-400 hover:text-gray-600 transition-colors duration-200" id="closeModalBtn">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="px-6 py-4 space-y-6">
+                <form id="discountEntryForm" class="space-y-4">
+                    <div>
+                        <label for="code" class="block text-sm font-medium text-gray-700 mb-1">Kode Voucher</label>
+                        <input type="text" id="code" name="code" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#76B947] focus:border-transparent" required>
+                    </div>
+                    <div>
+                        <label for="resto" class="block text-sm font-medium text-gray-700 mb-1">Nama Restoran</label>
+                        <input type="text" id="resto" name="resto" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#76B947] focus:border-transparent" required>
+                    </div>
+                    <div>
+                        <label for="percentage" class="block text-sm font-medium text-gray-700 mb-1">Persentase Diskon</label>
+                        <input type="number" id="percentage" name="percentage" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#76B947] focus:border-transparent" required>
+                    </div>
+                    <div>
+                        <label for="min_payment" class="block text-sm font-medium text-gray-700 mb-1">Minimal Pembayaran</label>
+                        <input type="number" id="min_payment" name="min_payment" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#76B947] focus:border-transparent" required>
+                    </div>
+                    <div>
+                        <label for="valid_period" class="block text-sm font-medium text-gray-700 mb-1">Periode Berlaku</label>
+                        <input type="date" id="valid_period" name="valid_period" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#76B947] focus:border-transparent" required>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="flex justify-end space-x-3 p-6 border-t">
+                <button type="button" id="cancelButton" class="px-6 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors duration-200">
+                    Batal
+                </button>
+                <button type="submit" form="discountEntryForm" id="submitDiscountEntry" class="px-6 py-2 rounded-lg bg-[#76B947] text-white hover:bg-[#92C967] transition-colors duration-200">
+                    Simpan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function addDiscountEntry() {
+            try {
+                const response = await fetch("{% url 'promo_diskon:add_disc_entry_ajax' %}", {
+                    method: "POST",
+                    body: new FormData(document.querySelector('#discountEntryForm'))
+                });
+
+                if (response.ok) {
+                    await refreshDiscountEntries();
+                    document.getElementById("discountEntryForm").reset();
+                    hideModal();
+                } else {
+                    const data = await response.json();
+                    if (data.error) {
+                        alert(data.error);
+                    }
+                }
+            } catch (error) {
+                console.error("Error:", error);
+            }
+            return false;
+        }
+
+        async function getDiscountEntries() {
+            return fetch("{% url 'promo_diskon:show_json' %}").then(res => res.json());
+        }
+
+        async function refreshDiscountEntries() {
+            const container = document.getElementById("disc_entry_cards");
+            container.innerHTML = "";
+            
+            const discountEntries = await getDiscountEntries();
+            
+            if (!discountEntries.length) {
+                container.innerHTML = `
+                    <div class="col-span-full flex flex-col items-center justify-center min-h-[24rem] bg-white/80 rounded-xl p-8 backdrop-blur-sm">
+                        <img src="{% static 'image/sad_face.png' %}" alt="Sad face" class="w-32 h-32 mb-4 opacity-80"/>
+                        <p class="text-gray-600 text-xl">Belum ada data promo diskon.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            discountEntries.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'bg-white/90 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl';
+                card.innerHTML = `
+                <div>
+                  <div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-[#76B947] mb-4">${item.fields.code}</h3>
+                        <div class="space-y-2 text-gray-700">
+                            <p class="flex items-center">
+                                <span class="font-semibold">Restoran:</span>
+                                <span class="ml-2">${item.fields.resto}</span>
+                            </p>
+                            <p class="flex items-center">
+                                <span class="font-semibold">Diskon:</span>
+                                <span class="ml-2">${item.fields.percentage}%</span>
+                            </p>
+                            <p class="flex items-center">
+                                <span class="font-semibold">Min. Pembayaran:</span>
+                                <span class="ml-2">Rp ${item.fields.min_payment.toLocaleString()}</span>
+                            </p>
+                            <p class="flex items-center">
+                                <span class="font-semibold">Berlaku sampai:</span>
+                                <span class="ml-2">${item.fields.valid_period}</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center p-4 border-t border-gray-200">
+                        <a href="/promo-diskon/edit-disc/${item.pk}" class="text-yellow-500 hover:text-yellow-600 transition duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                            </svg>
+                        </a>
+                        <a href="/promo-diskon/delete-disc/${item.pk}" class="text-red-500 hover:text-red-600 transition duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function showModal() {
+            const modal = document.getElementById('crudModal');
+            const modalContent = document.getElementById('crudModalContent');
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modalContent.classList.add('opacity-100', 'scale-100');
+            }, 50);
+        }
+
+        function hideModal() {
+            const modal = document.getElementById('crudModal');
+            const modalContent = document.getElementById('crudModalContent');
+            
+            modalContent.classList.remove('opacity-100', 'scale-100');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        document.getElementById('closeModalBtn').addEventListener('click', hideModal);
+        document.getElementById('cancelButton').addEventListener('click', hideModal);
+        document.getElementById('discountEntryForm').onsubmit = addDiscountEntry;
+        document.addEventListener('DOMContentLoaded', refreshDiscountEntries);
+    </script>
+
+    <script>
+      async function fetchEditEntryData(discId) {
+        try {
+            const response = await fetch(`/promo-diskon/edit-disc-entry/${discId}/`);
+            const data = await response.json();  // Make sure your Django view returns JSON here
+            if (response.ok) {
+                openEditModal(data);
+            } else {
+                alert("Failed to load entry data.");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+      }
+
+      async function saveEditEntry(discId) {
+        const formData = new FormData();
+        formData.append('code', document.getElementById('edit_code').value);
+        formData.append('resto', document.getElementById('edit_resto').value);
+        formData.append('percentage', document.getElementById('edit_percentage').value);
+        formData.append('min_payment', document.getElementById('edit_min_payment').value);
+        formData.append('valid_period', document.getElementById('edit_valid_period').value);
+    
+        const url = `/promo-diskon/edit-disc-entry/${discId}/`;
+        const response = await fetch(url, {
+            method: "POST",
+            body: formData
+        });
+    
+        if (response.ok) {
+            await refreshDiscountEntries();
+            closeEditModal();
+        } else {
+            alert("Failed to save changes");
+        }
+      }
+
+      function openEditModal(data) {
+        document.getElementById('edit_code').value = data.fields.code;
+        document.getElementById('edit_resto').value = data.fields.resto;
+        document.getElementById('edit_percentage').value = data.fields.percentage;
+        document.getElementById('edit_min_payment').value = data.fields.min_payment;
+        document.getElementById('edit_valid_period').value = data.fields.valid_period;
+        document.getElementById('editModal').classList.remove('hidden');
+    }
+
+      function closeEditModal() {
+          document.getElementById('editModal').classList.add('hidden');
+      }
+  </script>
+
+</body>
+{% endblock content %}

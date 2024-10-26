@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, HttpResponseNotFound, JsonResponse, HttpResponseRedirect
@@ -11,14 +11,19 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_POST
+from django.views.decorators.http import require_POST, require_http_methods
 from django.utils.html import strip_tags
+from .models import RumahMakan
 
 # Create your views here.
 def show_main(request):
     disc_entries = DiscEntry.objects.all()
-    context = {'disc_entries': disc_entries}
-    return render(request, "main.html", context)
+    restaurants = RumahMakan.objects.all()
+    context = {
+        'disc_entries': disc_entries,
+        'restaurants': restaurants
+    }
+    return render(request, "promo_main.html", context)
 
 def create_disc_entry(request):
     form = DiscEntryForm(request.POST or None)
@@ -30,28 +35,37 @@ def create_disc_entry(request):
     context = {'form': form}
     return render(request, "create_disc_entry.html", context)
 
-# @login_required
+@csrf_exempt
 @require_POST
 def add_disc_entry_ajax(request):
     form = DiscEntryForm(request.POST)
-    
+
     if form.is_valid():
-        disc = form.save(commit=False)
-        disc.user = request.user  # Set the current logged-in user
-        disc.save()  # Save the form
-        return JsonResponse({"message": "CREATED"}, status=201)
+        disc = form.save(commit=False)  # Save the disc without committing yet
+        
+        # Fetch the restaurant by name from the rumahmakan model
+        resto_name = request.POST.get('resto')
+        try:
+            restaurant = RumahMakan.objects.get(nama=resto_name)
+            disc.resto = restaurant.nama  # Assign the found restaurant object (or UUID)
+        except RumahMakan.DoesNotExist:
+            return JsonResponse({"error": "Restaurant not found"}, status=400)
+
+        disc.user = request.user  # Set the user manually
+        disc.save()  # Now save the object
+        return JsonResponse({"message": "Discount entry created successfully"}, status=201)
     else:
-        errors = form.errors.as_json()
-        return JsonResponse({"error": errors}, status=400)
+        # Send back an error message with status 400
+        error_message = ', '.join([f"{field}: {error[0]}" for field, error in form.errors.items()])
+        return JsonResponse({"error": f"Error: {error_message}"}, status=400)
 
 
-
-def edit_disc_info(request, id):
+def edit_disc_entry(request, id):
     # Get product entry berdasarkan id
-    disc = DiscEntry.objects.get(pk = id)
+    product = DiscEntry.objects.get(pk = id)
 
     # Set product entry sebagai instance dari form
-    form = DiscEntryForm(request.POST or None, instance=disc)
+    form = DiscEntryForm(request.POST or None, instance=product)
 
     if form.is_valid() and request.method == "POST":
         # Simpan form dan kembali ke halaman awal
@@ -60,6 +74,7 @@ def edit_disc_info(request, id):
 
     context = {'form': form}
     return render(request, "edit_disc.html", context)
+    
 
 def delete_disc(request, id):
     # Get product berdasarkan id
@@ -68,7 +83,29 @@ def delete_disc(request, id):
     disc.delete()
     # Kembali ke halaman awal
     return HttpResponseRedirect(reverse('promo_diskon:show_main'))
-    
+
+def edit_product(request, id):
+    # Get product entry berdasarkan id
+    product = DiscEntry.objects.get(pk = id)
+
+    # Set product entry sebagai instance dari form
+    form = DiscEntryForm(request.POST or None, instance=product)
+
+    if form.is_valid() and request.method == "POST":
+        # Simpan form dan kembali ke halaman awal
+        form.save()
+        return HttpResponseRedirect(reverse('promo_diskon:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_product.html", context)
+
+def delete_disc(request, id):
+    # Get disc berdasarkan id
+    disc = DiscEntry.objects.get(pk = id)
+    # Hapus disc
+    disc.delete()
+    # Kembali ke halaman awal
+    return HttpResponseRedirect(reverse('promo_diskon:show_main'))    
 
 def show_xml(request):
     data = DiscEntry.objects.all()
