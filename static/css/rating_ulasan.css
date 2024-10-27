@@ -1,63 +1,103 @@
-.form-style form input,
-.form-style form textarea,
-.form-style form select {
-    width: 100%;
-    padding: 0.5rem;
-    border: 2px solid #bcbcbc;  /* Gray border */
-    border-radius: 0.375rem;     /* Rounded corners */
-    transition: border-color 0.3s, box-shadow 0.3s;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
 }
 
-.form-style form input:focus,
-.form-style form textarea:focus,
-.form-style form select:focus {
-    outline: none;
-    border-color: #bcbcbc;       /* Border color on focus */
-    box-shadow: 0 0 0 3px #bcbcbc; /* Glow effect on focus */
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.search-bar-container {
-    display: flex;
-    justify-content: center;
-    padding: 20px 0;
-    background-color: #f4f4f4;
-  }
-  
-  .search-bar {
-    width: 60%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  /* Restaurant Card Styling */
-  .restaurant-card {
-    background: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 15px;
-    margin: 15px auto;
-    width: 80%;
-  }
-  
-  .restaurant-image {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-  }
-  
-  .reviews-dropdown button {
-    background-color: #ddd;
-    border: none;
-    padding: 5px;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-  .see-more {
-    color: #007bff;
-    text-decoration: underline;
-    display: block;
-    margin-top: 10px;
-  }  
+.search-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-bar input[type="text"] {
+  width: 70%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-bar button:hover {
+  background-color: #45a049;
+}
+
+.reviews-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.review-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.review-card:hover {
+  transform: scale(1.02);
+}
+
+.review-card h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.review-card p {
+  margin: 8px 0;
+  color: #555;
+}
+
+.review-card button {
+  margin-right: 10px;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.review-card button:hover {
+  background-color: #0056b3;
+}
+
+.review-card .edit-btn {
+  background-color: #ffc107;
+}
+
+.review-card .edit-btn:hover {
+  background-color: #e0a800;
+}
+
+.review-card .delete-btn {
+  background-color: #dc3545;
+}
+
+.review-card .delete-btn:hover {
+  background-color: #c82333;
+}

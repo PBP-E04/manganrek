@@ -13,4 +13,4 @@ class Review(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.review_name} - {self.restaurant.name} ({self.stars} stars)"
+        return f"{self.review_name} - {self.rumah_makan.nama} ({self.stars} stars)"
