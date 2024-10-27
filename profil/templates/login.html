@@ -3,6 +3,8 @@
 {% block meta %}
 <title>Login</title>
 {% endblock meta %}
+
+{% block content %}
 <style>
     /* Styling untuk login */
     body {
@@ -101,3 +103,4 @@
     
     <p>Don't have an account yet? <a href="{% url 'profil:register_user' %}">Register Now</a></p>
 </div>
+{% endblock content %}
