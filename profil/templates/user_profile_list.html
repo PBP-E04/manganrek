@@ -1,167 +1,166 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profiles</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f0f8f0;
-        }
+{% extends 'base.html' %}
+{% load static %}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+{% block meta %}
+<title>User Profiles</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f0f8f0;
+    }
 
-        h1 {
-            color: #2e8b57;
-            text-align: center;
-            margin-bottom: 30px;
-        }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
 
-        .profile-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
+    h1 {
+        color: #2e8b57;
+        text-align: center;
+        margin-bottom: 30px;
+    }
 
-        .profile-card {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
+    .profile-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
 
-        .profile-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+    .profile-card {
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
 
-        .profile-header h2 {
-            color: #2e8b57;
-            margin: 0;
-            font-size: 1.5em;
-        }
+    .profile-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-        .profile-photo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: 20px auto;
-            display: block;
-            border: 3px solid #2e8b57;
-        }
+    .profile-header h2 {
+        color: #2e8b57;
+        margin: 0;
+        font-size: 1.5em;
+    }
 
-        .profile-info {
-            margin-bottom: 20px;
-        }
+    .profile-photo {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin: 20px auto;
+        display: block;
+        border: 3px solid #2e8b57;
+    }
 
-        .profile-info p {
-            margin: 10px 0;
-            padding: 5px 0;
-            border-bottom: 1px solid #eee;
-        }
+    .profile-info {
+        margin-bottom: 20px;
+    }
 
-        .profile-info strong {
-            color: #2e8b57;
-            display: inline-block;
-            width: 100px;
-        }
+    .profile-info p {
+        margin: 10px 0;
+        padding: 5px 0;
+        border-bottom: 1px solid #eee;
+    }
 
-        .button-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+    .profile-info strong {
+        color: #2e8b57;
+        display: inline-block;
+        width: 100px;
+    }
 
-        .view-button {
-            background: #4caf50;
-            color: white;
-            padding: 10px;
-            border-radius: 4px;
-            text-align: center;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-        }
+    .button-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
 
-        .delete-button {
-            background: #e74c3c;
-            color: white;
-            padding: 10px;
-            border-radius: 4px;
-            border: none;
-            cursor: pointer;
-        }
+    .view-button {
+        background: #4caf50;
+        color: white;
+        padding: 10px;
+        border-radius: 4px;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+    }
 
-        .logout-button {
-            display: block;
-            width: 200px;
-            margin: 20px auto;
-            padding: 10px;
-            background: #2d572c;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 4px;
-        }
+    .delete-button {
+        background: #e74c3c;
+        color: white;
+        padding: 10px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+    }
 
-        .last-login {
-            text-align: center;
-            color: #666;
-            margin-top: 20px;
-        }
+    .logout-button {
+        display: block;
+        width: 200px;
+        margin: 20px auto;
+        padding: 10px;
+        background: #2d572c;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 4px;
+    }
 
-        .no-photo {
-            text-align: center;
-            color: #666;
-            font-style: italic;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>User Profiles</h1>
-        
-        <div class="profile-grid">
-            {% for profile in profiles %}
-                <div class="profile-card">
-                    <div class="profile-header">
-                        <h2>{{ profile.user.username }}</h2>
-                    </div>
+    .last-login {
+        text-align: center;
+        color: #666;
+        margin-top: 20px;
+    }
 
-                    {% if profile.foto_profil %}
-                        <img src="{{ profile.foto_profil.url }}" alt="{{ profile.user.username }}'s photo" class="profile-photo">
-                    {% else %}
-                        <p class="no-photo">No profile photo available</p>
-                    {% endif %}
+    .no-photo {
+        text-align: center;
+        color: #666;
+        font-style: italic;
+    }
+</style>
+{% endblock meta %}
 
-                    <div class="profile-info">
-                        <p><strong>Email:</strong> {{ profile.user.email }}</p>
-                        <p><strong>Favorit:</strong> {{ profile.jenis_makanan_favorit }}</p>
-                        <p><strong>Preferensi:</strong> {{ profile.preferensi_makanan }}</p>
-                    </div>
-
-                    <div class="button-group">
-                        <a href="{% url 'profil:user_profile_detail' profile.id %}" class="view-button">View Profile</a>
-                        <form method="POST" action="{% url 'profil:delete_account' %}">
-                            {% csrf_token %}
-                            <button type="submit" class="delete-button">Hapus Akun</button>
-                        </form>
-                    </div>
+{% block content %}
+<div class="container">
+    <h1>User Profiles</h1>
+    
+    <div class="profile-grid">
+        {% for profile in profiles %}
+            <div class="profile-card">
+                <div class="profile-header">
+                    <h2>{{ profile.user.username }}</h2>
                 </div>
-            {% empty %}
-                <p>No profiles available.</p>
-            {% endfor %}
-        </div>
 
-        <a href="{% url 'profil:logout' %}" class="logout-button">Logout</a>
-        <p class="last-login">Sesi terakhir login: {{ last_login }}</p>
+                {% if profile.foto_profil %}
+                    <img src="{{ profile.foto_profil.url }}" alt="{{ profile.user.username }}'s photo" class="profile-photo">
+                {% else %}
+                    <p class="no-photo">No profile photo available</p>
+                {% endif %}
+
+                <div class="profile-info">
+                    <p><strong>Email:</strong> {{ profile.user.email }}</p>
+                    <p><strong>Favorit:</strong> {{ profile.jenis_makanan_favorit }}</p>
+                    <p><strong>Preferensi:</strong> {{ profile.preferensi_makanan }}</p>
+                </div>
+
+                <div class="button-group">
+                    <a href="{% url 'profil:user_profile_detail' profile.id %}" class="view-button">View Profile</a>
+                    <form method="POST" action="{% url 'profil:delete_account' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="delete-button">Hapus Akun</button>
+                    </form>
+                </div>
+            </div>
+        {% empty %}
+            <p>No profiles available.</p>
+        {% endfor %}
     </div>
-</body>
-</html>
+
+    <a href="{% url 'profil:logout' %}" class="logout-button">Logout</a>
+    <p class="last-login">Sesi terakhir login: {{ last_login }}</p>
+</div>
+{% endblock content %}

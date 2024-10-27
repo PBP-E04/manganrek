@@ -71,6 +71,26 @@ def user_profile_update(request, user_profile_id):
         'user_profile': user_profile
     })
     
+def user_profile_create(request):
+    """Create a new user profile."""
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('user_profile_list')  # Redirect ke daftar profil setelah berhasil
+    else:
+        form = UserProfileForm()
+    
+    return render(request, 'user_profile_form.html', {'form': form})
+
+def user_profile_delete(request, user_id):
+    """Delete a user's profile."""
+    user_profile = get_object_or_404(UserProfile, id=user_id)
+    if request.method == 'POST':
+        user_profile.delete()
+        return redirect('user_profile_list')  # Redirect ke halaman daftar setelah penghapusan
+    return render(request, 'user_profile_confirm_delete.html', {'user_profile': user_profile})
+    
 def register_user(request):
     form = UserCreationForm()
 
@@ -121,8 +141,8 @@ def follow_user(request, user_profile_id):
     return render(request, 'user_profile_detail.html', context)
 
 @login_required(login_url='/profil/login')
-def unfollow_user(request, user_id):
-    profile_to_unfollow = get_object_or_404(UserProfile, id=user_id)
+def unfollow_user(request, user_profile_id):
+    profile_to_unfollow = get_object_or_404(UserProfile, id=user_profile_id)
     Follower.objects.filter(follower=request.user.profile, user=profile_to_unfollow).delete()
     context = {
         'user_profile': profile_to_unfollow,

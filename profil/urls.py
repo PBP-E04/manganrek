@@ -4,8 +4,10 @@ from django.contrib.auth import views as auth_views
 
 from profil.views import (
     user_profile_list,
+    user_profile_create,
     user_profile_detail,
     user_profile_update,
+    user_profile_delete,
     login_user,
     logout_user,
     register_user,
@@ -18,8 +20,10 @@ app_name = 'profil'
 
 urlpatterns = [
     path('user-profilelist/', user_profile_list, name='user_profile_list'),  # URL untuk daftar profil pengguna
+    path('create/', user_profile_create, name='user_profile_create'),  # URL untuk membuat profil baru
     path('user-profile/<uuid:user_profile_id>/', user_profile_detail, name='user_profile_detail'),  # Pastikan ini sesuai
     path('user-profile/<uuid:user_profile_id>/update/', user_profile_update, name='user_profile_update'),
+    path('user-profile-delete/', user_profile_delete, name='user_profile_delete'),  # URL untuk menghapus profil
     path('login/', login_user, name='login'),  # Pastikan ini ada
     path('logout/', logout_user, name='logout'),  # URL untuk logout
     path('register/', register_user, name='register'),  # URL untuk mendaftar
