@@ -7,29 +7,35 @@
     <title>User Profiles</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <style>
-        /* Styling umum */
+        /* General Styling */
         body {
             font-family: Arial, sans-serif;
-            background-color: #eaf7ea;
+            background: linear-gradient(135deg, #eaf7ea, #d0e8d0);
             color: #333;
             margin: 0;
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         h1 {
             color: #2e8b57;
-            font-size: 2em;
+            font-size: 2.2em;
             text-align: center;
             margin-bottom: 20px;
+            font-weight: bold;
         }
 
-        /* Styling container dan card profil */
+        /* Container and Profile Card Styling */
         .profile-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
             gap: 20px;
             width: 100%;
             max-width: 1200px;
@@ -39,66 +45,94 @@
         .profile-card {
             background-color: #ffffff;
             border: 1px solid #c8e6c9;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
             text-align: center;
-            transition: transform 0.2s ease-in-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .profile-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
         }
 
-        /* Styling foto profil */
+        /* Profile Photo Styling */
         .profile-photo {
-            width: 100px;
-            height: 100px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 15px;
             border: 3px solid #2e8b57;
+            box-shadow: 0px 0px 12px rgba(0, 128, 0, 0.2);
         }
 
-        /* Styling tombol */
-        .profile-card a {
+        /* Buttons and Link Styling */
+        .profile-card a, .profile-card button {
             display: inline-block;
             background-color: #4caf50;
             color: white;
-            padding: 8px 16px;
-            border-radius: 4px;
-            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 6px;
             font-weight: bold;
+            font-size: 14px;
             margin-top: 10px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+            border: none;
         }
 
-        .profile-card a:hover {
+        .profile-card a:hover, .profile-card button:hover {
             background-color: #388e3c;
+            transform: translateY(-3px);
         }
 
-        /* Styling jika tidak ada foto profil */
+        /* Delete Account Button Styling */
+        .profile-card form button {
+            background-color: #e74c3c;
+            margin-top: 15px;
+            font-size: 13px;
+            padding: 8px 16px;
+        }
+
+        .profile-card form button:hover {
+            background-color: #c0392b;
+        }
+
+        /* No Photo Text Styling */
         .no-photo {
             font-style: italic;
-            color: #777;
+            color: #888;
             margin-top: 15px;
         }
 
-        .back-button {
-            display: block;
-            width: 100px; /* Tentukan lebar yang sesuai */
-            margin: 20px auto;
+        /* Back and Logout Button Styling */
+        .back-button, .logout-button {
+            display: inline-block;
             background-color: #2d572c;
             color: white;
             padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             text-align: center;
             text-decoration: none;
             font-weight: bold;
-            transition: background-color 0.3s;
-    }
+            transition: background-color 0.3s, transform 0.3s;
+            margin: 10px;
+        }
 
+        .back-button:hover, .logout-button:hover {
+            background-color: #388e3c;
+            transform: translateY(-3px);
+        }
+
+        /* Last Login Styling */
+        .last-login {
+            color: #555;
+            font-size: 0.9em;
+            text-align: center;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -118,21 +152,18 @@
                 {% endif %}
                 
                 <a href="{% url 'profil:user_profile_detail' profile.id %}">View Profile</a>
+                
                 <form method="POST" action="{% url 'profil:delete_account' %}">
                     {% csrf_token %}
                     <button type="submit">Hapus Akun</button>
                 </form>
-                
             </div>
         {% empty %}
             <p>No profiles available.</p>
         {% endfor %}
-        <a href="{% url 'profil:logout' %}">
-            <button>Logout</button>
-        <h5>Sesi terakhir login: {{ last_login }}</h5>
-
-          </a>
-
     </div>
+    
+    <a href="{% url 'profil:logout' %}" class="logout-button">Logout</a>
+    <p class="last-login">Sesi terakhir login: {{ last_login }}</p>
 </body>
 </html>
