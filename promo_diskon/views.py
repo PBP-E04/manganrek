@@ -14,6 +14,26 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST, require_http_methods
 from django.utils.html import strip_tags
 from .models import RumahMakan
+from django.db.models import Q
+
+
+@require_http_methods(["GET"])
+def search_promos(request):
+    query = request.GET.get('q', '').strip()
+    
+    if query:
+        # Search in both voucher codes and restaurant names
+        disc_entries = DiscEntry.objects.filter(
+            Q(code__icontains=query) |
+            Q(resto__icontains=query)
+        )
+    else:
+        disc_entries = DiscEntry.objects.all()
+    
+    # Serialize the results
+    serialized_data = serializers.serialize('json', disc_entries)
+    return JsonResponse({'results': serialized_data}, safe=False)
+
 
 # Create your views here.
 def show_main(request):
@@ -101,28 +121,22 @@ def delete_disc(request, id):
     # Kembali ke halaman awal
     return HttpResponseRedirect(reverse('promo_diskon:show_main'))
 
-def edit_product(request, id):
-    # Get product entry berdasarkan id
-    product = DiscEntry.objects.get(pk = id)
-
-    # Set product entry sebagai instance dari form
-    form = DiscEntryForm(request.POST or None, instance=product)
-
-    if form.is_valid() and request.method == "POST":
-        # Simpan form dan kembali ke halaman awal
-        form.save()
-        return HttpResponseRedirect(reverse('promo_diskon:show_main'))
-
-    context = {'form': form}
-    return render(request, "edit_product.html", context)
-
-def delete_disc(request, id):
-    # Get disc berdasarkan id
-    disc = DiscEntry.objects.get(pk = id)
-    # Hapus disc
-    disc.delete()
-    # Kembali ke halaman awal
-    return HttpResponseRedirect(reverse('promo_diskon:show_main'))    
+@require_http_methods(["GET"])
+def search_promos(request):
+    query = request.GET.get('q', '')
+    
+    if query:
+        # Search in both voucher codes and restaurant names
+        disc_entries = DiscEntry.objects.filter(
+            Q(kode_voucher__icontains=query) |
+            Q(resto__icontains=query)
+        )
+    else:
+        disc_entries = DiscEntry.objects.all()
+    
+    # Serialize the results
+    data = serializers.serialize('json', disc_entries)
+    return JsonResponse({'results': data}, safe=False)
 
 def show_xml(request):
     data = DiscEntry.objects.all()
