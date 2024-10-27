@@ -1,0 +1,16 @@
+<form method="POST">
+    {% csrf_token %}
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" name="email" value="{{ form.email.value }}">
+    </div>
+    <div>
+        <label for="jenis_makanan_favorit">Jenis Makanan Favorit:</label>
+        <input type="text" name="jenis_makanan_favorit" value="{{ form.jenis_makanan_favorit.value }}">
+    </div>
+    <div>
+        <label for="preferensi_makanan">Preferensi Makanan:</label>
+        <textarea name="preferensi_makanan">{{ form.preferensi_makanan.value }}</textarea>
+    </div>
+    <button type="submit">Update Profile</button>
+</form>
