@@ -4,87 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profil Pengguna</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #e8f5e9;
-            font-family: Arial, sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-        }
-        .container {
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            max-width: 500px;
-            width: 100%;
-        }
-        h2 {
-            color: #388e3c;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            color: #2e7d32;
-            font-weight: bold;
-        }
-        .btn-primary {
-            background-color: #43a047;
-            border: none;
-        }
-        .btn-primary:hover {
-            background-color: #2e7d32;
-        }
-        .btn-secondary {
-            background-color: #a5d6a7;
-            color: #ffffff;
-        }
-        .btn-secondary:hover {
-            background-color: #81c784;
-            color: #ffffff;
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="container">
-        <h2>Edit Profil Pengguna</h2>
+<body class="bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center min-h-screen p-6">
+    <div class="bg-white rounded-2xl shadow-xl p-8 max-w-lg w-full">
+        <div class="flex flex-col items-center mb-8">
+            <h2 class="text-green-800 text-3xl font-bold mb-2">Edit Profil Pengguna</h2>
+            <div class="h-1 w-20 bg-green-500 rounded-full"></div>
+        </div>
         
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data" class="space-y-6">
             {% csrf_token %}
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" value="{{ user_profile.user.username }}" readonly>
+            
+            <!-- Username Field -->
+            <div class="space-y-2">
+                <label for="username" class="text-green-800 font-medium pl-1">
+                    Username
+                </label>
+                <input type="text" 
+                       class="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-xl text-gray-700 font-medium" 
+                       id="username" 
+                       value="{{ user_profile.user.username }}" 
+                       readonly>
             </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" value="{{ user_profile.user.email }}">
+            
+            <!-- Email Field -->
+            <div class="space-y-2">
+                <label for="email" class="text-green-800 font-medium pl-1">
+                    Email
+                </label>
+                <input type="email" 
+                       class="w-full px-4 py-3 bg-white border-2 border-green-200 rounded-xl text-gray-800
+                              focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200
+                              hover:border-green-300 transition-all duration-200" 
+                       id="email" 
+                       name="email" 
+                       value="{{ user_profile.user.email }}">
             </div>
-            <div class="form-group">
-                <label for="foto_profil">Foto Profil</label>
+            
+            <!-- Profile Picture Field -->
+            <div class="space-y-2">
+                <label for="foto_profil" class="text-green-800 font-medium pl-1">
+                    Foto Profil
+                </label>
                 {% if user_profile.foto_profil %}
-                    <img src="{{ user_profile.foto_profil.url }}" alt="Current Profile Picture" 
-                         style="width: 100px; height: 100px; margin: 10px 0; border-radius: 50%;">
+                    <div class="flex justify-center my-4">
+                        <div class="relative group">
+                            <img src="{{ user_profile.foto_profil.url }}" 
+                                 alt="Current Profile Picture" 
+                                 class="w-32 h-32 rounded-full object-cover border-4 border-green-200 group-hover:border-green-400 transition-all duration-300">
+                            <div class="absolute inset-0 rounded-full bg-green-800 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                        </div>
+                    </div>
                 {% endif %}
-                {{ form.foto_profil }}
+                <div class="mt-2">
+                    <div class="relative">
+                        {{ form.foto_profil }}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Favorite Food Type Field -->
+            <div class="space-y-2">
+                <label class="text-green-800 font-medium pl-1">
+                    {{ form.jenis_makanan_favorit.label_tag }}
+                </label>
+                <div class="relative">
+                    {{ form.jenis_makanan_favorit }}
+                </div>
+            </div>
+            
+            <!-- Food Preference Field -->
+            <div class="space-y-2">
+                <label class="text-green-800 font-medium pl-1">
+                    {{ form.preferensi_makanan.label_tag }}
+                </label>
+                <div class="relative">
+                    {{ form.preferensi_makanan }}
+                </div>
             </div>
         
-            {{ form.jenis_makanan_favorit.label_tag }}
-            {{ form.jenis_makanan_favorit }}
-        
-            {{ form.preferensi_makanan.label_tag }}
-            {{ form.preferensi_makanan }}
-        
-            <button type="submit" class="btn btn-primary w-100">Simpan Perubahan</button>
-            <a href="{% url 'profil:user_profile_detail' user_profile.id %}" class="btn btn-secondary w-100 mt-2">Batal</a>
+            <!-- Action Buttons -->
+            <div class="pt-6 space-y-4">
+                <button type="submit" 
+                        class="w-full bg-green-600 text-white font-bold py-4 px-6 rounded-xl
+                               hover:bg-green-700 active:bg-green-800
+                               transform transition-all duration-200
+                               focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+                    Simpan Perubahan
+                </button>
+                
+                <a href="{% url 'profil:user_profile_detail' user_profile.id %}" 
+                   class="block w-full py-4 px-6 rounded-xl text-center font-bold
+                          bg-green-50 text-green-700
+                          hover:bg-green-100 active:bg-green-200
+                          transition-all duration-200">
+                    Batal
+                </a>
+            </div>
         </form>
     </div>
-    
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
