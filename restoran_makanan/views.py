@@ -27,7 +27,7 @@ def show_json_menu_by_rumah_makan(request, id_rumah_makan):
     data = Menu.objects.filter(id_rumah_makan=id_rumah_makan)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
-@login_required(login_url='/auth/login')
+@login_required(login_url='/profil/login')
 def show_rumahmakan_makanan(request):
     rumah_makan = RumahMakan.objects.all()
     makanan = Menu.objects.all()
@@ -38,7 +38,7 @@ def show_rumahmakan_makanan(request):
     }
     return render(request, 'restoran_makanan.html', context)
 
-@login_required(login_url='/auth/login')
+@login_required(login_url='/profil/login')
 def show_detail_rumah_makan(request, id_rumah_makan):
     rumah_makan = RumahMakan.objects.get(pk=id_rumah_makan)
     menu_items = Menu.objects.filter(id_rumah_makan=id_rumah_makan)
@@ -68,7 +68,7 @@ def add_rumah_makan(request):
 
     return HttpResponse(b"CREATED", status=201)
 
-@login_required(login_url='/auth/login')
+@login_required(login_url='/profil/login')
 def edit_rumah_makan(request, id):
     rumah_makan = get_object_or_404(RumahMakan, pk=id)
     if request.method == 'POST':
@@ -82,7 +82,7 @@ def edit_rumah_makan(request, id):
     
     return render(request, 'edit_rumah_makan.html', {'rumah_makan': rumah_makan})
 
-@login_required(login_url='/auth/login')
+@login_required(login_url='/profil/login')
 def delete_rumah_makan(request, id):
     rumah_makan = get_object_or_404(RumahMakan, pk=id)
     rumah_makan.delete()
@@ -104,7 +104,7 @@ def add_menu(request, id_rumah_makan):
 
     return HttpResponse(b"CREATED", status=201)
 
-@login_required(login_url='/auth/login')
+@login_required(login_url='/profil/login')
 def edit_menu(request, id):
     menu = get_object_or_404(Menu, pk=id)
     
@@ -120,7 +120,7 @@ def edit_menu(request, id):
     }
     return render(request, 'edit_menu.html', context)
 
-@login_required(login_url='/auth/login')
+@login_required(login_url='/profil/login')
 def delete_menu(request, id):
     menu = get_object_or_404(Menu, pk=id)
     id_rumah_makan = menu.id_rumah_makan.id

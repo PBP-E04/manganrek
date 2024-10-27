@@ -9,7 +9,7 @@ import uuid
 import json
 
 # Create your views here.
-@login_required(login_url='/auth/login')
+@login_required(login_url='/profil/login')
 def show_favorit(request):
     return render(request, "show_favorit.html")
 
