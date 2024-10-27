@@ -112,10 +112,10 @@
             <p><strong>Preferensi Makanan:</strong> {{ user_profile.preferensi_makanan }}</p>
 
             <div class="profile-image">
-                {% if user_profile.foto_profil %}
+                {% if user_profile.foto_profil and user_profile.foto_profil.url %}
                     <img src="{{ user_profile.foto_profil.url }}" alt="Foto Profil">
                 {% else %}
-                    <p>Tidak ada foto profil yang diunggah.</p>
+                    <img src="/static/default-profile.png" alt="Default Profile Picture">
                 {% endif %}
             </div>
         </div>
