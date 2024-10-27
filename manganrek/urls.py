@@ -34,6 +34,7 @@ urlpatterns = [
     path('', include('main.urls')),
     path('auth/', include('authentication.urls')),
     path('restoran-makanan/', include('restoran_makanan.urls')),
+    path('review/', include('rating_ulasan.urls')),
     path('promo-diskon/', include('promo_diskon.urls')),
 >>>>>>> 74c23c2e71017ce3711a68cd5fb2bd72b52bb91c
 ]
