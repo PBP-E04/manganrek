@@ -14,8 +14,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.shortcuts import redirect
 from django.contrib import admin
 from django.urls import path, include
+<<<<<<< HEAD
+from profil import views  
+
+
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('profil/', include('profil.urls', namespace='profil')),
+    path('login/', views.login_user, name='login'),
+    path('', lambda request: redirect('login')),  # Redirect halaman utama ke login
+=======
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,4 +35,5 @@ urlpatterns = [
     path('auth/', include('authentication.urls')),
     path('restoran-makanan/', include('restoran_makanan.urls')),
     path('promo-diskon/', include('promo_diskon.urls')),
+>>>>>>> 74c23c2e71017ce3711a68cd5fb2bd72b52bb91c
 ]

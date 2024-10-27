@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profil Pengguna</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #e8f5e9;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+        }
+        h2 {
+            color: #388e3c;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #43a047;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #2e7d32;
+        }
+        .btn-secondary {
+            background-color: #a5d6a7;
+            color: #ffffff;
+        }
+        .btn-secondary:hover {
+            background-color: #81c784;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Edit Profil Pengguna</h2>
+        
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" value="{{ user_profile.user.username }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ user_profile.user.email }}" readonly>
+            </div>
+            <div class="form-group">
+                {% if user_profile.foto_profil %}
+                    <img src="{{ user_profile.foto_profil.url }}" alt="Foto Profil" style="width: 100px; height: 100px; margin-top: 10px; border-radius: 50%;">
+                {% endif %}
+            </div>
+
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary w-100">Simpan Perubahan</button>
+            <a href="{% url 'profil:user_profile_detail' user_profile.id %}" class="btn btn-secondary w-100 mt-2">Batal</a>
+        </form>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
