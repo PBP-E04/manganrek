@@ -17,13 +17,19 @@ Including another URLconf
 from django.shortcuts import redirect
 from django.contrib import admin
 from django.urls import path, include
+from profil import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
-    path('auth/', include('authentication.urls')),
+    path('profil/', include('profil.urls', namespace='profil')),
     path('restoran-makanan/', include('restoran_makanan.urls')),
     path('review/', include('rating_ulasan.urls')),
     path('promo-diskon/', include('promo_diskon.urls')),
     path('favorit/', include('favorit.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
