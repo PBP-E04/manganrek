@@ -39,7 +39,7 @@
                         name="resto" 
                         id="resto"
                         class="w-full px-4 py-2 rounded-md border border-[#4CAF50] focus:outline-none focus:ring-2 focus:ring-[#4CAF50] bg-[#F9FBF9]"
-                        value="{{ form.resto.value|default:'' }}"
+                        value="{{ resto_name|default:'' }}"
                     >
                     {% for error in form.resto.errors %}
                         <p class="mt-1 text-sm text-red-600">{{ error }}</p>
@@ -103,6 +103,12 @@
             </form>
         </div>
     </div>
+    <h2>Current Form Values</h2>
+    <ul>
+        {% for field, value in form_data.items %}
+            <li>{{ field }}: {{ value }}</li>
+        {% endfor %}
+    </ul>
 </div>
 
 {% endblock %}
