@@ -1,0 +1,233 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+    <title>Rumah Makan Favorit</title>
+    <style>
+        .active-tab {
+            background-color: #2f5233;
+            color: white;
+        }
+        .leaflet-container {
+            z-index: 1 !important;
+        }
+        .header {
+            z-index: 50 !important;
+        }
+        #crudModal,
+        #filterModal,
+        #sortModal {
+            z-index: 9999 !important;
+        }
+        .modal-content {
+            z-index: 10000 !important;
+        }
+    </style>
+{% endblock meta %}
+
+{% block content %}
+
+    <div id="rumahMakanList"></div>
+    <div id="makananList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden">
+        {% for menu in makanan %}
+        <div class="food-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div class="p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">{{ menu.nama_makanan }}</h3>
+                <p class="text-gray-600 mb-2">{{ menu.id_rumah_makan.nama }}</p>
+                <p class="text-gray-600 mt-2">
+                    Rp {{ menu.harga|stringformat:"d"|slice:":-3" }}.000
+                </p>
+                <button onclick="window.location.href='{% url 'restoran_makanan:detail_rumah_makan' menu.id_rumah_makan.id %}'" class="mt-4 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors duration-300">
+                    Lihat Detail
+                </button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<script>
+
+async function getRumahMakan() {
+    const [rumahMakanData, menuData] = await Promise.all([
+        fetch("{% url 'restoran_makanan:show_json_rumah_makan' %}").then(res => res.json()),
+        fetch("{% url 'restoran_makanan:show_json_menu' %}").then(res => res.json())
+    ]);
+
+    return rumahMakanData.map(restaurant => {
+        const restaurantMenus = menuData.filter(menu => 
+            menu.fields.id_rumah_makan === restaurant.pk
+        );
+        
+        let minPrice = Infinity;
+        let maxPrice = 0;
+        
+        if (restaurantMenus.length > 0) {
+            restaurantMenus.forEach(menu => {
+                minPrice = Math.min(minPrice, menu.fields.harga);
+                maxPrice = Math.max(maxPrice, menu.fields.harga);
+            });
+        } else {
+            minPrice = 0;
+            maxPrice = 0;
+        }
+
+        return {
+            ...restaurant,
+            priceRange: {
+                min: minPrice,
+                max: maxPrice
+            }
+        };
+    });
+}
+
+async function getRumahMakanFavoritMap() {
+    const [rumahMakanData, rumahMakanFavoritData] = await Promise.all([
+        fetch("{% url 'restoran_makanan:show_json_rumah_makan' %}").then(res => res.json()),
+        fetch("{% url 'favorit:show_json_favorit' %}").then(res => res.json())
+    ]);
+
+    return rumahMakanData.map(restaurant => {
+        const favouriteRestaurant = rumahMakanFavoritData.filter(favouriteStatus => {
+            return favouriteStatus.fields.id_rumah_makan === restaurant.pk;
+        });
+
+        let favourite = false;
+
+        if(favouriteRestaurant.length > 0 && favouriteRestaurant[0].fields.favorit) {
+          favourite = true;
+        }
+
+        return {
+          [restaurant.pk]: favourite
+        };
+    });
+}
+
+function getRumahMakanFavorit(favoritMap, key) {
+    const entry = favoritMap.find(item => Object.keys(item)[0] === key);
+    return entry ? entry[key] : undefined;
+}
+
+async function refreshRumahMakan() {
+    document.getElementById("rumahMakanList").innerHTML = "";
+    document.getElementById("rumahMakanList").className = "";
+    const rumahMakan = await getRumahMakan();
+    const favoritMap = await getRumahMakanFavoritMap();
+    let htmlString = "";
+    let classNameString = "";
+
+    if (rumahMakan.length === 0) {
+        classNameString = "flex flex-col items-center justify-center min-h-[24rem] p-6";
+        htmlString = `
+            <div class="flex flex-col items-center justify-center min-h-[24rem] p-6">
+                <img src="{% static 'image/sedih-banget.png' %}" alt="Sad face" class="w-32 h-32 mb-4"/>
+                <p class="text-center text-gray-600 mt-4">Belum ada rumah makan pada ManganRek!</p>
+            </div>
+        `;
+    }
+    else {
+        classNameString = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        rumahMakan.forEach((item) => {
+            const priceRangeText = item.priceRange.max === 0 ? 
+                "Rp 0.000 - Rp 0.000" :
+                `Rp ${(item.priceRange.min/1000).toFixed(0)}.000 - Rp ${(item.priceRange.max/1000).toFixed(0)}.000`;
+            const favorit = getRumahMakanFavorit(favoritMap, item.pk);
+            if(favorit){
+            htmlString += `
+            <div class="restaurant-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-semibold text-gray-800">${item.fields.nama}</h3>
+                        <div class="flex space-x-2">
+                            <a href="/favorit/update-favorit-favorit/${item.pk}" 
+                                class="${favorit ? 'text-red-500 hover:text-red-600' : 'text-gray-300 hover:text-gray-500'}">
+                                <svg class="w-5 h-5 ${favorit ? 'fill-red-500 hover:fill-red-600' : 'fill-none'}" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                        d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656l-6.928 6.928a.75.75 0 01-1.06 0L3.172 10.828a4 4 0 010-5.656z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-2">${item.fields.alamat}</p>
+                    <div class="flex items-center mb-2">
+                        <span class="text-gray-600 mr-2">Tingkat Kepedasan:</span>
+                        <div class="flex">
+                            <span class="text-red-500">${item.fields.tingkat_kepedasan}/10</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <span class="text-gray-600 mr-2">Rentang Harga:</span>
+                        <span class="text-green-600">${priceRangeText}</span>
+                    </div>
+                    <button onclick="window.location.href='/restoran-makanan/detail/${item.pk}'" 
+                            class="mt-4 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors duration-300">
+                        Lihat Detail Rumah Makan
+                    </button>
+                </div>
+            </div>
+            `;
+            }
+        });
+    }
+    document.getElementById("rumahMakanList").className = classNameString;
+    document.getElementById("rumahMakanList").innerHTML = htmlString;
+}
+refreshRumahMakan();
+
+const modal = document.getElementById('crudModal');
+const modalContent = document.getElementById('crudModalContent');
+
+function showModal() {
+    const modal = document.getElementById('crudModal');
+    const modalContent = document.getElementById('crudModalContent');
+
+    modal.classList.remove('hidden'); 
+    setTimeout(() => {
+        modalContent.classList.remove('opacity-0', 'scale-95');
+        modalContent.classList.add('opacity-100', 'scale-100');
+    }, 50); 
+}
+
+function hideModal() {
+    const modal = document.getElementById('crudModal');
+    const modalContent = document.getElementById('crudModalContent');
+
+    modalContent.classList.remove('opacity-100', 'scale-100');
+    modalContent.classList.add('opacity-0', 'scale-95');
+
+    setTimeout(() => {
+        modal.classList.add('hidden');
+    }, 150); 
+}
+
+function addRumahMakan() {
+    fetch("{% url 'restoran_makanan:add_rumah_makan' %}", {
+        method: "POST",
+        body: new FormData(document.querySelector('#rumahMakanForm')),
+    })
+    .then(response => refreshRumahMakan())
+
+    document.getElementById("rumahMakanForm").reset(); 
+    document.querySelector("[data-modal-toggle='crudModal']").click();
+
+    return false;
+}
+
+function getFoodPrice(foodCard) {
+    const priceText = foodCard.querySelector('p:last-of-type').textContent;
+    return parseInt(priceText.match(/\d+/)[0]) * 1000;
+}
+
+function getPriceValue(restaurant, min=true) {
+    const priceText = restaurant.querySelector('.text-green-600').textContent;
+    const prices = priceText.match(/\d+\./g).map(Number);
+    return min ? prices[0] : prices[1];
+}
+
+function getSpicyLevel(restaurant) {
+    return parseInt(restaurant.querySelector('.text-red-500').textContent);
+}
+
+</script>
+{% endblock %}
