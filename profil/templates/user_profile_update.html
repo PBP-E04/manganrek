@@ -57,19 +57,27 @@
             {% csrf_token %}
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" name="username" value="{{ user_profile.user.username }}" readonly>
+                <input type="text" class="form-control" id="username" value="{{ user_profile.user.username }}" readonly>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" value="{{ user_profile.user.email }}" readonly>
+                <input type="email" class="form-control" id="email" name="email" value="{{ user_profile.user.email }}">
             </div>
             <div class="form-group">
+                <label for="foto_profil">Foto Profil</label>
                 {% if user_profile.foto_profil %}
-                    <img src="{{ user_profile.foto_profil.url }}" alt="Foto Profil" style="width: 100px; height: 100px; margin-top: 10px; border-radius: 50%;">
+                    <img src="{{ user_profile.foto_profil.url }}" alt="Current Profile Picture" 
+                         style="width: 100px; height: 100px; margin: 10px 0; border-radius: 50%;">
                 {% endif %}
+                {{ form.foto_profil }}
             </div>
-
-            {{ form.as_p }}
+        
+            {{ form.jenis_makanan_favorit.label_tag }}
+            {{ form.jenis_makanan_favorit }}
+        
+            {{ form.preferensi_makanan.label_tag }}
+            {{ form.preferensi_makanan }}
+        
             <button type="submit" class="btn btn-primary w-100">Simpan Perubahan</button>
             <a href="{% url 'profil:user_profile_detail' user_profile.id %}" class="btn btn-secondary w-100 mt-2">Batal</a>
         </form>

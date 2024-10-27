@@ -4,11 +4,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'css/global.css' %}"/>
     {% block meta %} {% endblock meta %}
-<<<<<<< HEAD
   </head>
 
   <body>
+    {% include "navbar.html" %}
     {% block content %} {% endblock content %}
     {% if messages %}
     {% for message in messages %}
@@ -16,16 +18,7 @@
             {{ message }}
         </div>
     {% endfor %}
-{% endif %}
-
-=======
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="{% static 'css/global.css' %}"/>
-  </head>
-  <body>
-    {% include "navbar.html" %}
-    {% block content %} {% endblock content %}
+    {% endif %}
     {% include "footer.html" %}
->>>>>>> 74c23c2e71017ce3711a68cd5fb2bd72b52bb91c
   </body>
 </html>
