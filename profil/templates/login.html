@@ -1,238 +1,72 @@
-{% extends 'base.html' %}
-{% include 'navbar.html' %}
+{% extends 'auth_base.html' %}
+{% load static %}
+
 {% block meta %}
 <title>Login</title>
 {% endblock meta %}
 
 {% block content %}
-<style>
-    /* General styling for login page */
-    body {
-        background: linear-gradient(135deg, #eaf7ea, #d0e8d0);
-        color: #333;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-        margin: 0;
-        padding: 0;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    }
-
-    .main-content {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem 1rem;
-    }
-
-    .login {
-        background-color: #ffffff;
-        padding: 3rem;
-        border-radius: 16px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-        width: 100%;
-        max-width: 380px;
-        text-align: center;
-        animation: fadeIn 0.8s ease-in-out;
-        margin: 2rem auto;
-    }
-
-    @keyframes fadeIn {
-        from { 
-            opacity: 0;
-            transform: translateY(-10px);
-        }
-        to { 
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    h1 {
-        color: #2e8b57;
-        font-size: 2rem;
-        margin-bottom: 2rem;
-        font-weight: 600;
-        letter-spacing: -0.5px;
-    }
-
-    .login a {
-        color: #2e8b57;
-        text-decoration: none;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        position: relative;
-    }
-
-    .login a:hover {
-        color: #1b5e20;
-    }
-
-    .login a::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        bottom: -2px;
-        left: 0;
-        background-color: currentColor;
-        transform: scaleX(0);
-        transition: transform 0.3s ease;
-    }
-
-    .login a:hover::after {
-        transform: scaleX(1);
-    }
-
-    table {
-        width: 100%;
-        margin-bottom: 1.5rem;
-    }
-
-    table th {
-        display: none;
-    }
-
-    table td {
-        padding: 0.5rem 0;
-    }
-
-    input[type="text"],
-    input[type="password"] {
-        width: 100%;
-        padding: 0.875rem;
-        margin: 0.25rem 0;
-        border-radius: 8px;
-        border: 2px solid #e0e0e0;
-        font-size: 1rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-        transition: all 0.3s ease;
-        background-color: #f8f9fa;
-    }
-
-    input[type="text"]:focus,
-    input[type="password"]:focus {
-        border-color: #2e8b57;
-        outline: none;
-        box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.1);
-        background-color: #ffffff;
-    }
-
-    .login_btn {
-        background-color: #2e8b57;
-        color: #ffffff;
-        border: none;
-        padding: 1rem 1.5rem;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        width: 100%;
-        font-size: 1rem;
-        font-weight: 500;
-        margin-top: 0.5rem;
-        box-shadow: 0 2px 4px rgba(46, 139, 87, 0.2);
-    }
-
-    .login_btn:hover {
-        background-color: #1b5e20;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(46, 139, 87, 0.3);
-    }
-
-    .login_btn:active {
-        transform: translateY(0);
-    }
-
-    ul {
-        list-style-type: none;
-        padding: 0.75rem;
-        margin: 1.5rem 0;
-        color: #e53935;
-        font-size: 0.9rem;
-        background-color: #ffebee;
-        border-radius: 8px;
-        border-left: 4px solid #e53935;
-    }
-
-    ul li {
-        margin: 0.25rem 0;
-    }
-
-    .register-link {
-        margin-top: 2rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid #e0e0e0;
-    }
-
-    .register-link p {
-        margin: 0;
-        color: #666;
-    }
-
-    /* Footer Styling */
-    .footer {
-        background-color: #2e8b57;
-        color: white;
-        padding: 1.5rem 0;
-        text-align: center;
-        width: 100%;
-        margin-top: auto;
-    }
-
-    .footer-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 1rem;
-    }
-
-    .footer p {
-        margin: 0;
-        font-size: 0.9rem;
-    }
-
-    .footer-links {
-        margin-top: 1rem;
-    }
-
-    .footer-links a {
-        color: white;
-        text-decoration: none;
-        margin: 0 1rem;
-        font-size: 0.9rem;
-        transition: opacity 0.3s ease;
-    }
-
-    .footer-links a:hover {
-        opacity: 0.8;
-    }
-</style>
-
-<div class="main-content">
-    <div class="login">
-        <h1>Login</h1>
-
-        <form method="POST" action="">
-            {% csrf_token %}
-            <table>
-                {{ form.as_table }}
-                <tr>
-                    <td colspan="2"><input class="btn login_btn" type="submit" value="Login" /></td>
-                </tr>
-            </table>
-        </form>
-
-        {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        
-        <div class="register-link">
-            <p>Don't have an account yet? <a href="{% url 'profil:register' %}">Register Now</a></p>
-        </div>
+<div class="min-h-screen flex items-center justify-center w-screen bg-[#b2d2a4] py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-2xl">
+    <div>
+      <h2 class="mt-2 text-center text-3xl font-extrabold text-[#1a4314]">
+        Login
+      </h2>
     </div>
+    <form class="mt-8 space-y-6" method="POST" action="">
+      {% csrf_token %}
+      <input type="hidden" name="remember" value="true">
+      <div class="rounded-md shadow-sm -space-y-px">
+        <div>
+          <label for="username" class="sr-only">Username</label>
+          <input id="username" name="username" type="text" required 
+            class="appearance-none rounded-t-lg relative block w-full px-4 py-3 border border-[#b1d8b7] placeholder-[#2c5e1a] text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#76b947] focus:border-[#76b947] focus:z-10 sm:text-sm" 
+            placeholder="Username">
+        </div>
+        <div>
+          <label for="password" class="sr-only">Password</label>
+          <input id="password" name="password" type="password" required 
+            class="appearance-none rounded-b-lg relative block w-full px-4 py-3 border border-[#b1d8b7] placeholder-[#2c5e1a] text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#76b947] focus:border-[#76b947] focus:z-10 sm:text-sm" 
+            placeholder="Password">
+        </div>
+      </div>
+
+      <div>
+        <button type="submit" class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-[#2f5233] hover:bg-[#1a4314] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#76b947] transform transition-all duration-300 hover:scale-[1.02] shadow-lg">
+          Login
+        </button>
+      </div>
+    </form>
+
+    {% if messages %}
+    <div class="mt-4">
+      {% for message in messages %}
+      {% if message.tags == "success" %}
+            <div class="bg-[#b1d8b7] border border-[#2f5233] text-[#1a4314] px-4 py-3 rounded-lg relative" role="alert">
+                <span class="block sm:inline">{{ message }}</span>
+            </div>
+        {% elif message.tags == "error" %}
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative" role="alert">
+                <span class="block sm:inline">{{ message }}</span>
+            </div>
+        {% else %}
+            <div class="bg-[#b2d2a4] border border-[#2f5233] text-[#1a4314] px-4 py-3 rounded-lg relative" role="alert">
+                <span class="block sm:inline">{{ message }}</span>
+            </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="text-center mt-6">
+      <p class="text-sm text-[#2c5e1a]">
+        Belum punya akun?
+        <a href="{% url 'profil:register' %}" 
+          class="font-medium text-[#76b947] duration-300 border-b-2 border-transparent hover:border-[#76b947]">
+          Daftar, yuk!
+        </a>
+      </p>
+    </div>
+  </div>
 </div>
 {% endblock content %}

@@ -95,7 +95,7 @@ def login_user(request):
                 login(request, user)
 
                 # Buat response baru
-                response = redirect('profil:user_profile_list')  # Ganti sesuai URL yang benar
+                response = redirect('main:show_main')  # Ganti sesuai URL yang benar
                 response.set_cookie('last_login', str(datetime.datetime.now()))
 
                 return response  

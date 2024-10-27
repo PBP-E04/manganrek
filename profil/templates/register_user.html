@@ -1,262 +1,97 @@
-{% extends 'base.html' %}
+{% extends 'auth_base.html' %}
+{% load static %}
 
 {% block meta %}
-<title>Register - ManganRek!</title>
+<title>Register</title>
 {% endblock meta %}
 
 {% block content %}
-<style>
-    /* Background Styling */
-    .register-container {
-        font-family: 'Inter', sans-serif;
-        background: #F2F1F0;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem;
-        overflow: hidden;
-        position: relative;
-    }
-
-    /* Animated Gradient Background Circles */
-    .circle {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(100px);
-        animation: float 8s ease-in-out infinite;
-    }
-
-    .circle:nth-child(1) {
-        width: 400px;
-        height: 400px;
-        background: rgba(37, 96, 41, 0.4);
-        top: 10%;
-        left: 15%;
-    }
-
-    .circle:nth-child(2) {
-        width: 300px;
-        height: 300px;
-        background: rgba(134, 227, 229, 0.3);
-        bottom: 10%;
-        right: 20%;
-    }
-
-    /* Card Styling with Glass Effect */
-    .register-card {
-        background: rgba(118, 185, 73);
-        backdrop-filter: blur(20px);
-        border-radius: 16px;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        padding: 2.5rem;
-        max-width: 500px;
-        width: 100%;
-        animation: fadeIn 1s ease forwards;
-        transform: translateY(30px);
-    }
-
-    /* Header Styling */
-    .register-header {
-        text-align: center;
-        margin-bottom: 2rem;
-        color: white;
-    }
-
-    .register-header h1 {
-        font-size: 2rem;
-        font-weight: bold;
-        letter-spacing: 1px;
-        text-shadow: 2px 2px rgba(0, 0, 0, 0.15);
-    }
-
-    .register-header p {
-        color: #f1f1f1;
-        font-size: 1rem;
-    }
-
-    /* Input Styling with Fancy Glow Focus */
-    .form-group {
-        margin-bottom: 1.5rem;
-    }
-
-    .form-group label {
-        color: #e0f2f1;
-        font-size: 0.95rem;
-        font-weight: 600;
-        display: block;
-        margin-bottom: 0.5rem;
-    }
-
-    .form-group input {
-        width: 100%;
-        padding: 0.75rem;
-        border: 1.5px solid transparent;
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.2);
-        font-size: 1rem;
-        color: white;
-        transition: all 0.3s ease;
-    }
-
-    .form-group input:focus {
-        outline: none;
-        border-color: rgba(134, 227, 229, 0.6);
-        background: rgba(255, 255, 255, 0.3);
-        box-shadow: 0 0 10px rgba(134, 227, 229, 0.6);
-    }
-
-    .help-text, .error-text {
-        font-size: 0.85rem;
-        margin-top: 0.4rem;
-    }
-
-    .help-text {
-        color: #d1fae5;
-    }
-
-    .error-text {
-        color: #ffccd5;
-    }
-
-    /* Register Button with Fancy Hover */
-    .btn-register {
-        width: 100%;
-        background: linear-gradient(135deg, #1de9b6, #1b5e20);
-        color: white;
-        padding: 0.875rem;
-        border: none;
-        border-radius: 10px;
-        font-size: 1rem;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .btn-register:hover {
-        background: linear-gradient(135deg, #00e676, #2e7d32);
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(0, 230, 118, 0.2);
-    }
-
-    .btn-register:focus {
-        outline: none;
-        box-shadow: 0 0 10px rgba(29, 233, 182, 0.5);
-    }
-
-    /* Messages */
-    .messages {
-        list-style: none;
-        padding: 0;
-        margin: 1rem 0;
-    }
-
-    .messages li {
-        background-color: rgba(255, 82, 82, 0.2);
-        color: #ff1744;
-        padding: 0.75rem;
-        border-radius: 6px;
-        font-size: 0.9rem;
-    }
-
-    /* Login Link */
-    .login-link {
-        text-align: center;
-        margin-top: 1.5rem;
-        font-size: 0.95rem;
-        color: #c1d1c1;
-    }
-
-    .login-link a {
-        color: #a5d6a7;
-        text-decoration: none;
-        font-weight: 500;
-    }
-
-    .login-link a:hover {
-        text-decoration: underline;
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-        0% {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes float {
-        0%, 100% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-20px);
-        }
-    }
-</style>
-
-<div class="register-container">
-    <!-- Animated Background Circles -->
-    <div class="circle"></div>
-    <div class="circle"></div>
-
-    <div class="register-card">
-        <div class="register-header">
-            <h1>Create Account</h1>
-            <p>Join ManganRek! to discover great restaurants</p>
-        </div>
-
-        <form method="POST">
-            {% csrf_token %}
-            
-            <div class="form-group">
-                <label for="username">Username</label>
-                {{ form.username }}
-                {% if form.username.help_text %}
-                    <div class="help-text">{{ form.username.help_text }}</div>
-                {% endif %}
-                {% if form.username.errors %}
-                    <div class="error-text">{{ form.username.errors }}</div>
-                {% endif %}
-            </div>
-
-            <div class="form-group">
-                <label for="password">Password</label>
-                {{ form.password1 }}
-                {% if form.password1.help_text %}
-                    <div class="help-text">{{ form.password1.help_text }}</div>
-                {% endif %}
-                {% if form.password1.errors %}
-                    <div class="error-text">{{ form.password1.errors }}</div>
-                {% endif %}
-            </div>
-
-            <div class="form-group">
-                <label for="password-confirmation">Password Confirmation</label>
-                {{ form.password2 }}
-                {% if form.password2.errors %}
-                    <div class="error-text">{{ form.password2.errors }}</div>
-                {% endif %}
-            </div>
-
-            <button type="submit" class="btn-register">Create Account</button>
-        </form>
-
-        {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-
-        <div class="login-link">
-            Already have an account? <a href="{% url 'profil:login' %}">Log in</a>
-        </div>
+<div class="min-h-screen flex items-center justify-center w-screen bg-[#b2d2a4] py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-2xl">
+    <div>
+      <h2 class="mt-2 text-center text-3xl font-extrabold text-[#1a4314]">
+        Daftar
+      </h2>
     </div>
+    <form class="mt-8 space-y-6" method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="remember" value="true">
+      <div class="rounded-md shadow-sm space-y-4">
+        <div>
+          <label for="username" class="block text-sm font-medium text-[#2c5e1a] mb-1">Username</label>
+          <input type="text" name="username" required 
+            class="appearance-none rounded-lg relative block w-full px-4 py-3 border border-[#b1d8b7] placeholder-[#2c5e1a] text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#76b947] focus:border-[#76b947] focus:z-10 sm:text-sm">
+          {% if form.username.errors %}
+            {% for error in form.username.errors %}
+              <p class="mt-1 text-sm text-red-600">{{ error }}</p>
+            {% endfor %}
+          {% endif %}
+        </div>
+        
+        <div>
+          <label for="password1" class="block text-sm font-medium text-[#2c5e1a] mb-1">Password</label>
+          <input type="password" name="password1" required 
+            class="appearance-none rounded-lg relative block w-full px-4 py-3 border border-[#b1d8b7] placeholder-[#2c5e1a] text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#76b947] focus:border-[#76b947] focus:z-10 sm:text-sm">
+          {% if form.password1.errors %}
+            {% for error in form.password1.errors %}
+              <p class="mt-1 text-sm text-red-600">{{ error }}</p>
+            {% endfor %}
+          {% endif %}
+        </div>
+
+        <div>
+          <label for="password2" class="block text-sm font-medium text-[#2c5e1a] mb-1">Confirm Password</label>
+          <input type="password" name="password2" required 
+            class="appearance-none rounded-lg relative block w-full px-4 py-3 border border-[#b1d8b7] placeholder-[#2c5e1a] text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#76b947] focus:border-[#76b947] focus:z-10 sm:text-sm">
+          {% if form.password2.errors %}
+            {% for error in form.password2.errors %}
+              <p class="mt-1 text-sm text-red-600">{{ error }}</p>
+            {% endfor %}
+          {% endif %}
+        </div>
+
+        {% if form.non_field_errors %}
+          <div class="rounded-md bg-red-50 p-4">
+            <div class="flex">
+              <div class="ml-3">
+                <h3 class="text-sm font-medium text-red-800">
+                  {% for error in form.non_field_errors %}
+                    {{ error }}
+                  {% endfor %}
+                </h3>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+
+      <div>
+        <button type="submit" 
+          class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-[#2f5233] hover:bg-[#1a4314] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#76b947] transform transition-all duration-300 hover:scale-[1.02] shadow-lg">
+          Daftar
+        </button>
+      </div>
+    </form>
+
+    {% if messages %}
+    <div class="mt-4">
+      {% for message in messages %}
+      <div class="bg-[#b1d8b7] border border-[#2f5233] text-[#1a4314] px-4 py-3 rounded-lg relative" role="alert">
+        <span class="block sm:inline">{{ message }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="text-center mt-6">
+      <p class="text-sm text-[#2c5e1a]">
+        Udah punya akun?
+        <a href="{% url 'profil:login' %}" 
+          class="font-medium text-[#76b947] duration-300 border-b-2 border-transparent hover:border-[#76b947]">
+          Login aja!
+        </a>
+      </p>
+    </div>
+  </div>
 </div>
 {% endblock content %}
