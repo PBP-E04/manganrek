@@ -1,3 +1,4 @@
 from django.contrib import admin
+from rating_ulasan.models import Review
 
-# Register your models here.
+admin.site.register(Review)

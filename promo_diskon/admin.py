@@ -1,3 +1,4 @@
 from django.contrib import admin
+from promo_diskon.models import DiscEntry
 
-# Register your models here.
+admin.site.register(DiscEntry)

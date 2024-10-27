@@ -1,3 +1,4 @@
 from django.contrib import admin
+from favorit.models import RumahMakanFavorit
 
-# Register your models here.
+admin.site.register(RumahMakanFavorit)
