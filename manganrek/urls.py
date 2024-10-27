@@ -17,6 +17,7 @@ Including another URLconf
 from django.shortcuts import redirect
 from django.contrib import admin
 from django.urls import path, include
+<<<<<<< HEAD
 from profil import views  
 
 
@@ -26,4 +27,13 @@ urlpatterns = [
     path('profil/', include('profil.urls', namespace='profil')),
     path('login/', views.login_user, name='login'),
     path('', lambda request: redirect('login')),  # Redirect halaman utama ke login
+=======
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('main.urls')),
+    path('auth/', include('authentication.urls')),
+    path('restoran-makanan/', include('restoran_makanan.urls')),
+    path('promo-diskon/', include('promo_diskon.urls')),
+>>>>>>> 74c23c2e71017ce3711a68cd5fb2bd72b52bb91c
 ]

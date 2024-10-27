@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Edit Promo - ManganRek!</title>
+{% endblock meta %}
+
+{% block content %}
+{% include 'navbar.html' %}
+
+<div class="min-h-screen bg-[#B8D8B8] pt-16">
+    <div class="container mx-auto px-4 py-8 max-w-2xl">
+        <h1 class="text-4xl font-bold text-[#1B5E20] mb-8 text-center">Edit Promo</h1>
+        
+        <div class="bg-white rounded-lg shadow-lg p-8">
+            <form method="POST" class="space-y-6">
+                {% csrf_token %}
+                
+                <!-- Code Field -->
+                <div class="flex flex-col">
+                    <label for="code" class="mb-2 font-semibold text-[#1B5E20]">Kode Promo</label>
+                    <input 
+                        type="text" 
+                        name="code" 
+                        id="code"
+                        class="w-full px-4 py-2 rounded-md border border-[#4CAF50] focus:outline-none focus:ring-2 focus:ring-[#4CAF50] bg-[#F9FBF9]"
+                        value="{{ form.code.value|default:'' }}"
+                    >
+                    {% for error in form.code.errors %}
+                        <p class="mt-1 text-sm text-red-600">{{ error }}</p>
+                    {% endfor %}
+                </div>
+
+                <!-- Restaurant Field -->
+                <div class="flex flex-col">
+                    <label for="resto" class="mb-2 font-semibold text-[#1B5E20]">Rumah Makan</label>
+                    <input 
+                        type="text" 
+                        name="resto" 
+                        id="resto"
+                        class="w-full px-4 py-2 rounded-md border border-[#4CAF50] focus:outline-none focus:ring-2 focus:ring-[#4CAF50] bg-[#F9FBF9]"
+                        value="{{ resto_name|default:'' }}"
+                    >
+                    {% for error in form.resto.errors %}
+                        <p class="mt-1 text-sm text-red-600">{{ error }}</p>
+                    {% endfor %}
+                </div>
+
+                <!-- Discount Field -->
+                <div class="flex flex-col">
+                    <label for="percentage" class="mb-2 font-semibold text-[#1B5E20]">Diskon (%)</label>
+                    <input 
+                        type="number" 
+                        name="percentage" 
+                        id="percentage"
+                        class="w-full px-4 py-2 rounded-md border border-[#4CAF50] focus:outline-none focus:ring-2 focus:ring-[#4CAF50] bg-[#F9FBF9]"
+                        value="{{ form.percentage.value|default:'' }}"
+                    >
+                    {% for error in form.percentage.errors %}
+                        <p class="mt-1 text-sm text-red-600">{{ error }}</p>
+                    {% endfor %}
+                </div>
+
+                <!-- Minimum Payment Field -->
+                <div class="flex flex-col">
+                    <label for="min_payment" class="mb-2 font-semibold text-[#1B5E20]">Minimum Pembayaran (Rp)</label>
+                    <input 
+                        type="number" 
+                        name="min_payment" 
+                        id="min_payment"
+                        class="w-full px-4 py-2 rounded-md border border-[#4CAF50] focus:outline-none focus:ring-2 focus:ring-[#4CAF50] bg-[#F9FBF9]"
+                        value="{{ form.min_payment.value|default:'' }}"
+                    >
+                    {% for error in form.min_payment.errors %}
+                        <p class="mt-1 text-sm text-red-600">{{ error }}</p>
+                    {% endfor %}
+                </div>
+
+                <!-- Valid Period Field -->
+                <div class="flex flex-col">
+                    <label for="valid_period" class="mb-2 font-semibold text-[#1B5E20]">Berlaku Sampai</label>
+                    <input 
+                        type="date" 
+                        name="valid_period" 
+                        id="valid_period"
+                        class="w-full px-4 py-2 rounded-md border border-[#4CAF50] focus:outline-none focus:ring-2 focus:ring-[#4CAF50] bg-[#F9FBF9]"
+                        value="{{ form.valid_period.value|default:'' }}"
+                    >
+                    {% for error in form.valid_period.errors %}
+                        <p class="mt-1 text-sm text-red-600">{{ error }}</p>
+                    {% endfor %}
+                </div>
+
+                <!-- Buttons -->
+                <div class="flex gap-4 mt-8">
+                    <button type="submit" class="flex-1 bg-[#4CAF50] text-white font-semibold px-6 py-3 rounded-lg hover:bg-[#45a049] transition duration-300 ease-in-out">
+                        Simpan Perubahan
+                    </button>
+                    <a href="javascript:history.back()" class="flex-1 bg-gray-200 text-gray-700 font-semibold px-6 py-3 rounded-lg hover:bg-gray-300 transition duration-300 ease-in-out text-center">
+                        Batal
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <h2>Current Form Values</h2>
+    <ul>
+        {% for field, value in form_data.items %}
+            <li>{{ field }}: {{ value }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}
