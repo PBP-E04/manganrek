@@ -6,6 +6,7 @@ from .models import Review
 from restoran_makanan.models import RumahMakan
 from django.core import serializers 
 from django.views.decorators.http import require_POST   
+from .forms import ReviewForm
 
 def review_list(request):
     query = request.GET.get('q', '')
@@ -50,23 +51,23 @@ def add_review(request):
         return JsonResponse({'success': True})
     return JsonResponse({'success': False})
 
+
+# views.py
 @login_required
 def edit_review(request, review_id):
+    review = get_object_or_404(Review, id=review_id)
     if request.method == 'GET':
-        try:
-            review = Review.objects.get(id=review_id)
-            data = {
-                'success': True,
-                'review_name': review.review_name,
-                'rumah_makan_id': review.rumah_makan.id,
-                'stars': review.stars,
-                'comments': review.comments,
-                'visit_date': review.visit_date.strftime('%Y-%m-%d'),
-            }
-            return JsonResponse(data)
-        except Review.DoesNotExist:
-            return JsonResponse({'success': False, 'error': 'Review not found'})
-    return HttpResponseNotAllowed(['GET'])
+        restaurants = RumahMakan.objects.all()
+        return render(request, 'edit_review_form.html', {'review': review, 'restaurants': restaurants})
+    elif request.method == 'POST':
+        # Process the form submission and update the review
+        review.review_name = request.POST['review_name']
+        review.rumah_makan = get_object_or_404(RumahMakan, pk=request.POST['rumah_makan'])
+        review.stars = request.POST['stars']
+        review.comments = request.POST['comments']
+        review.visit_date = request.POST['visit_date']
+        review.save()
+        return redirect('review:review_list')
 
 @require_POST
 @login_required
