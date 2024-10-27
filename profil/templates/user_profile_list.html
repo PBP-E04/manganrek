@@ -1,169 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profiles</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <style>
-        /* General Styling */
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #eaf7ea, #d0e8d0);
-            color: #333;
             margin: 0;
             padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            animation: fadeIn 1s ease-in-out;
+            background-color: #f0f8f0;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         h1 {
             color: #2e8b57;
-            font-size: 2.2em;
             text-align: center;
-            margin-bottom: 20px;
-            font-weight: bold;
+            margin-bottom: 30px;
         }
 
-        /* Container and Profile Card Styling */
-        .profile-container {
+        .profile-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
-            width: 100%;
-            max-width: 1200px;
-            padding: 10px;
+            padding: 20px;
         }
 
         .profile-card {
-            background-color: #ffffff;
-            border: 1px solid #c8e6c9;
-            border-radius: 12px;
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+            background: white;
+            border-radius: 8px;
             padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .profile-header {
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 20px;
         }
 
-        .profile-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        .profile-header h2 {
+            color: #2e8b57;
+            margin: 0;
+            font-size: 1.5em;
         }
 
-        /* Profile Photo Styling */
         .profile-photo {
-            width: 110px;
-            height: 110px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 15px;
+            margin: 20px auto;
+            display: block;
             border: 3px solid #2e8b57;
-            box-shadow: 0px 0px 12px rgba(0, 128, 0, 0.2);
         }
 
-        /* Buttons and Link Styling */
-        .profile-card a, .profile-card button {
+        .profile-info {
+            margin-bottom: 20px;
+        }
+
+        .profile-info p {
+            margin: 10px 0;
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .profile-info strong {
+            color: #2e8b57;
             display: inline-block;
-            background-color: #4caf50;
+            width: 100px;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .view-button {
+            background: #4caf50;
             color: white;
-            padding: 10px 16px;
-            border-radius: 6px;
-            font-weight: bold;
-            font-size: 14px;
-            margin-top: 10px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            cursor: pointer;
-            border: none;
-        }
-
-        .profile-card a:hover, .profile-card button:hover {
-            background-color: #388e3c;
-            transform: translateY(-3px);
-        }
-
-        /* Delete Account Button Styling */
-        .profile-card form button {
-            background-color: #e74c3c;
-            margin-top: 15px;
-            font-size: 13px;
-            padding: 8px 16px;
-        }
-
-        .profile-card form button:hover {
-            background-color: #c0392b;
-        }
-
-        /* No Photo Text Styling */
-        .no-photo {
-            font-style: italic;
-            color: #888;
-            margin-top: 15px;
-        }
-
-        /* Back and Logout Button Styling */
-        .back-button, .logout-button {
-            display: inline-block;
-            background-color: #2d572c;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 6px;
+            padding: 10px;
+            border-radius: 4px;
             text-align: center;
             text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s, transform 0.3s;
-            margin: 10px;
+            border: none;
+            cursor: pointer;
         }
 
-        .back-button:hover, .logout-button:hover {
-            background-color: #388e3c;
-            transform: translateY(-3px);
+        .delete-button {
+            background: #e74c3c;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
         }
 
-        /* Last Login Styling */
-        .last-login {
-            color: #555;
-            font-size: 0.9em;
+        .logout-button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background: #2d572c;
+            color: white;
             text-align: center;
-            margin-top: 10px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .last-login {
+            text-align: center;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        .no-photo {
+            text-align: center;
+            color: #666;
+            font-style: italic;
         }
     </style>
 </head>
 <body>
-    <h1>User Profiles</h1>
-    <div class="profile-container">
-        {% for profile in profiles %}
-            <div class="profile-card">
-                <h2>{{ profile.user.username }}</h2>
-                <p>Email: {{ profile.user.email }}</p>
-                <p>Favorit: {{ profile.jenis_makanan_favorit }}</p>
-                <p>Preferensi: {{ profile.preferensi_makanan }}</p>
-                
-                {% if profile.foto_profil %}
-                    <img src="{{ profile.foto_profil.url }}" alt="{{ profile.user.username }}'s profile photo" class="profile-photo">
-                {% else %}
-                    <p class="no-photo">No profile photo available.</p>
-                {% endif %}
-                
-                <a href="{% url 'profil:user_profile_detail' profile.id %}">View Profile</a>
-                
-                <form method="POST" action="{% url 'profil:delete_account' %}">
-                    {% csrf_token %}
-                    <button type="submit">Hapus Akun</button>
-                </form>
-            </div>
-        {% empty %}
-            <p>No profiles available.</p>
-        {% endfor %}
+    <div class="container">
+        <h1>User Profiles</h1>
+        
+        <div class="profile-grid">
+            {% for profile in profiles %}
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <h2>{{ profile.user.username }}</h2>
+                    </div>
+
+                    {% if profile.foto_profil %}
+                        <img src="{{ profile.foto_profil.url }}" alt="{{ profile.user.username }}'s photo" class="profile-photo">
+                    {% else %}
+                        <p class="no-photo">No profile photo available</p>
+                    {% endif %}
+
+                    <div class="profile-info">
+                        <p><strong>Email:</strong> {{ profile.user.email }}</p>
+                        <p><strong>Favorit:</strong> {{ profile.jenis_makanan_favorit }}</p>
+                        <p><strong>Preferensi:</strong> {{ profile.preferensi_makanan }}</p>
+                    </div>
+
+                    <div class="button-group">
+                        <a href="{% url 'profil:user_profile_detail' profile.id %}" class="view-button">View Profile</a>
+                        <form method="POST" action="{% url 'profil:delete_account' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="delete-button">Hapus Akun</button>
+                        </form>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No profiles available.</p>
+            {% endfor %}
+        </div>
+
+        <a href="{% url 'profil:logout' %}" class="logout-button">Logout</a>
+        <p class="last-login">Sesi terakhir login: {{ last_login }}</p>
     </div>
-    
-    <a href="{% url 'profil:logout' %}" class="logout-button">Logout</a>
-    <p class="last-login">Sesi terakhir login: {{ last_login }}</p>
 </body>
 </html>
