@@ -4,29 +4,44 @@
 {% block meta %}
     <title>ManganRek! - Discount Promo List</title>
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.7/dist/purify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.21.2/babel.min.js"></script>
+
+    <!-- Your bundled component script -->
+    <script src="{% static 'js/search-filter-component.js' %}"></script>
 {% endblock meta %}
 
 {% block content %}
 {% comment %} {% include 'promo_navbar.html' %} {% endcomment %}
 
 <body class="flex flex-col items-center min-h-screen bg-gradient-to-b from-[#76B947] to-[#92C967]">
-    <div class="container mx-auto px-4 py-8">
-        <h1 class="text-4xl font-bold text-white text-center mb-8 drop-shadow-lg">Temukan Promo Diskon!</h1>
-
+    <div class="container mx-auto px-4 py-8 min-h-screen bg-gradient-to-br">
+        <h1 class="text-4xl font-bold text-white text-center mb-12 drop-shadow-lg animate-fade-in-down relative">
+            <span class="relative inline-block before:content-[''] before:absolute before:-bottom-2 before:left-0 before:w-full before:h-1 before:bg-green-700 before:transform before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100">
+                Temukan Promo Diskon!
+            </span>
+        </h1>
+    
+        <div id="searchRoot" class="transform hover:scale-105 transition-transform duration-300"></div>
+    
         {% if not disc_entries %}
-            <div class="flex flex-col items-center justify-center min-h-[24rem] bg-white/80 rounded-xl p-8 backdrop-blur-sm">
-                <img src="{% static 'image/sad_face.png' %}" alt="No Data" class="w-32 h-32 mb-4 opacity-80">
-                <p class="text-gray-600 text-xl">Belum ada promo diskon untuk saat ini</p>
-            </div>
+        <div class="flex flex-col items-center justify-center min-h-[24rem] bg-white/90 rounded-xl p-8 backdrop-blur-md shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+            <img src="{% static 'image/sad_face.png' %}" class="w-32 h-32 mb-4 opacity-80 animate-bounce">
+            <p class="text-xl text-gray-600 font-medium">Belum ada promo diskon untuk saat ini</p>
+        </div>
         {% else %}
-            <div id="disc_entry_cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"></div>
+        <div id="disc_entry_cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+            <!-- Cards will be populated here -->
+        </div>
         {% endif %}
-
-        <div class="text-center mt-8">
-            <button data-modal-target="crudModal" data-modal-toggle="crudModal" 
-                class="bg-white text-[#76B947] hover:bg-[#92C967] hover:text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105"
-                onclick="showModal();">
-                Tambah Promo Baru
+    
+        <div class="text-center mt-12">
+            <button class="bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-bold py-4 px-8 rounded-full transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center mx-auto space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+                <span>Tambah Promo Baru</span>
             </button>
         </div>
     </div>
@@ -81,6 +96,36 @@
             </div>
         </div>
     </div>
+
+    <style>
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-down {
+            animation: fadeInDown 0.5s ease-out;
+        }
+        
+        .modal-open {
+            overflow: hidden;
+        }
+        
+        #crudModal.show {
+            opacity: 1;
+        }
+        
+        #crudModal.show #crudModalContent {
+            transform: scale(100%);
+            opacity: 1;
+        }
+    </style>
 
     <script>
         async function addDiscountEntry() {
@@ -197,56 +242,11 @@
         document.addEventListener('DOMContentLoaded', refreshDiscountEntries);
     </script>
 
-    <script>
-      async function fetchEditEntryData(discId) {
-        try {
-            const response = await fetch(`/promo-diskon/edit-disc-entry/${discId}/`);
-            const data = await response.json();  // Make sure your Django view returns JSON here
-            if (response.ok) {
-                openEditModal(data);
-            } else {
-                alert("Failed to load entry data.");
-            }
-        } catch (error) {
-            console.error("Error:", error);
-        }
-      }
+    {% comment %} <script src="{% static 'js/search.js' %}"></script> {% endcomment %}
 
-      async function saveEditEntry(discId) {
-        const formData = new FormData();
-        formData.append('code', document.getElementById('edit_code').value);
-        formData.append('resto', document.getElementById('edit_resto').value);
-        formData.append('percentage', document.getElementById('edit_percentage').value);
-        formData.append('min_payment', document.getElementById('edit_min_payment').value);
-        formData.append('valid_period', document.getElementById('edit_valid_period').value);
-    
-        const url = `/promo-diskon/edit-disc-entry/${discId}/`;
-        const response = await fetch(url, {
-            method: "POST",
-            body: formData
-        });
-    
-        if (response.ok) {
-            await refreshDiscountEntries();
-            closeEditModal();
-        } else {
-            alert("Failed to save changes");
-        }
-      }
-
-      function openEditModal(data) {
-        document.getElementById('edit_code').value = data.fields.code;
-        document.getElementById('edit_resto').value = data.fields.resto;
-        document.getElementById('edit_percentage').value = data.fields.percentage;
-        document.getElementById('edit_min_payment').value = data.fields.min_payment;
-        document.getElementById('edit_valid_period').value = data.fields.valid_period;
-        document.getElementById('editModal').classList.remove('hidden');
-    }
-
-      function closeEditModal() {
-          document.getElementById('editModal').classList.add('hidden');
-      }
-  </script>
-
+    <script type="text/babel">
+        const root = ReactDOM.createRoot(document.getElementById('searchRoot'));
+        root.render(<SearchBar />);
+    </script>
 </body>
 {% endblock content %}
