@@ -27,7 +27,7 @@
     
         {% if not disc_entries %}
         <div class="flex flex-col items-center justify-center min-h-[24rem] bg-white/90 rounded-xl p-8 backdrop-blur-md shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
-            <img src="{% static 'image/sad_face.png' %}" class="w-32 h-32 mb-4 opacity-80 animate-bounce">
+            <img src="{% static 'image/sad_cat.jpg' %}" class="w-32 h-32 mb-4 opacity-80 animate-bounce">
             <p class="text-xl text-gray-600 font-medium">Belum ada promo diskon untuk saat ini</p>
         </div>
         {% else %}
@@ -37,7 +37,7 @@
         {% endif %}
     
         <div class="text-center mt-12">
-            <button class="bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-bold py-4 px-8 rounded-full transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center mx-auto space-x-2">
+            <button class="bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-bold py-4 px-8 rounded-full transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center mx-auto space-x-2" onclick="showModal();">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                 </svg>
