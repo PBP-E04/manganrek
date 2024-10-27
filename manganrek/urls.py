@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include('main.urls')),
     path('profil/', include('profil.urls', namespace='profil')),
     path('restoran-makanan/', include('restoran_makanan.urls')),
+    path('review/', include('rating_ulasan.urls')),
     path('promo-diskon/', include('promo_diskon.urls')),
 ]
 
