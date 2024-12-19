@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-+ch#_f_i#e!v&m@4r8mxdl_c93mb!zog6x1($th4f=1&ij+i7k
 PRODUCTION = os.getenv("PRODUCTION", False)
 DEBUG = not PRODUCTION
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "anders-willard-manganrek.pbp.cs.ui.ac.id"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "anders-willard-manganrek.pbp.cs.ui.ac.id", "10.0.2.2"]
 
 # Application definition
 
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'favorit',
     'rating_ulasan',
     'promo_diskon',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -58,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'manganrek.urls'
@@ -148,3 +150,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = ["http://localhost","http://127.0.0.1","http://anders-willard-manganrek.pbp.cs.ui.ac.id/", "https://anders-willard-manganrek.pbp.cs.ui.ac.id/"]
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
