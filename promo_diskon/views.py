@@ -16,25 +16,6 @@ from django.utils.html import strip_tags
 from .models import RumahMakan
 from django.db.models import Q
 
-
-@require_http_methods(["GET"])
-def search_promos(request):
-    query = request.GET.get('q', '').strip()
-    
-    if query:
-        # Search in both voucher codes and restaurant names
-        disc_entries = DiscEntry.objects.filter(
-            Q(code__icontains=query) |
-            Q(resto__icontains=query)
-        )
-    else:
-        disc_entries = DiscEntry.objects.all()
-    
-    # Serialize the results
-    serialized_data = serializers.serialize('json', disc_entries)
-    return JsonResponse({'results': serialized_data}, safe=False)
-
-
 # Create your views here.
 def show_main(request):
     disc_entries = DiscEntry.objects.all()
@@ -45,6 +26,7 @@ def show_main(request):
     }
     return render(request, "promo_main.html", context)
 
+@login_required
 def create_disc_entry(request):
     form = DiscEntryForm(request.POST or None)
 
@@ -57,6 +39,7 @@ def create_disc_entry(request):
 
 @csrf_exempt
 @require_POST
+@login_required
 def add_disc_entry_ajax(request):
     form = DiscEntryForm(request.POST)
 
@@ -79,7 +62,7 @@ def add_disc_entry_ajax(request):
         error_message = ', '.join([f"{field}: {error[0]}" for field, error in form.errors.items()])
         return JsonResponse({"error": f"Error: {error_message}"}, status=400)
 
-
+@login_required
 def edit_disc_entry(request, id):
     # Get discount entry based on id
     discount = DiscEntry.objects.get(pk=id)
@@ -103,16 +86,14 @@ def edit_disc_entry(request, id):
         temp.user=request.user
         temp.save()
         return HttpResponseRedirect(reverse('promo_diskon:show_main'))
-
-    form_data = {field.name: form[field.name].value() for field in form}
+    
     context = {
         'form': form,
-        'form_data': form_data,  # Get restaurant name
         'resto_name': resto_name
     }
     return render(request, "edit_disc.html", context)
     
-
+@login_required
 def delete_disc(request, id):
     # Get product berdasarkan id
     disc = DiscEntry.objects.get(pk = id)
@@ -121,22 +102,6 @@ def delete_disc(request, id):
     # Kembali ke halaman awal
     return HttpResponseRedirect(reverse('promo_diskon:show_main'))
 
-@require_http_methods(["GET"])
-def search_promos(request):
-    query = request.GET.get('q', '')
-    
-    if query:
-        # Search in both voucher codes and restaurant names
-        disc_entries = DiscEntry.objects.filter(
-            Q(kode_voucher__icontains=query) |
-            Q(resto__icontains=query)
-        )
-    else:
-        disc_entries = DiscEntry.objects.all()
-    
-    # Serialize the results
-    data = serializers.serialize('json', disc_entries)
-    return JsonResponse({'results': data}, safe=False)
 
 def show_xml(request):
     data = DiscEntry.objects.all()
