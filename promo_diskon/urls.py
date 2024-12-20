@@ -1,7 +1,7 @@
 # urls.py
 from django.urls import path
 from promo_diskon.views import (
-    show_main, create_disc_entry, add_disc_entry_ajax,search_promos,
+    show_main, create_disc_entry, add_disc_entry_ajax,
     edit_disc_entry, delete_disc, show_xml, show_json, show_xml_by_id, show_json_by_id
 )
 
@@ -13,7 +13,6 @@ urlpatterns = [
     path('add-disc-entry-ajax/', add_disc_entry_ajax, name='add_disc_entry_ajax'),
     path('edit-disc/<uuid:id>/', edit_disc_entry, name='edit_disc_entry'),  # Fixed to pass ID
     path('delete-disc/<uuid:id>/', delete_disc, name='delete_disc'),  # Fixed to pass ID
-    path('search/', search_promos, name='search_promos'),
     path('xml/', show_xml, name='show_xml'),  
     path('json/', show_json, name='show_json'),
     path('xml/<uuid:id>/', show_xml_by_id, name='show_xml_by_id'),
