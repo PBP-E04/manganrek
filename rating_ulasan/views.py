@@ -7,6 +7,9 @@ from restoran_makanan.models import RumahMakan
 from django.core import serializers 
 from django.views.decorators.http import require_POST   
 from .forms import ReviewForm
+import json
+from django.views.decorators.csrf import csrf_exempt
+
 
 def review_list(request):
     query = request.GET.get('q', '')
@@ -88,3 +91,33 @@ def get_review_json(request, pk):
         return HttpResponse(serializers.serialize('json', reviews), content_type="application/json")
     except RumahMakan.DoesNotExist:
         return JsonResponse({'error': 'Restaurant not found'}, status=404)
+    
+@csrf_exempt
+def create_review_flutter(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        print(data)
+
+        # Assuming data is a list, extract the first dictionary object
+        # review_data = data['rumah_makan']['fields']
+
+        # Fetch RumahMakan instance using the UUID in 'rumah_makan'
+        rumah_makan_instance = get_object_or_404(RumahMakan, pk=data["rumah_makan"]["pk"])
+
+        # Create the Review object
+        new_review = Review.objects.create(
+            user=request.user,
+            rumah_makan=rumah_makan_instance,
+            review_name=data["review_name"],
+            stars=data["stars"],
+            comments=data["comments"],
+            visit_date=data["visit_date"],
+            created_at=data["created_at"],
+        )
+
+        return JsonResponse({
+            "status": "success",
+            "review_id": new_review.id
+        }, status=201)
+
+    return JsonResponse({"error": "Invalid request method"}, status=405)
