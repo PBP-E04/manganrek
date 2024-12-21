@@ -29,7 +29,7 @@ def show_json_menu_by_rumah_makan(request, id_rumah_makan):
 
 @login_required(login_url='/profil/login')
 def show_rumahmakan_makanan(request):
-    rumah_makan = RumahMakan.objects.all()
+    rumah_makan = RumahMakan.objects.all() 
     makanan = Menu.objects.all()
     
     context = {

@@ -11,7 +11,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect, HttpResponseForbidden
-
+from django.views.decorators.csrf import csrf_exempt
 
 @login_required(login_url='/profil/login')
 def show_main(request):
@@ -91,6 +91,7 @@ def user_profile_delete(request, user_id):
         return redirect('user_profile_list')  # Redirect ke halaman daftar setelah penghapusan
     return render(request, 'user_profile_confirm_delete.html', {'user_profile': user_profile})
     
+@csrf_exempt
 def register_user(request):
     form = UserCreationForm()
 
@@ -104,6 +105,7 @@ def register_user(request):
     context = {'form':form}
     return render(request, 'register_user.html', context)
 
+@csrf_exempt
 def login_user(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
@@ -124,6 +126,7 @@ def login_user(request):
 
     return render(request, 'login.html', {'form': form})
 
+@csrf_exempt
 def logout_user(request):
     logout(request)
     response = HttpResponseRedirect(reverse('profil:login'))

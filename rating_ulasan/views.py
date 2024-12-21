@@ -121,3 +121,32 @@ def create_review_flutter(request):
         }, status=201)
 
     return JsonResponse({"error": "Invalid request method"}, status=405)
+
+@csrf_exempt
+def delete_review_flutter(request, review_id):
+    if request.method == 'POST':
+        review = get_object_or_404(Review, pk=review_id)
+
+        # Ensure the logged-in user can only delete their own reviews
+        if review.user == request.user:
+            review.delete()
+            return JsonResponse({'success': True, 'message': 'Review deleted successfully'})
+        else:
+            return JsonResponse({'success': False, 'message': 'Permission denied'}, status=403)
+    
+    return JsonResponse({'success': False, 'message': 'Invalid request method'}, status=400)
+
+@csrf_exempt
+def update_review_flutter(request, review_id):
+    if request.method == 'POST':
+        try:
+            review = Review.objects.get(pk=review_id)
+            review.review_name = request.POST['review_name']
+            review.comments = request.POST['comments']
+            review.stars = int(request.POST['stars'])
+            review.rumah_makan = RumahMakan.objects.get(pk=request.POST['rumah_makan'])
+            review.visit_date = request.POST['visit_date']
+            review.save()
+            return JsonResponse({'status': 'success'})
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'message': str(e)})
