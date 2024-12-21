@@ -68,6 +68,7 @@ def add_rumah_makan(request):
 
     return HttpResponse(b"CREATED", status=201)
 
+@csrf_exempt
 @login_required(login_url='/profil/login')
 def edit_rumah_makan(request, id):
     rumah_makan = get_object_or_404(RumahMakan, pk=id)
@@ -104,6 +105,7 @@ def add_menu(request, id_rumah_makan):
 
     return HttpResponse(b"CREATED", status=201)
 
+@csrf_exempt
 @login_required(login_url='/profil/login')
 def edit_menu(request, id):
     menu = get_object_or_404(Menu, pk=id)
