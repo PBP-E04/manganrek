@@ -34,6 +34,7 @@ def review_list(request):
 
 
 @login_required(login_url='/profil/login')
+@csrf_exempt
 def add_review(request):
     if request.method == 'POST':
         review_name = request.POST.get('review_name')
@@ -57,6 +58,7 @@ def add_review(request):
 
 # views.py
 @login_required(login_url='/profil/login')
+@csrf_exempt
 def edit_review(request, review_id):
     review = get_object_or_404(Review, id=review_id)
     if request.method == 'GET':
@@ -73,6 +75,7 @@ def edit_review(request, review_id):
         return redirect('review:review_list')
 
 @require_POST
+@csrf_exempt
 @login_required(login_url='/profil/login')
 def delete_review(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
