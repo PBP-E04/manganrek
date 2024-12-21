@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-+ch#_f_i#e!v&m@4r8mxdl_c93mb!zog6x1($th4f=1&ij+i7k
 PRODUCTION = os.getenv("PRODUCTION", False)
 DEBUG = not PRODUCTION
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "anders-willard-manganrek.pbp.cs.ui.ac.id", "10.0.2.2", ".vercell.app"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "anders-willard-manganrek.pbp.cs.ui.ac.id", "10.0.2.2"]
 
 # Application definition
 
@@ -139,18 +139,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-# Static files (CSS, JavaScript, images)
 STATIC_URL = '/static/'
-
 if DEBUG:
     STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, 'static')  # Correct way to handle directory paths
+        BASE_DIR / 'static' 
     ]
 else:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # Directory where static files will be collected in production
-    STATICFILES_DIRS = []  # No additional directories in production
+    STATIC_ROOT = BASE_DIR / 'static' 
+    STATICFILES_DIRS = []
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
