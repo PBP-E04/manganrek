@@ -29,6 +29,7 @@ urlpatterns = [
     path('review/', include('rating_ulasan.urls')),
     path('promo-diskon/', include('promo_diskon.urls')),
     path('favorit/', include('favorit.urls')),
+    path('auth/', include('authorization.urls')),
 ]
 
 if settings.DEBUG:
