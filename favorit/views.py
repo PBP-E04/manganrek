@@ -17,9 +17,8 @@ def show_json_favorit(request):
     data = RumahMakanFavorit.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
-def show_json_rumah_makan_by_favorit(request):
-    status = RumahMakanFavorit.objects.filter(user=request.user, favorit=True)
-    data = RumahMakan.objects.filter(pk=status.fields.id_rumah_makan)
+def show_json_rumah_makan_by_favorit(request, id_rumah_makan):
+    data = RumahMakanFavorit.objects.filter(id_rumah_makan=id_rumah_makan)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 def update_favorit_restoran(request, id):
