@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.urls import reverse
 from profil.models import UserProfile, Follower
+from django.contrib.auth.models import User
 from profil.forms import UserProfileForm
 import datetime
 from django.contrib.auth.forms import UserCreationForm
@@ -12,6 +13,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+import json
 
 @login_required(login_url='/profil/login')
 def show_main(request):
@@ -161,3 +164,95 @@ def delete_account(request):
         messages.success(request, "Akun Anda telah berhasil dihapus.")
         return redirect('main:show_main')  # Ganti 'home' dengan URL tujuan setelah penghapusan
     return render(request, 'delete_account.html')
+
+@csrf_exempt
+def login_flutter(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        if user.is_active:
+            login(request, user)
+            # Status login sukses.
+            return JsonResponse({
+                "username": user.username,
+                "status": True,
+                "message": "Login sukses!",
+                "id": user.id,
+                # Tambahkan data lainnya jika ingin mengirim data ke Flutter.
+            }, status=200)
+        else:
+            return JsonResponse({
+                "status": False,
+                "message": "Login gagal, akun dinonaktifkan."
+            }, status=401)
+
+    else:
+        return JsonResponse({
+            "status": False,
+            "message": "Login gagal, periksa kembali email atau kata sandi."
+        }, status=401)
+
+@csrf_exempt
+def register_flutter(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        username = data['username']
+        password1 = data['password1']
+        password2 = data['password2']
+
+        # Check if the passwords match
+        if password1 != password2:
+            return JsonResponse({
+                "status": False,
+                "message": "Passwords do not match."
+            }, status=400)
+            
+        # Check if the username is already taken
+        if User.objects.filter(username=username).exists():
+            return JsonResponse({
+                "status": False,
+                "message": "Username already exists."
+            }, status=400)
+        
+        user = User.objects.create_user(username=username, password=password1)
+        user.save()
+        user_profile = UserProfile.objects.create(user=user)
+        user_profile.save()
+        
+        return JsonResponse({
+            "username": user.username,
+            "status": 'success',
+            "message": "User created successfully!",
+            "id": user.id,
+        }, status=200)
+    
+    else:
+        return JsonResponse({
+            "status": False,
+            "message": "Invalid request method."
+        }, status=400)
+        
+@csrf_exempt
+def logout_flutter(request):
+    try:
+        logout(request)
+        return JsonResponse({
+            "status": True,
+            "message": "Logout berhasil!"
+        }, status=200)
+    except:
+        return JsonResponse({
+            "status": False,
+            "message": "Logout gagal."
+        }, status=401)
+        
+def get_users(request):
+    if request.method == 'GET':
+        users = User.objects.all().values('id', 'username')
+        return JsonResponse(list(users), safe=False, status=200)
+    else:
+        return JsonResponse({
+            "status": False,
+            "message": "Invalid request method."
+        }, status=400)

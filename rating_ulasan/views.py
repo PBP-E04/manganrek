@@ -7,6 +7,9 @@ from restoran_makanan.models import RumahMakan
 from django.core import serializers 
 from django.views.decorators.http import require_POST   
 from .forms import ReviewForm
+import json
+from django.views.decorators.csrf import csrf_exempt
+
 
 def review_list(request):
     query = request.GET.get('q', '')
@@ -31,6 +34,7 @@ def review_list(request):
 
 
 @login_required(login_url='/profil/login')
+@csrf_exempt
 def add_review(request):
     if request.method == 'POST':
         review_name = request.POST.get('review_name')
@@ -54,6 +58,7 @@ def add_review(request):
 
 # views.py
 @login_required(login_url='/profil/login')
+@csrf_exempt
 def edit_review(request, review_id):
     review = get_object_or_404(Review, id=review_id)
     if request.method == 'GET':
@@ -88,3 +93,62 @@ def get_review_json(request, pk):
         return HttpResponse(serializers.serialize('json', reviews), content_type="application/json")
     except RumahMakan.DoesNotExist:
         return JsonResponse({'error': 'Restaurant not found'}, status=404)
+    
+@csrf_exempt
+def create_review_flutter(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        print(data)
+
+        # Assuming data is a list, extract the first dictionary object
+        # review_data = data['rumah_makan']['fields']
+
+        # Fetch RumahMakan instance using the UUID in 'rumah_makan'
+        rumah_makan_instance = get_object_or_404(RumahMakan, pk=data["rumah_makan"]["pk"])
+
+        # Create the Review object
+        new_review = Review.objects.create(
+            user=request.user,
+            rumah_makan=rumah_makan_instance,
+            review_name=data["review_name"],
+            stars=data["stars"],
+            comments=data["comments"],
+            visit_date=data["visit_date"],
+            created_at=data["created_at"],
+        )
+
+        return JsonResponse({
+            "status": "success",
+            "review_id": new_review.id
+        }, status=201)
+
+    return JsonResponse({"error": "Invalid request method"}, status=405)
+
+@csrf_exempt
+def delete_review_flutter(request, review_id):
+    if request.method == 'POST':
+        review = get_object_or_404(Review, pk=review_id)
+
+        # Ensure the logged-in user can only delete their own reviews
+        if review.user == request.user:
+            review.delete()
+            return JsonResponse({'success': True, 'message': 'Review deleted successfully'})
+        else:
+            return JsonResponse({'success': False, 'message': 'Permission denied'}, status=403)
+    
+    return JsonResponse({'success': False, 'message': 'Invalid request method'}, status=400)
+
+@csrf_exempt
+def update_review_flutter(request, review_id):
+    if request.method == 'POST':
+        try:
+            review = Review.objects.get(pk=review_id)
+            review.review_name = request.POST['review_name']
+            review.comments = request.POST['comments']
+            review.stars = int(request.POST['stars'])
+            review.rumah_makan = RumahMakan.objects.get(pk=request.POST['rumah_makan'])
+            review.visit_date = request.POST['visit_date']
+            review.save()
+            return JsonResponse({'status': 'success'})
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'message': str(e)})

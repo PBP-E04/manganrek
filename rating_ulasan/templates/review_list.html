@@ -4,7 +4,7 @@
 <style>
     body {
         background-color: #E6F7E4;
-        {% comment %} font-family: Arial, sans-serif; {% endcomment %}
+        /* {% comment %} font-family: Arial, sans-serif; {% endcomment %} */
     }
 
     .container {
@@ -290,11 +290,13 @@
     {% endif %}
 
     <!-- Add Review Button -->
+     {%if user.is_authenticated%}
     <div class="text-center mt-5 mb-4">
         <button class="btn btn-lg btn-success add-review" style="border-radius: 30px;">
             <i class="fas fa-plus"></i> Tambahkan Ulasan
         </button>
     </div>
+    {%endif%}
 </div>
 
 <!-- Modal -->

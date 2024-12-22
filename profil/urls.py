@@ -14,6 +14,10 @@ from profil.views import (
     follow_user,
     unfollow_user,
     delete_account,
+    login_flutter,
+    register_flutter,
+    logout_flutter,
+    get_users,
 )
 
 app_name = 'profil'
@@ -30,4 +34,8 @@ urlpatterns = [
     path('user-profile/follow/<uuid:user_profile_id>/', follow_user, name='follow_user'),  # Pastikan ini ada
     path('user-profile/unfollow/<uuid:user_profile_id>/', unfollow_user, name='unfollow_user'),  # Pastikan ini ada
     path('delete-account/', delete_account, name='delete_account'),
+    path('login_flutter/', login_flutter, name='login_flutter'),
+    path('register_flutter/', register_flutter, name='register_flutter'),
+    path('logout_flutter/', logout_flutter, name='logout_flutter'),
+    path('get-users/', get_users, name='get_users'),
 ]
