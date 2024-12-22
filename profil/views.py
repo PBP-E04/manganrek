@@ -178,6 +178,7 @@ def login_flutter(request):
                 "username": user.username,
                 "status": True,
                 "message": "Login sukses!",
+                "id": user.id,
                 # Tambahkan data lainnya jika ingin mengirim data ke Flutter.
             }, status=200)
         else:
@@ -223,6 +224,7 @@ def register_flutter(request):
             "username": user.username,
             "status": 'success',
             "message": "User created successfully!",
+            "id": user.id,
         }, status=200)
     
     else:
@@ -241,6 +243,16 @@ def logout_flutter(request):
         }, status=200)
     except:
         return JsonResponse({
-        "status": False,
-        "message": "Logout gagal."
+            "status": False,
+            "message": "Logout gagal."
         }, status=401)
+        
+def get_users(request):
+    if request.method == 'GET':
+        users = User.objects.all().values('id', 'username')
+        return JsonResponse(list(users), safe=False, status=200)
+    else:
+        return JsonResponse({
+            "status": False,
+            "message": "Invalid request method."
+        }, status=400)
