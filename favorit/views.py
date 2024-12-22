@@ -4,6 +4,7 @@ from restoran_makanan.models import RumahMakan, Menu
 from django.core import serializers
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, reverse
+from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 import uuid
 import json
@@ -48,3 +49,17 @@ def update_favorit_favorit(request, id):
     restoran_favorit.favorit = not restoran_favorit.favorit  # Toggle favourite
     restoran_favorit.save()
     return HttpResponseRedirect(reverse('favorit:show_favorit'))
+
+@csrf_exempt
+def update_favorit_flutter(request, id):
+        restoran_favorit_obj = RumahMakanFavorit.objects.filter(user=request.user, id_rumah_makan_id=id)
+
+        # If there are no interactions, create one
+        if not restoran_favorit_obj.exists():
+            restoran_favorit = RumahMakanFavorit.objects.create(user=request.userman, id_rumah_makan_id=id)
+        else:
+            restoran_favorit = restoran_favorit_obj.first()
+
+        restoran_favorit.favorit = not restoran_favorit.favorit  # Toggle favourite
+        restoran_favorit.save()
+        return JsonResponse({"status": "success"}, status=200)
