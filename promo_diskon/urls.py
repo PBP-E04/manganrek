@@ -2,7 +2,8 @@
 from django.urls import path
 from promo_diskon.views import (
     show_main, create_disc_entry, add_disc_entry_ajax,
-    edit_disc_entry, delete_disc, show_xml, show_json, show_xml_by_id, show_json_by_id
+    edit_disc_entry, delete_disc, show_xml, show_json, show_xml_by_id, show_json_by_id,
+    add_disc_entry_flutter, edit_disc_entry_flutter, delete_disc_entry_flutter
 )
 
 app_name = 'promo_diskon'
@@ -17,4 +18,7 @@ urlpatterns = [
     path('json/', show_json, name='show_json'),
     path('xml/<uuid:id>/', show_xml_by_id, name='show_xml_by_id'),
     path('json/<uuid:id>/', show_json_by_id, name='show_json_by_id'),
+    path('add-disc-entry-flutter/', add_disc_entry_flutter, name='add_disc_entry_flutter'),
+    path('edit-disc-entry-flutter/<uuid:id>/', edit_disc_entry_flutter, name='edit_disc_entry_flutter'),
+    path('delete-disc-entry-flutter/<uuid:id>/', delete_disc_entry_flutter, name='delete_disc_entry_flutter'),
 ]

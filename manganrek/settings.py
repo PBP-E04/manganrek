@@ -32,8 +32,15 @@ DEBUG = not PRODUCTION
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "anders-willard-manganrek.pbp.cs.ui.ac.id", "10.0.2.2"]
 
-# Application definition
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost',
+    'http://127.0.0.1',
+]
 
+CORS_ALLOW_ALL_ORIGINS = True  # For development only
+CORS_ALLOW_CREDENTIALS = True
+
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -47,7 +54,8 @@ INSTALLED_APPS = [
     'favorit',
     'rating_ulasan',
     'promo_diskon',
-    'authorization'
+    'authorization',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
