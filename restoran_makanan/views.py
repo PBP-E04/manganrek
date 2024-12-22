@@ -6,6 +6,8 @@ from django.core import serializers
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
+import json
+from django.http import JsonResponse
 
 def show_json_rumah_makan(request):
     data = RumahMakan.objects.all()
@@ -128,3 +130,89 @@ def delete_menu(request, id):
     id_rumah_makan = menu.id_rumah_makan.id
     menu.delete()
     return HttpResponseRedirect(reverse('restoran_makanan:detail_rumah_makan', args=[id_rumah_makan]))
+
+@csrf_exempt
+def create_rumah_makan_flutter(request):
+    if request.method == 'POST':
+
+        data = json.loads(request.body)
+        new_rumah_makan = RumahMakan.objects.create(
+            nama=data['nama'],
+            alamat=data['alamat'],
+            tingkat_kepedasan=int(data['tingkat_kepedasan']),
+            latitude=float(data['latitude']),
+            longitude=float(data['longitude'])
+        )
+        new_rumah_makan.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
+    
+@csrf_exempt
+def edit_rumah_makan_flutter(request, id):
+    rumah_makan = RumahMakan.objects.get(pk=id)
+    
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        rumah_makan.nama = data['nama']
+        rumah_makan.alamat = data['alamat']
+        rumah_makan.tingkat_kepedasan = int(data['tingkat_kepedasan'])
+        rumah_makan.latitude = float(data['latitude'])
+        rumah_makan.longitude = float(data['longitude'])
+        rumah_makan.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
+    
+@csrf_exempt
+def delete_rumah_makan_flutter(request, id):
+    rumah_makan = RumahMakan.objects.get(pk=id)
+    
+    if request.method == 'POST':
+        rumah_makan.delete()
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
+    
+@csrf_exempt
+def create_menu_flutter(request):
+    if request.method == 'POST':
+        
+        data = json.loads(request.body)
+        rumah_makan = RumahMakan.objects.get(pk=data['id_rumah_makan'])
+        new_menu = Menu.objects.create(
+            id_rumah_makan=rumah_makan,
+            nama_makanan=data['nama_makanan'],
+            harga=int(data['harga'])
+        )
+        new_menu.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
+    
+@csrf_exempt
+def edit_menu_flutter(request, id):
+    menu = Menu.objects.get(pk=id)
+    
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        menu.nama_makanan = data['nama_makanan']
+        menu.harga = int(data['harga'])
+        menu.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)    
+    
+@csrf_exempt
+def delete_menu_flutter(request, id):
+    menu = Menu.objects.get(pk=id)
+    
+    if request.method == 'POST':
+        menu.delete()
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
